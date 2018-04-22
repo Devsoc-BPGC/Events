@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Events</string>
+    <string name="example_string_value">Hello World!</string>
+    <string name="test_string_eateries">Eateries are available</string>
+</resources>

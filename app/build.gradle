@@ -1,0 +1,43 @@
+apply plugin: 'com.android.application'
+
+ext {
+    compileVer = 27
+    minVer = 21
+
+    // versions of libraries used
+    constraintVer = "1.1.0"
+    suportVer = "27.1.1"
+}
+
+android {
+    compileSdkVersion compileVer
+    defaultConfig {
+        applicationId "com.macbitsgoa.events"
+        minSdkVersion minVer
+        targetSdkVersion compileVer
+        versionCode 1
+        versionName "1.0"
+        resConfigs "en"
+
+        // test build configuration variable
+        buildConfigField "boolean", "eateries", "true"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ext.enableCrashlytics = false
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:${suportVer}"
+    implementation "com.android.support.constraint:constraint-layout:${constraintVer}"
+}
