@@ -6,7 +6,8 @@ ext {
 
     // versions of libraries used
     constraintVer = "1.1.0"
-    suportVer = "27.1.1"
+    playServicesVer = "15.0.0"
+    supportVer = "27.1.1"
 }
 
 android {
@@ -34,10 +35,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    buildToolsVersion '27.0.3'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:appcompat-v7:${suportVer}"
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:appcompat-v7:${supportVer}"
+    implementation "com.android.support:support-v4:${supportVer}"
+    implementation "com.android.support:support-media-compat:${supportVer}"
     implementation "com.android.support.constraint:constraint-layout:${constraintVer}"
+    implementation "com.google.firebase:firebase-messaging:${playServicesVer}"
 }
