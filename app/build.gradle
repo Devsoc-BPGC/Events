@@ -14,6 +14,7 @@ android {
     compileSdkVersion compileVer
     defaultConfig {
         applicationId "com.macbitsgoa.events"
+        manifestPlaceholders = [deepLinkDomain: "example.com"]
         minSdkVersion minVer
         targetSdkVersion compileVer
         versionCode 1
@@ -25,6 +26,7 @@ android {
     }
     buildTypes {
         debug {
+            manifestPlaceholders = [allowBackup: "false"]
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             ext.enableCrashlytics = false

@@ -1,0 +1,39 @@
+/debug
+    |
+    +- events 
+    |	|
+    |	+- 0
+	|	|	|
+	|	|	+- name
+	|	|	+- description
+	|	|	+- image(s)
+	|	|	+- rulebook
+	|	|	+- schedule
+	|	|	|	+- 0		//day 0
+	|	|	|	|	|
+	|	|	|	|	+- name	// = "day 1"
+	|	|	|	|	+- type  // = "eliminations"
+	|	|	|	|	+- description
+	|	|	|	|	+- venue
+	|	|	|	|	+- time
+	|	|	|	+- 1
+	|	|	|		
+	|	|	+- categories	// big4, nights, etc
+	|	|
+	|	+- 1
+	|
+    +- eateries
+    |	|
+    |	+- 0
+    |	|	|
+    |	|	+- name
+    |	|	+- address
+    |	|	+- photo
+    |	|	+- desctription
+    |	|	+- menu
+    |	|
+    |	+- 1
+    |
+    +- feature
+    	|
+    	details
