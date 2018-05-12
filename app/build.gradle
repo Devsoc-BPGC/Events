@@ -1,13 +1,14 @@
 apply plugin: 'com.android.application'
 
 ext {
-    compileVer = 27
+    compileVer = 'android-P'
+    targetVer = 27
     minVer = 21
 
     // versions of libraries used
     constraintVer = "1.1.0"
-    playServicesVer = "15.0.0"
-    supportVer = "27.1.1"
+    materialCompVer = "1.0.0-alpha1"
+    playServicesVer = "15.0.2"
 }
 
 android {
@@ -16,7 +17,7 @@ android {
         applicationId "com.macbitsgoa.events"
         manifestPlaceholders = [deepLinkDomain: "example.com"]
         minSdkVersion minVer
-        targetSdkVersion compileVer
+        targetSdkVersion targetVer
         versionCode 1
         versionName "1.0"
         resConfigs "en"
@@ -46,9 +47,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:appcompat-v7:${supportVer}"
-    implementation "com.android.support:support-v4:${supportVer}"
-    implementation "com.android.support:support-media-compat:${supportVer}"
-    implementation "com.android.support.constraint:constraint-layout:${constraintVer}"
+    implementation "androidx.constraintlayout:constraintlayout:${constraintVer}"
     implementation "com.google.firebase:firebase-messaging:${playServicesVer}"
+    implementation "com.google.android.material:material:${materialCompVer}"
 }
