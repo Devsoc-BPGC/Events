@@ -28,6 +28,15 @@
                     android:host="${deepLinkDomain}" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".eateries.EateriesActivity"
+            android:label="@string/title_activity_eateries"
+            android:enabled="@bool/eateries"
+            android:parentActivityName=".home.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.macbitsgoa.events.home.HomeActivity" />
+        </activity>
     </application>
 
 </manifest>

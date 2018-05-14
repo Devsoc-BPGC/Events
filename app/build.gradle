@@ -24,6 +24,7 @@ android {
 
         // test build configuration variable
         buildConfigField "boolean", "eateries", "true"
+        resValue "bool", "eateries", "true"
     }
     buildTypes {
         debug {
