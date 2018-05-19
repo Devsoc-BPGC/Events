@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "1007225187624",
+    "firebase_url": "https://events-f6847.firebaseio.com",
+    "project_id": "events-f6847",
+    "storage_bucket": "events-f6847.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007225187624:android:ebced62f45f7b4e3",
+        "android_client_info": {
+          "package_name": "com.macbitsgoa.events"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1007225187624-hfshif3nq20l6t8vn6jdf4f2lek8m7mi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.macbitsgoa.events",
+            "certificate_hash": "7a14bf20a66329babeaf07ee0666518ee528ae36"
+          }
+        },
+        {
+          "client_id": "1007225187624-mr80d7mq30pideg21fk89sna2c4p67go.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.macbitsgoa.events",
+            "certificate_hash": "506cc66679f84c1e583cb61b04e321c6f3b42b45"
+          }
+        },
+        {
+          "client_id": "1007225187624-ve88c33iuivn0u1ulp8d3ajm8sbh95ai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb-qwPb049u9B7gVd08E30dlVZraJ30Ls"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1007225187624-ve88c33iuivn0u1ulp8d3ajm8sbh95ai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

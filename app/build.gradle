@@ -1,23 +1,12 @@
 apply plugin: 'com.android.application'
 
-ext {
-    compileVer = 'android-P'
-    targetVer = 27
-    minVer = 21
-
-    // versions of libraries used
-    constraintVer = "1.1.0"
-    materialCompVer = "1.0.0-alpha1"
-    playServicesVer = "15.0.2"
-}
-
 android {
-    compileSdkVersion compileVer
+    compileSdkVersion 'android-P'
     defaultConfig {
         applicationId "com.macbitsgoa.events"
         manifestPlaceholders = [deepLinkDomain: "example.com"]
-        minSdkVersion minVer
-        targetSdkVersion targetVer
+        minSdkVersion 21
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         resConfigs "en"
@@ -28,15 +17,14 @@ android {
     }
     buildTypes {
         debug {
-            manifestPlaceholders = [allowBackup: "false"]
+            ext.enableCrashlytics = false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            ext.enableCrashlytics = false
         }
         release {
             minifyEnabled true
-            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            shrinkResources true
         }
     }
     buildToolsVersion '27.0.3'
@@ -44,11 +32,15 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    lintOptions {
+        abortOnError true
+    }
+    build.dependsOn lint
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "androidx.constraintlayout:constraintlayout:${constraintVer}"
-    implementation "com.google.firebase:firebase-messaging:${playServicesVer}"
-    implementation "com.google.android.material:material:${materialCompVer}"
+    implementation "androidx.constraintlayout:constraintlayout:1.1.0"
+    implementation "com.google.android.material:material:1.0.0-alpha1"
 }
+apply plugin: 'com.google.gms.google-services'

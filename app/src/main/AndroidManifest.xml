@@ -3,7 +3,7 @@
     package="com.macbitsgoa.events">
 
     <application
-        android:allowBackup="${allowBackup}"
+        android:allowBackup="false"
         android:name=".EventsApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
