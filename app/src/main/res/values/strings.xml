@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Events</string>
-    <string name="example_string_value">Hello World!</string>
     <string name="test_string_eateries">Eateries are available</string>
 
     <string name="frag_label_eateries_card">Eateries</string>
     <string name="title_activity_eateries">EateriesActivity</string>
+    <string name="eateries_activity_placeholder">Someone please finish me!</string>
 </resources>

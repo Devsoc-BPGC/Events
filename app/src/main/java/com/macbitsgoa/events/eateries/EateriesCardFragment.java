@@ -39,11 +39,6 @@ public class EateriesCardFragment extends Fragment implements View.OnClickListen
     }
 
     @Override
-    public void onCreate(final Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(final LayoutInflater inflater,
                              final ViewGroup container, final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
