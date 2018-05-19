@@ -1,6 +1,5 @@
 package com.macbitsgoa.events.eateries;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -33,7 +32,7 @@ public class EateriesCardFragment extends Fragment implements View.OnClickListen
      */
     public static EateriesCardFragment newInstance() {
         final EateriesCardFragment fragment = new EateriesCardFragment();
-        final Bundle               args     = new Bundle();
+        final Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
     }
