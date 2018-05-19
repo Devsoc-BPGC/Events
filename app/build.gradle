@@ -42,5 +42,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "androidx.constraintlayout:constraintlayout:1.1.0"
     implementation "com.google.android.material:material:1.0.0-alpha1"
+    implementation 'com.google.firebase:firebase-database:15.0.1'
+    implementation 'com.google.firebase:firebase-core:15.0.2'
 }
 apply plugin: 'com.google.gms.google-services'
