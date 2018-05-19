@@ -38,3 +38,5 @@ proguard/
 /build
 /captures
 .externalNativeBuild
+
+checkstyle-*-all.jar
