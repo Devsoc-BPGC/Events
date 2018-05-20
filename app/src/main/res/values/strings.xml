@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">Events</string>
     <string name="test_string_eateries">Eateries are available</string>
+    <string name="test_string_about_fest">About Fest</string>
 
     <string name="frag_label_eateries_card">Eateries</string>
+    <string name="frag_label_aboutfest_card">About Fest</string>
     <string name="title_activity_eateries">EateriesActivity</string>
     <string name="eateries_activity_placeholder">Someone please finish me!</string>
+    <string name="title_activity_about_fest">AboutFest</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
