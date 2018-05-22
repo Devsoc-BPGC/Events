@@ -16,7 +16,8 @@ import java.util.ArrayList;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class OrganisersAdapter extends RecyclerView.Adapter<OrganisersAdapter.ViewHolder> {
+public class OrganisersAdapter
+        extends RecyclerView.Adapter<OrganisersAdapter.ViewHolder> {
     private Context context;
     private ArrayList<OrganisersList> organisersList = new ArrayList<OrganisersList>();
     private TextView contact;
