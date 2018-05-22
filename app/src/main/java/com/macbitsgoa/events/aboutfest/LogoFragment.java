@@ -1,14 +1,13 @@
 package com.macbitsgoa.events.aboutfest;
 
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,12 +16,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.macbitsgoa.events.R;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 public class LogoFragment extends Fragment {
 
-    View view;
+    private View view;
     private DatabaseReference databaseReference;
 
     @Override
@@ -41,6 +39,9 @@ public class LogoFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Creates the logo fragment in AboutFestActivity.
+     */
     public static LogoFragment newInstance() {
         LogoFragment logoFragment = new LogoFragment();
         Bundle bundle = new Bundle();
@@ -50,7 +51,6 @@ public class LogoFragment extends Fragment {
     }
 
     private void getLogo() {
-        TextView dates = (TextView) view.findViewById(R.id.dates);
         databaseReference.child("logourl").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -62,7 +62,7 @@ public class LogoFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.d("Tag", "Error");
             }
         });
     }
@@ -78,7 +78,7 @@ public class LogoFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.d("Tag", "Error");
             }
         });
     }
@@ -94,7 +94,7 @@ public class LogoFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.d("Tag", "Error");
             }
         });
     }

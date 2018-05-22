@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class OrganisersAdapter extends RecyclerView.Adapter<OrganisersAdapter.OrganisersViewHolder> {
+public class OrganisersAdapter extends RecyclerView.Adapter<OrganisersAdapter.ViewHolder> {
     private Context context;
     private ArrayList<OrganisersList> organisersList = new ArrayList<OrganisersList>();
     private TextView contact;
@@ -29,14 +29,14 @@ public class OrganisersAdapter extends RecyclerView.Adapter<OrganisersAdapter.Or
     }
 
     @Override
-    public OrganisersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View contacts = inflater.inflate(R.layout.item_organisers_rv, parent, false);
-        return new OrganisersViewHolder(contacts);
+        return new ViewHolder(contacts);
     }
 
     @Override
-    public void onBindViewHolder(OrganisersViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         OrganisersList current = organisersList.get(position);
         holder.setPhoto(current.getPhoto());
         holder.setName(current.getName());
@@ -51,12 +51,12 @@ public class OrganisersAdapter extends RecyclerView.Adapter<OrganisersAdapter.Or
         return organisersList.size();
     }
 
-    public class OrganisersViewHolder extends RecyclerView.ViewHolder {
-        OrganisersViewHolder(final View itemView) {
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        ViewHolder(final View itemView) {
             super(itemView);
         }
 
-        void handleClick(final Context context) {
+        private void handleClick(final Context context) {
 
             contact = itemView.findViewById(R.id.contact);
             contact.setOnClickListener(new View.OnClickListener() {
@@ -82,28 +82,28 @@ public class OrganisersAdapter extends RecyclerView.Adapter<OrganisersAdapter.Or
 
         }
 
-        void setPhoto(String url) {
+        private void setPhoto(String url) {
             final SimpleDraweeView simpleDraweeView = itemView.findViewById(R.id.photo);
             Uri imageUri = Uri.parse(url);
             simpleDraweeView.setImageURI(imageUri);
         }
 
-        void setName(String name) {
+        private void setName(String name) {
             TextView textView = (TextView) itemView.findViewById(R.id.name);
             textView.setText(name);
         }
 
-        void setPost(String post) {
+        private void setPost(String post) {
             TextView textView = (TextView) itemView.findViewById(R.id.post);
             textView.setText(post);
         }
 
-        void setContact(String contact) {
+        private void setContact(String contact) {
             TextView textView = (TextView) itemView.findViewById(R.id.contact);
             textView.setText(contact);
         }
 
-        void setEmail(String email) {
+        private void setEmail(String email) {
             TextView textView = (TextView) itemView.findViewById(R.id.email);
             textView.setText(email);
         }

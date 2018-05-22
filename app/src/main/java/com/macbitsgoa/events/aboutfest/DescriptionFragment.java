@@ -1,7 +1,7 @@
 package com.macbitsgoa.events.aboutfest;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +14,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.macbitsgoa.events.R;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 public class DescriptionFragment extends Fragment {
-    View view;
+    private View view;
 
     private DatabaseReference databaseReference;
 
@@ -34,6 +33,9 @@ public class DescriptionFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Creates the description fragment in AboutFestActivity.
+     */
     public static DescriptionFragment newInstance() {
         DescriptionFragment descriptionFragment = new DescriptionFragment();
         Bundle bundle = new Bundle();
@@ -52,7 +54,7 @@ public class DescriptionFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                Log.d("Tag", "Error");
             }
         });
     }

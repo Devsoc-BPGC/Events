@@ -18,6 +18,9 @@ public class AboutFestCardFragment extends Fragment implements View.OnClickListe
 
     }
 
+    /**
+     * Card for Aboutfest on HomeActivity.
+     */
     public static AboutFestCardFragment newInstance() {
         final AboutFestCardFragment fragment = new AboutFestCardFragment();
         final Bundle args = new Bundle();

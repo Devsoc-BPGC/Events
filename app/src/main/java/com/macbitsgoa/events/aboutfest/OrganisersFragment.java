@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,16 +20,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class OrganisersFragment extends Fragment {
-    private View view;
-    private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
-    private DatabaseReference databaseReference;
     private ArrayList<OrganisersList> organisersList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view;
+        RecyclerView recyclerView;
+        RecyclerView.LayoutManager layoutManager;
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_about_fest_organisers, container, false);
 
@@ -39,7 +37,8 @@ public class OrganisersFragment extends Fragment {
         adapter = new OrganisersAdapter(organisersList, getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-
+        
+        DatabaseReference databaseReference;
         databaseReference = FirebaseDatabase.getInstance().getReference().child("aboutfest");
         databaseReference.keepSynced(true);
         databaseReference.child("organisers").addValueEventListener(new ValueEventListener() {
@@ -56,6 +55,7 @@ public class OrganisersFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                Log.d("Tag", "Error");
             }
         });
 
