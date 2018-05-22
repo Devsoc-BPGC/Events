@@ -1,13 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/test_logo"
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:text="This is logo" />
+        android:layout_weight="4"
+        android:layout_marginTop="0sp"
+        app:roundAsCircle="true"
+        app:actualImageScaleType="fitCenter"
+        app:placeholderImage="@mipmap/ic_launcher_round"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardElevation="3sp"
+        app:cardUseCompatPadding="true"
+        android:layout_margin="2sp">
+        <TextView
+            android:id="@+id/tagline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tagline"
+            android:textSize="35sp"
+            android:textColor="#ffffff"
+            android:textAlignment="center"
+            android:layout_gravity="center"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardElevation="2sp"
+        app:cardUseCompatPadding="true"
+        android:layout_margin="2sp">
+
+        <TextView
+            android:id="@+id/dates"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:text="Dates" />
+    </androidx.cardview.widget.CardView>
+
 </LinearLayout>
