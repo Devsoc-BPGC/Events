@@ -2,14 +2,10 @@ package com.macbitsgoa.events.aboutfest;
 
 import android.os.Bundle;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.android.material.tabs.TabLayout;
 import com.macbitsgoa.events.R;
 
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 public class AboutFestActivity extends FragmentActivity {
