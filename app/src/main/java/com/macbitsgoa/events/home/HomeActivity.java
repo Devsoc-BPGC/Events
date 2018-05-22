@@ -48,14 +48,15 @@ public class HomeActivity extends FragmentActivity {
                     .commit();
         }
 
-        featuresFragManager
-                .beginTransaction()
-                .add(R.id.ll_home,
-                        AboutFestCardFragment.newInstance(),
-                        getString(R.string.frag_label_aboutfest_card)
-                )
-                .commit();
-
+        if (BuildConfig.aboutFest) {
+            featuresFragManager
+                    .beginTransaction()
+                    .add(R.id.ll_home,
+                            AboutFestCardFragment.newInstance(),
+                            getString(R.string.frag_label_aboutfest_card)
+                    )
+                    .commit();
+        }
 
         areFeaturesPopulated = true;
     }

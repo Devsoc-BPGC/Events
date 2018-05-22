@@ -19,7 +19,7 @@ import com.macbitsgoa.events.R;
 import androidx.fragment.app.Fragment;
 
 public class LogoFragment extends Fragment {
-
+    private static final String TAG = LogoFragment.class.getSimpleName();
     private View view;
     private DatabaseReference databaseReference;
 
@@ -62,7 +62,7 @@ public class LogoFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("Tag", "Error");
+                Log.e(TAG, databaseError.getMessage(), databaseError.toException());
             }
         });
     }
@@ -78,7 +78,7 @@ public class LogoFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("Tag", "Error");
+                Log.e(TAG, databaseError.getMessage(), databaseError.toException());
             }
         });
     }
@@ -94,7 +94,7 @@ public class LogoFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("Tag", "Error");
+                Log.e(TAG, databaseError.getMessage(), databaseError.toException());
             }
         });
     }

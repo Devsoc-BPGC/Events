@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class OrganisersFragment extends Fragment {
     private RecyclerView.Adapter adapter;
     private ArrayList<OrganisersList> organisersList = new ArrayList<>();
+    private static final String TAG = OrganisersFragment.class.getSimpleName();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,7 +56,7 @@ public class OrganisersFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("Tag", "Error");
+                Log.e(TAG, databaseError.getMessage(), databaseError.toException());
             }
         });
 

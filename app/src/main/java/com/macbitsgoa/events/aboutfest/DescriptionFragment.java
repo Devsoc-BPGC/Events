@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
 
 public class DescriptionFragment extends Fragment {
     private View view;
-
+    private static final String TAG = DescriptionFragment.class.getSimpleName();
     private DatabaseReference databaseReference;
 
     @Override
@@ -54,7 +54,7 @@ public class DescriptionFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d("Tag", "Error");
+                Log.e(TAG, databaseError.getMessage(), databaseError.toException());
             }
         });
     }

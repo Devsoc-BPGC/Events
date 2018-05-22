@@ -19,36 +19,12 @@ public class AboutFestActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_fest);
 
-        //Initialize Fresco
-        Fresco.initialize(this);
-
-
         ViewPager viewPager = (ViewPager)findViewById(R.id.about_fest_viewpager);
-        viewPager.setAdapter(new CustomPagerAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new AboutFestPagerAdapter(getSupportFragmentManager()));
 
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager, true);
     }
 
-    private class CustomPagerAdapter extends FragmentPagerAdapter {
-
-        public CustomPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            switch (position) {
-                case 0: return LogoFragment.newInstance();
-                case 1: return DescriptionFragment.newInstance();
-                case 2: return OrganisersFragment.newInstance();
-                default: return LogoFragment.newInstance();
-            }
-        }
-
-        @Override
-        public int getCount() {
-            return 3;
-        }
-    }
+    
 }
