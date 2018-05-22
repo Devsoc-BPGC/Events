@@ -18,7 +18,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 public class DescriptionFragment extends Fragment {
-    View v;
+    View view;
 
     private DatabaseReference databaseReference;
 
@@ -26,12 +26,12 @@ public class DescriptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_about_fest_description, container, false);
+        view = inflater.inflate(R.layout.fragment_about_fest_description, container, false);
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("aboutfest");
 
         getDescription();
-        return v;
+        return view;
     }
 
     public static DescriptionFragment newInstance() {
@@ -42,7 +42,7 @@ public class DescriptionFragment extends Fragment {
     }
 
     private void getDescription() {
-        TextView description = (TextView) v.findViewById(R.id.description);
+        TextView description = (TextView) view.findViewById(R.id.description);
         databaseReference.child("description").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

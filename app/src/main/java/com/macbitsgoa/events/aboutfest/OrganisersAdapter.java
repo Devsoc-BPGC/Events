@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class OrganisersAdapter extends RecyclerView.Adapter<OrganisersAdapter.OrganisersViewHolder>{
+public class OrganisersAdapter extends RecyclerView.Adapter<OrganisersAdapter.OrganisersViewHolder> {
     private Context context;
     private ArrayList<OrganisersList> organisersList = new ArrayList<OrganisersList>();
     private TextView contact;
@@ -75,8 +75,8 @@ public class OrganisersAdapter extends RecyclerView.Adapter<OrganisersAdapter.Or
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("message/rfc822");
                     intent.putExtra(Intent.ACTION_SENDTO, email.getText());
-                    Intent emailer = Intent.createChooser(intent, "Choose your E-email application");
-                    context.startActivity(emailer);
+                    Intent mailer = Intent.createChooser(intent, "Choose your E-email application");
+                    context.startActivity(mailer);
                 }
             });
 

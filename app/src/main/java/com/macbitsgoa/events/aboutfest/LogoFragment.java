@@ -22,14 +22,14 @@ import androidx.fragment.app.Fragment;
 
 public class LogoFragment extends Fragment {
 
-    View v;
+    View view;
     private DatabaseReference databaseReference;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_about_fest_logo, container, false);
+        view = inflater.inflate(R.layout.fragment_about_fest_logo, container, false);
 
         //Database Initialization
         databaseReference = FirebaseDatabase.getInstance().getReference().child("aboutfest");
@@ -38,7 +38,7 @@ public class LogoFragment extends Fragment {
         getTagline();
         getDates();
 
-        return v;
+        return view;
     }
 
     public static LogoFragment newInstance() {
@@ -50,14 +50,13 @@ public class LogoFragment extends Fragment {
     }
 
     private void getLogo() {
-        SimpleDraweeView simpleDraweeView = (SimpleDraweeView)v.findViewById(R.id.logo);
-        TextView dates = (TextView) v.findViewById(R.id.dates);
+        TextView dates = (TextView) view.findViewById(R.id.dates);
         databaseReference.child("logourl").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String url = dataSnapshot.getValue(String.class);
                 Uri imageUri = Uri.parse(url);
-                SimpleDraweeView draweeView = (SimpleDraweeView) v.findViewById(R.id.logo);
+                SimpleDraweeView draweeView = (SimpleDraweeView) view.findViewById(R.id.logo);
                 draweeView.setImageURI(imageUri);
             }
 
@@ -69,9 +68,7 @@ public class LogoFragment extends Fragment {
     }
 
     private void getTagline() {
-        CardView cardView = (CardView) v.findViewById(R.id.cardview2);
-        cardView.setCardElevation(1);
-        TextView tagline = (TextView) v.findViewById(R.id.tagline);
+        TextView tagline = (TextView) view.findViewById(R.id.tagline);
         databaseReference.child("tagline").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -87,9 +84,7 @@ public class LogoFragment extends Fragment {
     }
 
     private void getDates() {
-        CardView cardView = (CardView) v.findViewById(R.id.cardview2);
-        cardView.setCardElevation(1);
-        TextView dates = (TextView) v.findViewById(R.id.dates);
+        TextView dates = (TextView) view.findViewById(R.id.dates);
         databaseReference.child("dates").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

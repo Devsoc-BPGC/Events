@@ -38,7 +38,7 @@ public class AboutFestActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            switch(position) {
+            switch (position) {
                 case 0: return LogoFragment.newInstance();
                 case 1: return DescriptionFragment.newInstance();
                 case 2: return OrganisersFragment.newInstance();

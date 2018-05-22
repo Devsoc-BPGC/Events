@@ -46,7 +46,7 @@ public class OrganisersFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 organisersList.clear();
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     OrganisersList item = snapshot.getValue(OrganisersList.class);
                     System.out.println(item);
                     organisersList.add(item);

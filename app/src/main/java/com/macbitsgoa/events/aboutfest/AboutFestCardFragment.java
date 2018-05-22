@@ -48,7 +48,8 @@ public class AboutFestCardFragment extends Fragment implements View.OnClickListe
 
     @Override
     public void onClick(final View view) {
-        final Intent aboutFestActivityIntent = new Intent(view.getContext(), AboutFestActivity.class);
+        final Intent aboutFestActivityIntent = new Intent(view.getContext(),
+                AboutFestActivity.class);
         startActivity(aboutFestActivityIntent);
     }
 }
