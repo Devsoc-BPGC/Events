@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.macbitsgoa.events">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -23,19 +25,20 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="https"
-                    android:host="${deepLinkDomain}" />
+                    android:host="${deepLinkDomain}"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
         <activity
             android:name=".eateries.EateriesActivity"
-            android:label="@string/title_activity_eateries"
             android:enabled="@bool/eateries"
+            android:label="@string/title_activity_eateries"
             android:parentActivityName=".home.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
         </activity>
+        <activity android:name=".aboutfest.AboutFestActivity"></activity>
     </application>
 
 </manifest>
