@@ -40,5 +40,6 @@
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
         </activity>
         <activity android:name=".aboutfest.AboutFestActivity"></activity>
+        <activity android:name=".aboutmac.AboutMacActivity"></activity>
     </application>
 </manifest>
