@@ -1,4 +1,4 @@
-package com.macbitsgoa.events.aboutfest;
+package com.macbitsgoa.events.aboutmac;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -19,10 +19,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class OrganisersFragment extends Fragment {
+public class DevelopersFragment extends Fragment {
     private RecyclerView.Adapter adapter;
-    private ArrayList<OrganisersList> organisersList = new ArrayList<>();
-    private static final String TAG = OrganisersFragment.class.getSimpleName();
+    private ArrayList<DevelopersList> developersList = new ArrayList<>();
+    private static final String TAG = DevelopersFragment.class.getSimpleName();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,25 +31,24 @@ public class OrganisersFragment extends Fragment {
         RecyclerView recyclerView;
         RecyclerView.LayoutManager layoutManager;
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_about_fest_organisers, container, false);
+        view = inflater.inflate(R.layout.fragment_about_mac_developers, container, false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.organisersRecyclerView);
+        recyclerView = (RecyclerView) view.findViewById(R.id.developersRecyclerView);
         layoutManager = new LinearLayoutManager(getContext());
-        adapter = new OrganisersAdapter(organisersList, getContext());
+        adapter = new DevelopersAdapter(developersList, getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-        
+
         DatabaseReference databaseReference;
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("aboutfest");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("aboutmac");
         databaseReference.keepSynced(true);
-        databaseReference.child("organisers").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("developers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                organisersList.clear();
+                developersList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    OrganisersList item = snapshot.getValue(OrganisersList.class);
-                    System.out.println(item);
-                    organisersList.add(item);
+                    DevelopersList item = snapshot.getValue(DevelopersList.class);
+                    developersList.add(item);
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -63,8 +62,9 @@ public class OrganisersFragment extends Fragment {
         return view;
     }
 
-    public static OrganisersFragment newInstance() {
-        OrganisersFragment organisersFragment = new OrganisersFragment();
-        return organisersFragment;
+    public static DevelopersFragment newInstance() {
+        DevelopersFragment developersFragment = new DevelopersFragment();
+        return developersFragment;
     }
 }
+

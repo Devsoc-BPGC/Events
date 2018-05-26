@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.macbitsgoa.events.BuildConfig;
 import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.aboutfest.AboutFestCardFragment;
+import com.macbitsgoa.events.aboutmac.AboutMacCardFragment;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
 
 import androidx.fragment.app.FragmentActivity;
@@ -58,6 +59,15 @@ public class HomeActivity extends FragmentActivity {
                     .commit();
         }
 
+        if (BuildConfig.aboutMac) {
+            featuresFragManager
+                    .beginTransaction()
+                    .add(R.id.ll_home,
+                            AboutMacCardFragment.newInstance(),
+                            getString(R.string.frag_label_aboutmac_card)
+                    )
+                    .commit();
+        }
         areFeaturesPopulated = true;
     }
 }

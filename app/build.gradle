@@ -16,6 +16,8 @@ android {
         resValue "bool", "eateries", "true"
         buildConfigField "boolean", "aboutFest", "true"
         resValue "bool", "aboutFest", "true"
+        buildConfigField "boolean", "aboutMac", "true"
+        resValue "bool", "aboutMac", "true"
     }
     buildTypes {
         debug {
