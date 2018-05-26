@@ -68,7 +68,6 @@ public class HomeActivity extends FragmentActivity {
                     )
                     .commit();
         }
-
         areFeaturesPopulated = true;
     }
 }
