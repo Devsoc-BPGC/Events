@@ -18,6 +18,12 @@ android {
         resValue "bool", "aboutFest", "true"
         buildConfigField "boolean", "aboutMac", "true"
         resValue "bool", "aboutMac", "true"
+        buildConfigField "boolean", "timeline", "true"
+
+        buildConfigField "int", "eventDuration", "4" // days
+        buildConfigField "String", "startDate", "\"30,05,2018\"" // "dd,mm,yyyy"
+        buildConfigField "String", "startDateFormat", "\"dd,MM,yyyy\""
+        buildConfigField "String", "timelineTabDateFormat", "\"d MMM\""
     }
     buildTypes {
         debug {
@@ -46,8 +52,8 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "androidx.constraintlayout:constraintlayout:1.1.0"
     implementation "com.google.android.material:material:1.0.0-alpha1"
-    implementation "com.google.firebase:firebase-core:16.0.0"
     implementation 'com.google.firebase:firebase-database:16.0.1'
+    implementation 'com.google.firebase:firebase-core:16.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
     implementation 'androidx.legacy:legacy-support-v13:1.0.0-alpha1'
     implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'

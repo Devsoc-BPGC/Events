@@ -11,11 +11,15 @@ import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.aboutfest.AboutFestCardFragment;
 import com.macbitsgoa.events.aboutmac.AboutMacCardFragment;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
+import com.macbitsgoa.events.timeline.TimelineCardFragment;
 
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+
+import static com.macbitsgoa.events.Events.playStoreLink;
+import static com.macbitsgoa.events.Utilities.MIME_TYPE_PLAINTEXT;
 
 /**
  * Main Activity of the App.
@@ -28,6 +32,16 @@ public class HomeActivity extends FragmentActivity implements
 
     private static boolean areFeaturesPopulated = false;
 
+    private DrawerLayout drawerLayout;
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -37,7 +51,7 @@ public class HomeActivity extends FragmentActivity implements
             populateFeatures();
         }
 
-        NavigationView navigationView;
+        final NavigationView navigationView;
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -45,6 +59,7 @@ public class HomeActivity extends FragmentActivity implements
 
     private void initViews() {
         setContentView(R.layout.activity_home);
+        drawerLayout = findViewById(R.id.drawer_layout);
     }
 
     private void populateFeatures() {
@@ -80,46 +95,43 @@ public class HomeActivity extends FragmentActivity implements
                     )
                     .commit();
         }
+
+        if (BuildConfig.timeline) {
+            featuresFragManager
+                    .beginTransaction()
+                    .add(R.id.ll_home,
+                            new TimelineCardFragment(),
+                            getString(R.string.timeline)
+                    )
+                    .commit();
+        }
+
         areFeaturesPopulated = true;
     }
 
-
     @Override
-    public void onBackPressed() {
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-
-    @Override
-    public boolean onNavigationItemSelected(MenuItem menuItem) {
+    public boolean onNavigationItemSelected(final MenuItem menuItem) {
 
         switch (menuItem.getItemId()) {
 
             case (R.id.nav_share_app): {
-                Intent shareIntent = new Intent();
+                final Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);
-                shareIntent.putExtra(Intent.EXTRA_TEXT, (getString(R.string.test_string_playstore_prompt)
-                        +getString(R.string.mac_playstore_url)));
+                shareIntent.putExtra(Intent.EXTRA_TEXT,
+                        getString(R.string.spam_text) + playStoreLink);
 
-                shareIntent.setType(getString(R.string.test_string_intent_type));
-
-                startActivity(Intent.createChooser(shareIntent, getString(R.string.test_string_share_app)));
+                shareIntent.setType(MIME_TYPE_PLAINTEXT);
+                startActivity(Intent.createChooser(shareIntent,
+                        getString(R.string.choose_share_medium_prompt)));
                 break;
             }
-
 
             default: {
                 break;
             }
         }
 
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
