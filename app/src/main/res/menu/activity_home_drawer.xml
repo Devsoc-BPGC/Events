@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/nav_registration"
+            android:title="Registration"
+            android:icon="@drawable/ic_register"/>
+
+        <item
+            android:id="@+id/nav_events"
+            android:title="Events"
+            android:icon="@drawable/ic_events"/>
+
+        <item
+            android:id="@+id/nav_timeline"
+            android:title="Timeline"
+            android:icon="@drawable/ic_timeline"/>
+
+        <item
+            android:id="@+id/nav_speakers"
+            android:title="Speakers"
+            android:icon="@drawable/ic_speakers"/>
+
+        <item
+            android:id="@+id/nav_maps"
+            android:title="Maps"
+            android:icon="@drawable/ic_maps"/>
+
+        <item
+            android:id="@+id/nav_about_event"
+            android:title="About Event"
+            android:icon="@drawable/ic_about_event"/>
+
+        <item
+            android:id="@+id/nav_about_developers"
+            android:title="About Developers"
+            android:icon="@drawable/ic_about_developers"/>
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+
+            <item
+                android:id="@+id/nav_share"
+                android:title="Share"
+                android:icon="@drawable/ic_share_app"/>
+
+            <item
+                android:id="@+id/nav_social"
+                android:title="Social"
+                android:icon="@drawable/ic_social"/>
+
+        </menu>
+
+    </item>
+
+</menu>
