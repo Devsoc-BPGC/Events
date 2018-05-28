@@ -2,16 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.macbitsgoa.events">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".Events"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".Events">
+        android:theme="@style/AppTheme">
         <activity android:name=".home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,10 +24,10 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
-                    android:scheme="https"
                     android:host="${deepLinkDomain}"
-                    />
+                    android:scheme="https" />
             </intent-filter>
         </activity>
         <activity
@@ -39,6 +39,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
         </activity>
-        <activity android:name=".aboutfest.AboutFestActivity"></activity>
+        <activity android:name=".aboutfest.AboutFestActivity" />
+
+        <activity
+            android:name=".feed.feedActivity"
+            android:label="@string/title_activity_feed"
+            android:theme="@style/feed" />
+
     </application>
+
 </manifest>

@@ -7,6 +7,7 @@ import com.macbitsgoa.events.BuildConfig;
 import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.aboutfest.AboutFestCardFragment;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
+import com.macbitsgoa.events.feed.feedCardFragment;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -53,6 +54,16 @@ public class HomeActivity extends FragmentActivity {
                     .beginTransaction()
                     .add(R.id.ll_home,
                             AboutFestCardFragment.newInstance(),
+                            getString(R.string.frag_label_aboutfest_card)
+                    )
+                    .commit();
+        }
+
+        if (BuildConfig.feed) {
+            featuresFragManager
+                    .beginTransaction()
+                    .add(R.id.ll_home,
+                            feedCardFragment.newInstance(),
                             getString(R.string.frag_label_aboutfest_card)
                     )
                     .commit();
