@@ -28,7 +28,6 @@ public class HomeActivity extends FragmentActivity implements
 
     private static boolean areFeaturesPopulated = false;
 
-    private NavigationView navigationView;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -38,6 +37,7 @@ public class HomeActivity extends FragmentActivity implements
             populateFeatures();
         }
 
+        NavigationView navigationView;
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
