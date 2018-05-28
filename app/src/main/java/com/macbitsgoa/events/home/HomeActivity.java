@@ -28,7 +28,7 @@ public class HomeActivity extends FragmentActivity implements
 
     private static boolean areFeaturesPopulated = false;
 
-    NavigationView navigationView;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -88,10 +88,9 @@ public class HomeActivity extends FragmentActivity implements
     public void onBackPressed() {
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
 
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else {
+        } else {
             super.onBackPressed();
         }
     }
@@ -99,57 +98,21 @@ public class HomeActivity extends FragmentActivity implements
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
-        // Handle navigation view item clicks here.
-        // Start all your intent for activities in here
 
         switch (menuItem.getItemId()) {
-            case (R.id.nav_registration): {
-                // finish me
+
+            case (R.id.nav_share_app): {
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "Download this app from PlayStore");
+                shareIntent.setType("text/plain");
+
+                startActivity(Intent.createChooser(shareIntent, "Share app via: "));
                 break;
             }
 
-            case (R.id.nav_events): {
-                // finish me
-                break;
-            }
 
-            case (R.id.nav_timeline): {
-                // finish me
-                break;
-            }
-
-            case (R.id.nav_speakers): {
-                // finish me
-                break;
-            }
-
-            case (R.id.nav_maps): {
-                // finish me
-                break;
-            }
-
-            case (R.id.nav_about_event): {
-                // finish me
-                break;
-            }
-
-            case (R.id.nav_about_developers): {
-                // finish me
-                break;
-            }
-
-            case (R.id.nav_share): {
-                Intent intent1 = new Intent();
-                intent1.setAction(Intent.ACTION_SEND);
-                intent1.putExtra(Intent.EXTRA_TEXT, "Download this app from PlayStore");
-                intent1.setType("text/plain");
-
-                startActivity(Intent.createChooser(intent1, "Share app via: "));
-                break;
-            }
-
-            case (R.id.nav_social): {
-                // finish me
+            default: {
                 break;
             }
         }

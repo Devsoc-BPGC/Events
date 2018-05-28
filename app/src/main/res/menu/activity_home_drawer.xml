@@ -6,37 +6,37 @@
         <item
             android:id="@+id/nav_registration"
             android:title="Registration"
-            android:icon="@drawable/ic_register"/>
+            android:icon="@drawable/ic_registration_black_24dp"/>
 
         <item
             android:id="@+id/nav_events"
             android:title="Events"
-            android:icon="@drawable/ic_events"/>
+            android:icon="@drawable/ic_event_black_24dp"/>
 
         <item
             android:id="@+id/nav_timeline"
             android:title="Timeline"
-            android:icon="@drawable/ic_timeline"/>
+            android:icon="@drawable/ic_timeline_black_24dp"/>
 
         <item
             android:id="@+id/nav_speakers"
             android:title="Speakers"
-            android:icon="@drawable/ic_speakers"/>
+            android:icon="@drawable/ic_speaker_black_24dp"/>
 
         <item
             android:id="@+id/nav_maps"
             android:title="Maps"
-            android:icon="@drawable/ic_maps"/>
+            android:icon="@drawable/ic_maps_black_24dp"/>
 
         <item
             android:id="@+id/nav_about_event"
             android:title="About Event"
-            android:icon="@drawable/ic_about_event"/>
+            android:icon="@drawable/ic_about_event_black_24dp"/>
 
         <item
             android:id="@+id/nav_about_developers"
             android:title="About Developers"
-            android:icon="@drawable/ic_about_developers"/>
+            android:icon="@drawable/ic_about_developers_black_24dp"/>
 
     </group>
 
@@ -44,14 +44,14 @@
         <menu>
 
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_share_app"
                 android:title="Share"
-                android:icon="@drawable/ic_share_app"/>
+                android:icon="@drawable/ic_share_app_black_24dp"/>
 
             <item
                 android:id="@+id/nav_social"
                 android:title="Social"
-                android:icon="@drawable/ic_social"/>
+                android:icon="@drawable/ic_social_black_24dp"/>
 
         </menu>
 
