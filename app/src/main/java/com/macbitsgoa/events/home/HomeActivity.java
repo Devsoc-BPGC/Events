@@ -104,10 +104,12 @@ public class HomeActivity extends FragmentActivity implements
             case (R.id.nav_share_app): {
                 Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);
-                shareIntent.putExtra(Intent.EXTRA_TEXT, "Download this app from PlayStore");
-                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, (getString(R.string.test_string_playstore_prompt)
+                        +getString(R.string.mac_playstore_url)));
 
-                startActivity(Intent.createChooser(shareIntent, "Share app via: "));
+                shareIntent.setType(getString(R.string.test_string_intent_type));
+
+                startActivity(Intent.createChooser(shareIntent, getString(R.string.test_string_share_app)));
                 break;
             }
 
