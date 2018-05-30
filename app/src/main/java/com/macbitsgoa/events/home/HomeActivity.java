@@ -13,6 +13,7 @@ import com.macbitsgoa.events.aboutmac.AboutMacCardFragment;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
 import com.macbitsgoa.events.timeline.TimelineCardFragment;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
@@ -110,7 +111,7 @@ public class HomeActivity extends FragmentActivity implements
     }
 
     @Override
-    public boolean onNavigationItemSelected(final MenuItem menuItem) {
+    public boolean onNavigationItemSelected(@NonNull final MenuItem menuItem) {
 
         switch (menuItem.getItemId()) {
 
@@ -118,7 +119,7 @@ public class HomeActivity extends FragmentActivity implements
                 final Intent shareIntent = new Intent();
                 shareIntent.setAction(Intent.ACTION_SEND);
                 shareIntent.putExtra(Intent.EXTRA_TEXT,
-                        getString(R.string.spam_text) + playStoreLink);
+                        getString(R.string.spam_text) + " " + playStoreLink);
 
                 shareIntent.setType(MIME_TYPE_PLAINTEXT);
                 startActivity(Intent.createChooser(shareIntent,

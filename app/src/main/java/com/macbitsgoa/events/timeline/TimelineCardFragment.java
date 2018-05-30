@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.macbitsgoa.events.R;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 /**
@@ -16,12 +17,8 @@ import androidx.fragment.app.Fragment;
  */
 public class TimelineCardFragment extends Fragment implements View.OnClickListener {
 
-    public TimelineCardFragment() {
-    }
-
-
     @Override
-    public View onCreateView(final LayoutInflater inflater,
+    public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container,
                              final Bundle savedInstanceState) {
         final View selfView = inflater.inflate(R.layout.fragment_timeline_card, container, false);
@@ -31,8 +28,8 @@ public class TimelineCardFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(final View view) {
-        final Intent timelineActivityIntent;
-        timelineActivityIntent = new Intent(getContext(), TimelineActivity.class);
-        startActivity(timelineActivityIntent);
+        final Intent timelineIntent;
+        timelineIntent = new Intent(getContext(), TimelineActivity.class);
+        startActivity(timelineIntent);
     }
 }
