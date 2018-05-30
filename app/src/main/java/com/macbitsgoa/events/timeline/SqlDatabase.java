@@ -5,6 +5,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
 /**
+ * Database currently used only in timeline.
  * @author Rushikesh Jogdand.
  */
 @Database(entities = {Venue.class, Event.class, Session.class}, version = 1)

@@ -7,13 +7,17 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 
 /**
+ * View model for {@link DayFragment}.
  * @author Rushikesh Jogdand.
  */
 public class DayVm extends ViewModel {
     private List<String> startTimeList;
 
+    /**
+     * Initializes the view model with required parameters.
+     * @param date of the fragment in "dd,mm,yyyy" format
+     */
     public void init(@NonNull final String date) {
-        final String date1 = date;
         startTimeList = new ArrayList<>(0);
         startTimeList.add(date + ",10,00");
         startTimeList.add(date + ",11,00");

@@ -9,6 +9,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 /**
+ * Data Access Object for {@link Venue}
  * @author Rushikesh Jogdand.
  */
 @Dao

@@ -10,6 +10,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 /**
+ * Data Access Object for {@link Session}
  * @author Rushikesh Jogdand.
  */
 @Dao

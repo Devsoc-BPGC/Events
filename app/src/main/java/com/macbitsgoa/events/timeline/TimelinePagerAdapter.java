@@ -18,10 +18,12 @@ import static com.macbitsgoa.events.Utilities.SEC_IN_HR;
 import static com.macbitsgoa.events.Utilities.TAG_PREFIX;
 
 /**
+ * {@link FragmentStatePagerAdapter} for "tab" fragments of timeline activity.
  * @author Rushikesh Jogdand.
  */
 public class TimelinePagerAdapter extends FragmentStatePagerAdapter {
 
+    @SuppressWarnings("StringConcatenationMissingWhitespace")
     private static final String TAG = TAG_PREFIX + TimelinePagerAdapter.class.getSimpleName();
 
     TimelinePagerAdapter(final FragmentManager fm) {
@@ -36,13 +38,9 @@ public class TimelinePagerAdapter extends FragmentStatePagerAdapter {
                 : DayFragment.getInstance(date);
     }
 
-    @Override
-    public int getCount() {
-        return BuildConfig.eventDuration;
-    }
-
     private static String getDateForPosition(final int day) {
-        final SimpleDateFormat sdf = new SimpleDateFormat(BuildConfig.startDateFormat, Locale.US);
+        final SimpleDateFormat sdf
+                = new SimpleDateFormat(BuildConfig.startDateFormat, Locale.US);
         final Date date;
         try {
             date = sdf.parse(BuildConfig.startDate);
@@ -52,6 +50,11 @@ public class TimelinePagerAdapter extends FragmentStatePagerAdapter {
         }
         date.setTime(date.getTime() + day * HOURS_IN_DAY * SEC_IN_HR * 1000);
         return sdf.format(date);
+    }
+
+    @Override
+    public int getCount() {
+        return BuildConfig.eventDuration;
     }
 
     @Override
@@ -66,7 +69,7 @@ public class TimelinePagerAdapter extends FragmentStatePagerAdapter {
             return ":(";
         }
         final SimpleDateFormat titleFormat
-                = new SimpleDateFormat(BuildConfig.timelineTabDateFormat ,Locale.getDefault());
+                = new SimpleDateFormat(BuildConfig.timelineTabDateFormat, Locale.getDefault());
         return titleFormat.format(date);
     }
 }

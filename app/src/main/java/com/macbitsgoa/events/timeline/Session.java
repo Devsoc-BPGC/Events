@@ -8,6 +8,7 @@ import androidx.room.Index;
 import static androidx.room.ForeignKey.CASCADE;
 
 /**
+ * Table model for sessions.
  * @author Rushikesh Jogdand.
  */
 @SuppressWarnings({"DuplicateStringLiteralInspection", "unused"})

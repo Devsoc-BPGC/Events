@@ -26,8 +26,8 @@ import static com.macbitsgoa.events.Utilities.TAG_PREFIX;
  */
 public class DayFragment extends Fragment {
 
-    @SuppressWarnings("WeakerAccess")
-    static final String TAG = TAG_PREFIX + DayFragment.class.getSimpleName();
+    @SuppressWarnings({"StringConcatenationMissingWhitespace", "WeakerAccess"})
+    protected static final String TAG = TAG_PREFIX + DayFragment.class.getSimpleName();
     private static final String ARG_DATE = "date";
     private final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://us-central1-events-f6847.cloudfunctions.net")
@@ -35,10 +35,10 @@ public class DayFragment extends Fragment {
     private final WebService service =
             retrofit.create(WebService.class);
     @SuppressWarnings("WeakerAccess")
-    TextView placeholderTv;
+    protected TextView placeholderTv;
     private Call<ResponseBody> testCall = service.testApi();
 
-    static DayFragment getInstance(@NonNull final String date) {
+    protected static DayFragment getInstance(@NonNull final String date) {
         final DayFragment fragment = new DayFragment();
         final Bundle args = new Bundle();
         args.putString(ARG_DATE, date);
