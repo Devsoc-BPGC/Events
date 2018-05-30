@@ -1,6 +1,9 @@
 package com.macbitsgoa.events.home;
 
 import android.annotation.SuppressLint;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,6 +17,7 @@ import com.macbitsgoa.events.eateries.EateriesCardFragment;
 import com.macbitsgoa.events.timeline.TimelineCardFragment;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
@@ -28,7 +32,7 @@ import static com.macbitsgoa.events.Utilities.MIME_TYPE_PLAINTEXT;
  * @author Rushikesh Jogdand [rushikeshjogdand1@gmail.com]
  */
 @SuppressLint("GoogleAppIndexingApiWarning")
-public class HomeActivity extends FragmentActivity implements
+public class HomeActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
 
     private static boolean areFeaturesPopulated = false;
@@ -52,9 +56,18 @@ public class HomeActivity extends FragmentActivity implements
             populateFeatures();
         }
 
+        drawerLayout = findViewById(R.id.drawer_layout);
+
         final NavigationView navigationView;
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        final Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
+        setSupportActionBar(toolbar);
+
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
 
     }
 
@@ -135,6 +148,22 @@ public class HomeActivity extends FragmentActivity implements
         final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case (android.R.id.home): {
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+            }
+
+            default: {
+                return super.onOptionsItemSelected(item);
+            }
+        }
     }
 
 }
