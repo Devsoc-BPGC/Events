@@ -50,6 +50,7 @@ public class HomeActivity extends AppCompatActivity implements
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         initViews();
         if (!areFeaturesPopulated) {
