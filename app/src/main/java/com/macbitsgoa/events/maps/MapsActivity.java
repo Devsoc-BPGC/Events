@@ -37,12 +37,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final String MAP_ZOOM_SETTINGS = "/locations/zoom";
     private static final String MAP_MARKERS_LOC = "/locations/locations";
     private static final float MAP_DEFAULT_ZOOM = 16.0f;
+    private static final Venue MAP_DEFAULT_CENTRAL = new Venue("15.392199","73.878609","BITS GOA");
     private static final String FIREBASE_ERROR_TAG = "MapsActivity";
     private static final String FIREBASE_ERROR_STRING = "Firebase data retrieval failed";
     private static final String FIREBASE_STRING_LATITUDE = "latitude";
     private static final String FIREBASE_STRING_LONGITUDE = "longitude";
     private static final String FIREBASE_STRING_VENUE_NAME = "venueName";
-    private Venue centralVenue;
+
     private float zoomLevel = MAP_DEFAULT_ZOOM;
     @SuppressWarnings("TypeMayBeWeakened")
     private final ArrayList<Venue> venues  = new ArrayList<>(MAP_INIT_CAP);
@@ -102,7 +103,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-
+                Venue centralVenue = MAP_DEFAULT_CENTRAL;
                 for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     centralVenue = new Venue(
                             snapshot.child(FIREBASE_STRING_LATITUDE).getValue(String.class),
@@ -113,8 +114,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
                 final LatLng central = new LatLng(Double.parseDouble(centralVenue.getLatitude()),
                         Double.parseDouble(centralVenue.getLongitude()));
-//                mMap.addMarker(new MarkerOptions().position(central)
-//                        .title(centralVenue.getVenueName()));
                 map.moveCamera(CameraUpdateFactory.newLatLngZoom(central,zoomLevel));
 
             }
@@ -130,7 +129,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 venues.clear();
-                for (final DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     venues.add(new Venue(
                             snapshot.child(FIREBASE_STRING_LATITUDE).getValue(String.class),
                             snapshot.child(FIREBASE_STRING_LONGITUDE).getValue(String.class),
