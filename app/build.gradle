@@ -31,6 +31,13 @@ android {
         buildConfigField "String", "startDateFormat", "\"dd,MM,yyyy\""
         buildConfigField "String", "timelineTabDateFormat", "\"d MMM\""
         buildConfigField "String", "sessionTimeFormat", "\"h:m\""
+
+        buildConfigField "float", "mapDefZoom", "16.0f"
+        buildConfigField "float", "mapDefCentralLat", "15.392199f"
+        buildConfigField "float", "mapDefCentralLng", "73.878609f"
+        buildConfigField "String", "mapDefCentralTag", "\"BITS GOA\""
+
+
     }
     buildTypes {
         debug {

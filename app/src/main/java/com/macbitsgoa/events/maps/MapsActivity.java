@@ -16,7 +16,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,6 +23,7 @@ import java.util.Collection;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
+import com.macbitsgoa.events.BuildConfig;
 import com.macbitsgoa.events.FirebaseKeys;
 import com.macbitsgoa.events.R;
 
@@ -39,8 +39,10 @@ import static com.macbitsgoa.events.Utilities.TAG_PREFIX;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final int INIT_CAP = 15;  //initial capacity for number of venues
-    private static final float DEFAULT_ZOOM = 16.0f;
-    private static final Venue DEFAULT_CENTRAL = new Venue("15.392199","73.878609","BITS GOA");
+    private static final float DEFAULT_ZOOM = BuildConfig.mapDefZoom;
+    private static final Venue DEFAULT_CENTRAL = new Venue(BuildConfig.mapDefCentralLat,
+                                                           BuildConfig.mapDefCentralLng,
+                                                           BuildConfig.mapDefCentralTag);
     private static final String FIREBASE_ERROR_TAG = TAG_PREFIX + " "
                                                     + MapsActivity.class.getSimpleName();
     private float zoomLevel = DEFAULT_ZOOM;
@@ -85,8 +87,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    zoomLevel = Float.parseFloat(snapshot.getValue(String.class));
-
+                    if (snapshot.getValue(String.class) != null) {
+                        zoomLevel = Float.parseFloat(snapshot.getValue(String.class));
+                    }
                 }
             }
 
@@ -102,16 +105,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 Venue centralVenue = DEFAULT_CENTRAL;
                 for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    centralVenue = new Venue(
-                            snapshot.child(FirebaseKeys.MAP_LATITUDE).getValue(String.class),
-                            snapshot.child(FirebaseKeys.MAP_LONGITUDE).getValue(String.class),
-                            snapshot.child(FirebaseKeys.MAP_VENUE_NAME).getValue(String.class)
-                                        );
+                    if (snapshot.getValue(Venue.class) != null) {
+                        centralVenue = snapshot.getValue(Venue.class);
+                    }
 
                 }
-                final LatLng central = new LatLng(Double.parseDouble(centralVenue.getLatitude()),
-                        Double.parseDouble(centralVenue.getLongitude()));
-                map.moveCamera(CameraUpdateFactory.newLatLngZoom(central,zoomLevel));
+                assert centralVenue != null;
+                final LatLng loc = centralVenue.getLatLng();
+                map.addMarker(centralVenue.getMarker());
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc,zoomLevel));
 
             }
 
@@ -127,18 +129,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                 venues.clear();
                 for (final DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    venues.add(new Venue(
-                            snapshot.child(FirebaseKeys.MAP_LATITUDE).getValue(String.class),
-                            snapshot.child(FirebaseKeys.MAP_LONGITUDE).getValue(String.class),
-                            snapshot.child(FirebaseKeys.MAP_VENUE_NAME).getValue(String.class)
-                                    )
-                    );
+                    if (snapshot.getValue(Venue.class) != null) {
+                        venues.add(snapshot.getValue(Venue.class));
+                    }
 
                 }
                 for (final Venue v : venues) {
-                    final LatLng loc = new LatLng(Double.parseDouble(v.getLatitude()),
-                                            Double.parseDouble(v.getLongitude()));
-                    map.addMarker(new MarkerOptions().position(loc).title(v.getVenueName()));
+                    map.addMarker(v.getMarker());
 
                 }
 

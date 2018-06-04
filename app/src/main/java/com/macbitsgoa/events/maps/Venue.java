@@ -1,16 +1,22 @@
 package com.macbitsgoa.events.maps;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+@SuppressWarnings({"WeakerAccess", "unused"})
 class Venue {
 
-    private final String latitude;
-    private final String longitude;
-    private final String venueName;
+    public float latitude;
+    public float longitude;
+    public String venueName;
 
     //required for using getValue() of DataSnapshot class
 
+    private Venue() {
 
+    }
 
-    Venue(final String latitude, final String longitude, final String venueName) {
+    Venue(final float latitude, final float longitude, final String venueName) {
 
         this.latitude = latitude;
         this.longitude = longitude;
@@ -18,16 +24,14 @@ class Venue {
 
     }
 
-
-    public String getVenueName() {
-        return venueName;
+    public LatLng getLatLng() {
+        return new LatLng(latitude,longitude);
     }
 
-    public String getLatitude() {
-        return latitude;
+    public MarkerOptions getMarker() {
+        return new MarkerOptions().position(getLatLng()).title(venueName);
     }
 
-    public String getLongitude() {
-        return longitude;
-    }
+
+
 }
