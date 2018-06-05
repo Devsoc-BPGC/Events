@@ -27,17 +27,19 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import static com.macbitsgoa.events.Utilities.TAG_PREFIX;
+
 /**
+ * This Activity can be used to make signIn available at specific places in app.
+ * use onActivityResult() in the calling activity to get the result.
+ * use Intent.getExtra() using key as KEY_ACCOUNT to get the user account
+ * and KEY_TOKEN to get access token
  * @author Aayush Singla
  *
- *        This Activity can be used to make signIn available at specific places in app.
- *         use onActivityResult() in the calling activity to get the result.
- *         use Intent.getExtra() using key as KEY_ACCOUNT to get the user account
- *         and KEY_TOKEN to get access token
  */
 
-public class GetGoogleSignIn extends Activity {
-    private static final String TAG = "MAC->" + GetGoogleSignIn.class.getSimpleName();
+public class GetGoogleSignInActivity extends Activity {
+    private static final String TAG = TAG_PREFIX + GetGoogleSignInActivity.class.getSimpleName();
     private static final int RC_SIGN_IN = 0;
     public static final String KEY_TOKEN = "token";
     public static final String KEY_ACCOUNT = "account";
@@ -83,18 +85,16 @@ public class GetGoogleSignIn extends Activity {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
-            if (e.getStatusCode() == ERROR_CODE_PERMISSION_DENIED)
+            if (e.getStatusCode() == ERROR_CODE_PERMISSION_DENIED) {
                 Toast.makeText(this, "Permission Denied!", Toast.LENGTH_LONG).show();
-            else
-                Toast.makeText(this, "Your request can't be processed.Please try again later."
-                        , Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Your request can't be processed.Please try again later.",
+                        Toast.LENGTH_LONG).show();
+            }
             returnResult(null);
         }
     }
 
-    /**
-     * @param account this method gets signedIn account and returns it to calling activity
-     */
     private void returnResult(final GoogleSignInAccount account) {
         if (account != null) {
             final String accessToken = firebaseAuthWithGoogle(account);
@@ -116,8 +116,9 @@ public class GetGoogleSignIn extends Activity {
     protected void onStart() {
         super.onStart();
         final GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        if (account != null)
+        if (account != null) {
             returnResult(account);
+        }
     }
 
     private String firebaseAuthWithGoogle(final GoogleSignInAccount account) {

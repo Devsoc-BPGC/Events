@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.macbitsgoa.events.R;
+import com.macbitsgoa.events.home.HomeCardInterface;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -15,7 +16,8 @@ import androidx.fragment.app.Fragment;
 /**
  * Card representing timeline feature in home.
  */
-public class TimelineCardFragment extends Fragment implements View.OnClickListener {
+public class TimelineCardFragment extends Fragment
+        implements View.OnClickListener, HomeCardInterface {
 
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater,

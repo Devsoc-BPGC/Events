@@ -1,7 +1,7 @@
 package com.macbitsgoa.events.feed;
 
 /**
- * Item for Feed Recycler View
+ * Item for Feed Recycler View.
  * @author Aayush Singla
  */
 

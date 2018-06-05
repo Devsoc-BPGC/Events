@@ -22,6 +22,8 @@ import java.util.Iterator;
 
 import androidx.annotation.Nullable;
 
+import static com.macbitsgoa.events.Utilities.TAG_PREFIX;
+
 
 /**
  * Request google drive permissions.
@@ -39,7 +41,7 @@ public class MetaDataAndPermissions extends AsyncTask<Void, Void, Void> {
     public static final String AUTHORIZATION_FIELD_VALUE_PREFIX = "Bearer ";
     private static final String driveApiBaseUrl = "https://www.googleapis.com/drive/v3/files/";
     private static final String defaultProfileUrl = "https://nush.sg/img/default-profile.png";
-    private static final String TAG = "MAC->" + MetaDataAndPermissions.class.getSimpleName();
+    private static final String TAG = TAG_PREFIX + MetaDataAndPermissions.class.getSimpleName();
     private static final String KEY_OWNER_IMAGE = "ownerImage";
     private static final String KEY_JSON_PHOTO_LINK = "photoLink";
     private final String fileId;
@@ -54,7 +56,8 @@ public class MetaDataAndPermissions extends AsyncTask<Void, Void, Void> {
      * @param imageDesc   description of image to be uploaded
      */
     @SuppressWarnings("WeakerAccess")
-    public MetaDataAndPermissions(final String fileId, final String accessToken, final String imageDesc) {
+    public MetaDataAndPermissions(final String fileId,
+                                  final String accessToken, final String imageDesc) {
         this.fileId = fileId;
         this.accessToken = accessToken;
         this.imageDesc = imageDesc;

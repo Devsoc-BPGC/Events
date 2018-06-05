@@ -34,22 +34,21 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.macbitsgoa.events.feed.GetGoogleSignIn.KEY_TOKEN;
+import static com.macbitsgoa.events.Utilities.TAG_PREFIX;
+import static com.macbitsgoa.events.feed.GetGoogleSignInActivity.KEY_TOKEN;
 
-@SuppressWarnings("BreakStatement")
 public class FeedActivity extends Activity implements ChildEventListener, View.OnClickListener {
-    private static final String TAG = "MAC->" + FeedActivity.class.getSimpleName();
+    private static final String TAG = TAG_PREFIX + FeedActivity.class.getSimpleName();
     public static final int SIGN_IN_REQUEST_CODE = 4461;
     public static final int TEXT_SIZE_SNACKBAR = 12;
     private AppBarLayout appBarLayout;
     private RecyclerView recyclerView;
     private ArrayList<FeedRecyclerViewItem> arrayList = new ArrayList<>(0);
-    private LinearLayoutManager linearLayoutManager;
     private FeedAdapter adapter;
     private NestedScrollView scrollView;
     private ImageButton shareButton;
-    private EditText txt_caption;
-    private TextView txt_image;
+    private EditText txtCaption;
+    private TextView txtImage;
     private ImageView addImageButton;
     private String imagePath;
 
@@ -57,13 +56,13 @@ public class FeedActivity extends Activity implements ChildEventListener, View.O
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
-        initUI();
+        initui();
 
         final DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("feed");
         db.orderByKey().addChildEventListener(this);
 
         shareButton.setOnClickListener(this);
-        txt_image.setOnClickListener(this);
+        txtImage.setOnClickListener(this);
         addImageButton.setOnClickListener(this);
 
     }
@@ -72,14 +71,16 @@ public class FeedActivity extends Activity implements ChildEventListener, View.O
     * Method called when the activity is started
     * initialises the adapter and layout for recycler view
     * */
-    private void initUI() {
+    private void initui() {
         appBarLayout = findViewById(R.id.appBarLayout);
         addImageButton = findViewById(R.id.btn_image);
-        txt_image = findViewById(R.id.text_image);
-        txt_caption = findViewById(R.id.text_caption);
+        txtImage = findViewById(R.id.text_image);
+        txtCaption = findViewById(R.id.text_caption);
         shareButton = findViewById(R.id.btn_share);
         recyclerView = findViewById(R.id.recyclerView);
         scrollView = findViewById(R.id.scroll_view);
+
+        final LinearLayoutManager linearLayoutManager;
         linearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         adapter = new FeedAdapter(arrayList);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -139,17 +140,17 @@ public class FeedActivity extends Activity implements ChildEventListener, View.O
                 scrollView.smoothScrollTo(0, 0);
                 appBarLayout.setExpanded(true);
 
-                if (Objects.equals(txt_image.getText(), "Please Select an Image")) {
+                if (Objects.equals(txtImage.getText(), "Please Select an Image")) {
                     showToast("Please select a picture to post.");
                     break;
                 }
-                if (txt_caption.getText().length() == 0) {
+                if (txtCaption.getText().length() == 0) {
                     showToast("Please add a caption for your pic.");
                     break;
                 }
 
-                final Intent signInIntent = new Intent(FeedActivity.this, GetGoogleSignIn.class);
-                startActivityForResult(signInIntent, SIGN_IN_REQUEST_CODE);
+                final Intent intent = new Intent(FeedActivity.this, GetGoogleSignInActivity.class);
+                startActivityForResult(intent, SIGN_IN_REQUEST_CODE);
                 break;
 
             case R.id.text_image:
@@ -158,11 +159,15 @@ public class FeedActivity extends Activity implements ChildEventListener, View.O
             case R.id.btn_image:
                 showImagePicker();
                 break;
+            default:
+                Log.e(TAG, "onClickListener:ShareButton: default executed");
+                break;
         }
     }
 
     private void showSnackBar(final View view) {
-        final Snackbar sb = Snackbar.make(view, "New Posts Added", BaseTransientBottomBar.LENGTH_INDEFINITE);
+        final Snackbar sb;
+        sb = Snackbar.make(view, "New Posts Added", BaseTransientBottomBar.LENGTH_INDEFINITE);
         if (!sb.isShownOrQueued()) {
             // styling for background of snackbar
             final View snackView = sb.getView();
@@ -177,18 +182,19 @@ public class FeedActivity extends Activity implements ChildEventListener, View.O
     }
 
     @Override
-    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+    protected void onActivityResult(final int requestCode,
+                                    final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == SIGN_IN_REQUEST_CODE && resultCode == RESULT_OK) {
             final UploadFile uploadFile = new UploadFile(imagePath,
-                    data.getStringExtra(KEY_TOKEN), txt_caption.getText().toString());
+                    data.getStringExtra(KEY_TOKEN), txtCaption.getText().toString());
             Log.e("PATH", imagePath);
             uploadFile.execute();
 
         } else if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
             final Image image = ImagePicker.getFirstImageOrNull(data);
-            txt_image.setText(image.getName());
+            txtImage.setText(image.getName());
             imagePath = image.getPath();
         }
     }

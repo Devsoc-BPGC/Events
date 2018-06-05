@@ -18,6 +18,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import static android.webkit.MimeTypeMap.getFileExtensionFromUrl;
+import static com.macbitsgoa.events.Utilities.TAG_PREFIX;
 import static com.macbitsgoa.events.feed.MetaDataAndPermissions.AUTHORIZATION_FIELD_KEY;
 import static com.macbitsgoa.events.feed.MetaDataAndPermissions.AUTHORIZATION_FIELD_VALUE_PREFIX;
 
@@ -27,13 +28,14 @@ import static com.macbitsgoa.events.feed.MetaDataAndPermissions.AUTHORIZATION_FI
  * @author aayushSingla
  */
 public class UploadFile extends AsyncTask<Void, Void, Void> {
-    private static final String TAG = "MAC->" + UploadFile.class.getSimpleName();
+    private static final String TAG = TAG_PREFIX + UploadFile.class.getSimpleName();
     private final String path;
     private final String accessToken;
     private String fileId;
     private final String imageDesc;
 
     /**
+     * Constructor to create instance of this call.
      * @param path        the path of file to be uploaded
      * @param accessToken the access token retrieved from google sign in
      * @param imageDesc   description of image to be uploaded
@@ -113,7 +115,8 @@ public class UploadFile extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPostExecute(final Void param) {
-        final MetaDataAndPermissions mdp = new MetaDataAndPermissions(fileId, accessToken, imageDesc);
+        final MetaDataAndPermissions mdp;
+        mdp = new MetaDataAndPermissions(fileId, accessToken, imageDesc);
         mdp.execute();
     }
 

@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 
 import com.google.android.material.card.MaterialCardView;
 import com.macbitsgoa.events.R;
+import com.macbitsgoa.events.home.HomeCardInterface;
 
 import androidx.fragment.app.Fragment;
 
-public class AboutMacCardFragment extends Fragment implements View.OnClickListener {
+public class AboutMacCardFragment extends Fragment
+        implements View.OnClickListener, HomeCardInterface {
     private MaterialCardView selfCard;
 
     public AboutMacCardFragment() {

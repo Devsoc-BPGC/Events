@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * Adapter for feed Recycler View
+ * Adapter for feed Recycler View.
  * @author Aayush Singla
  */
 
@@ -38,7 +38,8 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
     @Override
-    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder,
+                                 final int position) {
         final FeedViewHolder viewHolder = (FeedViewHolder) holder;
         viewHolder.textOwner.setText(viewItemList.get(position).getOwner());
         final String likes = "liked by " + viewItemList.get(position).getNumberLikes() + " people";

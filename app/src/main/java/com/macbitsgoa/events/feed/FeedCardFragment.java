@@ -19,10 +19,6 @@ public class FeedCardFragment extends Fragment implements View.OnClickListener {
 
     private MaterialCardView cardView;
 
-    public FeedCardFragment() {
-        // Required empty public constructor
-    }
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.

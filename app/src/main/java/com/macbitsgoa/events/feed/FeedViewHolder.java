@@ -9,17 +9,21 @@ import com.macbitsgoa.events.R;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * ViewHolder for Feed RecyclerView
+ * ViewHolder for Feed RecyclerView.
  * @author Aayush Singla
  */
 
 public class FeedViewHolder extends RecyclerView.ViewHolder {
-    SimpleDraweeView imageOwner;
-    SimpleDraweeView imageMain;
-    TextView textOwner;
-    TextView textLikes;
-    TextView textDesc;
+    public SimpleDraweeView imageOwner;
+    public SimpleDraweeView imageMain;
+    public TextView textOwner;
+    public TextView textLikes;
+    public TextView textDesc;
 
+    /**
+     * ViewHolder for feed recycler view.
+     * @param itemView view of a single layout of feed Recycler view.
+     */
     public FeedViewHolder(View itemView) {
         super(itemView);
         imageMain = itemView.findViewById(R.id.image_main);

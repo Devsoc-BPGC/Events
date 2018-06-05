@@ -1,9 +1,6 @@
 package com.macbitsgoa.events.home;
 
 import android.annotation.SuppressLint;
-
-import androidx.appcompat.widget.Toolbar;
-import androidx.appcompat.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,16 +11,19 @@ import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.aboutfest.AboutFestCardFragment;
 import com.macbitsgoa.events.aboutmac.AboutMacCardFragment;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
-import com.macbitsgoa.events.maps.MapsActivity;
 import com.macbitsgoa.events.feed.FeedCardFragment;
+import com.macbitsgoa.events.maps.MapsActivity;
 import com.macbitsgoa.events.timeline.TimelineCardFragment;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import static com.macbitsgoa.events.Events.playStoreLink;
 import static com.macbitsgoa.events.Utilities.MIME_TYPE_PLAINTEXT;
@@ -37,8 +37,6 @@ import static com.macbitsgoa.events.Utilities.MIME_TYPE_PLAINTEXT;
 public class HomeActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
 
-    private static boolean areFeaturesPopulated = false;
-
     private DrawerLayout drawerLayout;
 
     @Override
@@ -51,13 +49,62 @@ public class HomeActivity extends AppCompatActivity implements
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        populateFeatures();
+    }
+
+    private void populateFeatures() {
+        final FragmentManager featuresFragManager = getSupportFragmentManager();
+        final FragmentTransaction fragmentTransaction = featuresFragManager.beginTransaction();
+        for (final Fragment fragment : featuresFragManager.getFragments()) {
+            if (fragment instanceof HomeCardInterface) {
+                fragmentTransaction.remove(fragment);
+            }
+        }
+        // example use of build config variable
+        if (BuildConfig.eateries) {
+            fragmentTransaction.add(R.id.ll_home,
+                    EateriesCardFragment.newInstance(),
+                    getString(R.string.frag_label_eateries_card)
+            );
+        }
+
+        if (BuildConfig.aboutFest) {
+            fragmentTransaction.add(R.id.ll_home,
+                    AboutFestCardFragment.newInstance(),
+                    getString(R.string.frag_label_aboutfest_card)
+            );
+        }
+
+        if (BuildConfig.aboutMac) {
+            fragmentTransaction.add(R.id.ll_home,
+                    AboutMacCardFragment.newInstance(),
+                    getString(R.string.frag_label_aboutmac_card)
+            );
+        }
+
+        if (BuildConfig.feed) {
+            fragmentTransaction.add(R.id.ll_home,
+                    FeedCardFragment.newInstance(),
+                    getString(R.string.frag_label_feed_card)
+            );
+        }
+
+        if (BuildConfig.timeline) {
+            fragmentTransaction.add(R.id.ll_home,
+                    new TimelineCardFragment(),
+                    getString(R.string.timeline)
+            );
+        }
+        fragmentTransaction.commit();
+    }
+
+    @Override
     protected void onCreate(final Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         initViews();
-        if (!areFeaturesPopulated) {
-            populateFeatures();
-        }
 
         drawerLayout = findViewById(R.id.drawer_layout);
 
@@ -77,63 +124,6 @@ public class HomeActivity extends AppCompatActivity implements
     private void initViews() {
         setContentView(R.layout.activity_home);
         drawerLayout = findViewById(R.id.drawer_layout);
-    }
-
-    private void populateFeatures() {
-        final FragmentManager featuresFragManager = getSupportFragmentManager();
-
-        // example use of build config variable
-        if (BuildConfig.eateries) {
-            featuresFragManager
-                    .beginTransaction()
-                    .add(R.id.ll_home,
-                            EateriesCardFragment.newInstance(),
-                            getString(R.string.frag_label_eateries_card)
-                    )
-                    .commit();
-        }
-
-        if (BuildConfig.aboutFest) {
-            featuresFragManager
-                    .beginTransaction()
-                    .add(R.id.ll_home,
-                            AboutFestCardFragment.newInstance(),
-                            getString(R.string.frag_label_aboutfest_card)
-                    )
-                    .commit();
-        }
-
-        if (BuildConfig.feed) {
-            featuresFragManager
-                    .beginTransaction()
-                    .add(R.id.ll_home,
-                            FeedCardFragment.newInstance(),
-                            getString(R.string.frag_label_aboutfest_card)
-                    )
-                    .commit();
-        }
-
-        if (BuildConfig.aboutMac) {
-            featuresFragManager
-                    .beginTransaction()
-                    .add(R.id.ll_home,
-                            AboutMacCardFragment.newInstance(),
-                            getString(R.string.frag_label_aboutmac_card)
-                    )
-                    .commit();
-        }
-
-        if (BuildConfig.timeline) {
-            featuresFragManager
-                    .beginTransaction()
-                    .add(R.id.ll_home,
-                            new TimelineCardFragment(),
-                            getString(R.string.timeline)
-                    )
-                    .commit();
-        }
-
-        areFeaturesPopulated = true;
     }
 
     @Override
