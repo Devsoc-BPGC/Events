@@ -19,9 +19,7 @@ import com.macbitsgoa.events.feed.FeedCardFragment;
 import com.macbitsgoa.events.timeline.TimelineCardFragment;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
