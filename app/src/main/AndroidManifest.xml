@@ -12,7 +12,8 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
         android:name=".Events">
-        <activity android:name=".home.HomeActivity">
+        <activity android:name=".home.HomeActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

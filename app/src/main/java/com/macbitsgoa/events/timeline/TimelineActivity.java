@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 /**
+ * Activity showing time line of events.
  * @author Rushikesh Jogdand.
  */
 public class TimelineActivity extends AppCompatActivity {

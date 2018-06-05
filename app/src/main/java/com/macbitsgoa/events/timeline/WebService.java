@@ -1,7 +1,5 @@
 package com.macbitsgoa.events.timeline;
 
-import org.json.JSONArray;
-
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -10,6 +8,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 /**
+ * Rest api calls.
+ *
  * @author Rushikesh Jogdand.
  */
 @SuppressWarnings("DuplicateStringLiteralInspection")

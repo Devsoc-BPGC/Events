@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
+ * View holder grouping sessions with same start time.
  * @author Rushikesh Jogdand.
  */
 public class DayStartTimeVh extends RecyclerView.ViewHolder {

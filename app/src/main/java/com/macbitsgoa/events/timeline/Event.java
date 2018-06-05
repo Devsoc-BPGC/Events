@@ -5,6 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 /**
+ * Model for an event.
  * @author Rushikesh Jogdand.
  */
 @Entity

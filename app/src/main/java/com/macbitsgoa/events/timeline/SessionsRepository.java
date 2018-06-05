@@ -16,16 +16,24 @@ import retrofit2.Response;
 import static com.macbitsgoa.events.Utilities.TAG_PREFIX;
 
 /**
+ * Single source of data for {@link Session}.
  * @author Rushikesh Jogdand.
  */
 @Singleton
 public class SessionsRepository {
+    @SuppressWarnings("StringConcatenationMissingWhitespace")
     private static final String TAG
             = TAG_PREFIX + SessionsRepository.class.getSimpleName();
     private final SessionDao sessionDao;
     private final Executor executor;
     private final WebService webService;
 
+    /**
+     * Default constructor.
+     * @param sessionDao Data Access Object.
+     * @param executor Executor.
+     * @param webService {@link WebService} instance.
+     */
     @Inject
     public SessionsRepository(final SessionDao sessionDao,
                                final Executor executor,
@@ -36,6 +44,8 @@ public class SessionsRepository {
     }
 
     public LiveData<List<Session>> getSessionsStarting(@NonNull final String startTime) {
+        //TODO
+        refreshSessions();
         return sessionDao.getSessionsStartingAt(startTime);
     }
 
