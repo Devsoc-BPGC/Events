@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><!--suppress LongLine -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/tv_event_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_margin="4dp"
+        android:padding="4dp"
+        android:textIsSelectable="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="[Eliminations] Robot Wars" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:drawableStart="@drawable/ic_watch_24dp"
+        android:drawablePadding="4dp"
+        android:gravity="center_vertical"
+        android:paddingStart="4dp"
+        android:paddingEnd="8dp"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_event_name"
+        tools:text="50 min" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

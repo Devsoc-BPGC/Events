@@ -11,6 +11,12 @@ android {
         versionName "1.0"
         resConfigs "en"
 
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+
         // test build configuration variable
         buildConfigField "boolean", "eateries", "true"
         resValue "bool", "eateries", "true"
@@ -18,6 +24,15 @@ android {
         resValue "bool", "aboutFest", "true"
         buildConfigField "boolean", "feed", "true"
         resValue "bool", "feed", "true"
+        buildConfigField "boolean", "aboutMac", "true"
+        resValue "bool", "aboutMac", "true"
+        buildConfigField "boolean", "timeline", "true"
+
+        buildConfigField "int", "eventDuration", "4" // days
+        buildConfigField "String", "startDate", "\"30,05,2018\"" // "dd,mm,yyyy"
+        buildConfigField "String", "startDateFormat", "\"dd,MM,yyyy\""
+        buildConfigField "String", "timelineTabDateFormat", "\"d MMM\""
+        buildConfigField "String", "sessionTimeFormat", "\"h:m\""
     }
     buildTypes {
         debug {
@@ -46,19 +61,32 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "androidx.constraintlayout:constraintlayout:1.1.0"
     implementation "com.google.android.material:material:1.0.0-alpha1"
-    implementation 'com.google.firebase:firebase-database:15.0.1'
+    implementation 'com.google.firebase:firebase-database:16.0.1'
+    implementation 'com.google.firebase:firebase-core:16.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
     implementation 'androidx.legacy:legacy-support-v13:1.0.0-alpha1'
     implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
     implementation 'com.facebook.fresco:fresco:1.9.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    def room_version = "2.0.0-alpha1"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    def lifecycle_version = "2.0.0-alpha1"
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation 'com.google.dagger:dagger:2.16'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.android.support:support-v4:28.0.0-alpha1'
     implementation group: 'com.squareup.okhttp', name: 'okhttp', version: '2.7.5'
-    compile 'com.google.android.gms:play-services-auth:15.0.1'
-    compile('com.google.api-client:google-api-client-android:1.23.0') {
+    implementation 'com.google.android.gms:play-services-auth:15.0.1'
+    implementation('com.google.api-client:google-api-client-android:1.23.0') {
         exclude group: 'org.apache.httpcomponents'
     }
-    compile('com.google.apis:google-api-services-drive:v3-rev119-1.23.0') {
+    implementation('com.google.apis:google-api-services-drive:v3-rev119-1.23.0') {
         exclude group: 'org.apache.httpcomponents'
     }
 

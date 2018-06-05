@@ -9,7 +9,7 @@ import com.macbitsgoa.events.R;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * Created by aayush on 24/5/18.
+ * @author Aayush Singla
  */
 
 public class feedViewHolder extends RecyclerView.ViewHolder {

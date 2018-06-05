@@ -21,7 +21,6 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:fitsSystemWindows="true"
             android:background="@color/feedGrey"
-            app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginStart="48dp"
             app:expandedTitleMarginEnd="64dp">
 
@@ -63,7 +62,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Post Something..."
-                    android:textSize="18sp"
+                    android:textSize="16sp"
+                    android:backgroundTint="@android:color/transparent"
                     android:maxLength="150"
                     android:layout_margin="10dp"
                     android:layout_gravity="center"

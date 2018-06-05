@@ -6,8 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Organisers"
+        android:textColor="#ffffff"
+        android:textSize="40sp"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/organisersRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">

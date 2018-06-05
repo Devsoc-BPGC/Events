@@ -21,6 +21,6 @@
         app:tabBackground="@drawable/tab_selector"
         app:tabGravity="center"
         android:layout_weight="1"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
         app:tabIndicatorHeight="0dp"></com.google.android.material.tabs.TabLayout>
 </LinearLayout>

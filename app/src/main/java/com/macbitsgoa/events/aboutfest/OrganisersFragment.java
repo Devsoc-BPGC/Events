@@ -33,7 +33,7 @@ public class OrganisersFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_about_fest_organisers, container, false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) view.findViewById(R.id.organisersRecyclerView);
         layoutManager = new LinearLayoutManager(getContext());
         adapter = new OrganisersAdapter(organisersList, getContext());
         recyclerView.setLayoutManager(layoutManager);
