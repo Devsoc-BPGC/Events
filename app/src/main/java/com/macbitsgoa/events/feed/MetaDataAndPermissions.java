@@ -1,11 +1,10 @@
-package com.macbitsgoa.comrades.ref;
+package com.macbitsgoa.events.feed;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.macbitsgoa.comrades.BuildConfig;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -16,42 +15,49 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 
 /**
  * Request google drive permissions.
+ *
  * @author aayush singla
  */
 
-@SuppressWarnings("WeakerAccess")
 public class MetaDataAndPermissions extends AsyncTask<Void, Void, Void> {
+    private static final String FILE_ID_KEY = "fileId";
+    private static final String DATE_TIME_KEY = "dateTime";
+    private static final String WEB_CONTENT_LINK = "webContentLink";
     @SuppressWarnings("WeakerAccess")
     public static final String AUTHORIZATION_FIELD_KEY = "Authorization";
     @SuppressWarnings("WeakerAccess")
     public static final String AUTHORIZATION_FIELD_VALUE_PREFIX = "Bearer ";
+    private static final String driveApiBaseUrl = "https://www.googleapis.com/drive/v3/files/";
+    private static final String defaultProfileUrl = "https://nush.sg/img/default-profile.png";
     private static final String TAG = "MAC->" + MetaDataAndPermissions.class.getSimpleName();
-    @NonNull
-    private final String driveApiBaseUrl;
+    private static final String KEY_OWNER_IMAGE = "ownerImage";
+    private static final String KEY_JSON_PHOTO_LINK = "photoLink";
     private final String fileId;
     private final String accessToken;
+    private final String imageDesc;
 
     /**
      * Default constructor.
-     * @param fileId id of the file.
+     *
+     * @param fileId      id of the file.
      * @param accessToken obtained from sign in.
-     * @param driveApiBaseUrl base url of google drive api.
+     * @param imageDesc   description of image to be uploaded
      */
     @SuppressWarnings("WeakerAccess")
-    public MetaDataAndPermissions(final String fileId, final String accessToken,
-                                  @NonNull final String driveApiBaseUrl) {
+    public MetaDataAndPermissions(final String fileId, final String accessToken, final String imageDesc) {
         this.fileId = fileId;
         this.accessToken = accessToken;
-        this.driveApiBaseUrl = driveApiBaseUrl;
+        this.imageDesc = imageDesc;
     }
 
 
@@ -64,6 +70,7 @@ public class MetaDataAndPermissions extends AsyncTask<Void, Void, Void> {
                 Log.e(TAG, "Received null metadata, returning");
                 return null;
             }
+            Log.e(TAG, metaData.toString());
             pushToFirebase(getMetadata());
         } catch (final JSONException e) {
             Log.e(TAG, e.getMessage(), e.fillInStackTrace());
@@ -73,16 +80,13 @@ public class MetaDataAndPermissions extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPreExecute() {
-        if (BuildConfig.DEBUG) {
-            Log.i(TAG, "Uploading file and granting permissions");
-        }
+        Log.i(TAG, "Uploading file and granting permissions");
     }
 
     @Override
     protected void onPostExecute(final Void result) {
-        if (BuildConfig.DEBUG) {
-            Log.i(TAG, "Permissions granted and pushed to firebase");
-        }
+        Log.i(TAG, "Permissions granted and pushed to firebase");
+
     }
 
     private void getPermissions() throws JSONException {
@@ -129,14 +133,33 @@ public class MetaDataAndPermissions extends AsyncTask<Void, Void, Void> {
 
 
     private void pushToFirebase(final JSONObject jsonObject) throws JSONException {
-        final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child(fileId);
-        final String webLink = (String) jsonObject.get(HomeActivity.WEB_CONTENT_LINK);
-        final HashMap<String, String> hashMap = jsonToMap(jsonObject.toString());
-        dbRef.child(HomeActivity.FILE_ID_KEY).setValue(fileId);
-        dbRef.child("meta-data").setValue(hashMap);
-        dbRef.child(HomeActivity.WEB_CONTENT_LINK).setValue(webLink);
-    }
+        final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+        final String current = sdf.format(new Date());
+        final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference()
+                .child("feed")
+                .child(current);
 
+        final String webLink = (String) jsonObject.get(WEB_CONTENT_LINK);
+        final JSONObject ownerObject = (JSONObject) jsonObject.getJSONArray("owners").get(0);
+        final String owner = (String) ownerObject.get("displayName");
+        final HashMap<String, String> hashMap = jsonToMap(jsonObject.toString());
+        if (ownerObject.has(KEY_JSON_PHOTO_LINK)) {
+            final String ownerImage = (String) ownerObject.get(KEY_JSON_PHOTO_LINK);
+            dbRef.child(KEY_OWNER_IMAGE).setValue(ownerImage);
+        } else {
+            dbRef.child(KEY_OWNER_IMAGE).setValue(defaultProfileUrl);
+        }
+
+
+        dbRef.child(DATE_TIME_KEY).setValue(current);
+        dbRef.child(FILE_ID_KEY).setValue(fileId);
+        dbRef.child("imageUrl").setValue(webLink);
+        dbRef.child("numberLikes").setValue(0);
+        dbRef.child("owner").setValue(owner);
+        dbRef.child("meta-data").setValue(hashMap);
+        dbRef.child("desc").setValue(imageDesc);
+
+    }
 
     private static HashMap<String, String> jsonToMap(final String t) throws JSONException {
         final HashMap<String, String> map = new HashMap<>(0);
@@ -150,4 +173,6 @@ public class MetaDataAndPermissions extends AsyncTask<Void, Void, Void> {
         }
         return map;
     }
+
+
 }

@@ -15,6 +15,7 @@ public class DayVm extends ViewModel {
 
     /**
      * Initializes the view model with required parameters.
+     *
      * @param date of the fragment in "dd,mm,yyyy" format
      */
     public void init(@NonNull final String date) {

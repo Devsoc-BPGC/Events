@@ -8,17 +8,19 @@ import com.macbitsgoa.events.R;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
+ * Adapter for feed Recycler View
  * @author Aayush Singla
  */
 
-public class feedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private final List<feedRecyclerViewItem> viewItemList;
+    private final List<FeedRecyclerViewItem> viewItemList;
 
-    feedAdapter(final List<feedRecyclerViewItem> viewItemList) {
+    FeedAdapter(final List<FeedRecyclerViewItem> viewItemList) {
         this.viewItemList = viewItemList;
     }
 
@@ -31,15 +33,16 @@ public class feedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public RecyclerView.ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewtype) {
         final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         final View view = inflater.inflate(R.layout.item_feed, parent, false);
-        return new feedViewHolder(view);
+        return new FeedViewHolder(view);
     }
 
 
     @Override
-    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
-        final feedViewHolder viewHolder = (feedViewHolder) holder;
+    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
+        final FeedViewHolder viewHolder = (FeedViewHolder) holder;
         viewHolder.textOwner.setText(viewItemList.get(position).getOwner());
-        viewHolder.textLikes.setText("liked by " + viewItemList.get(position).getNumberLikes() + " people");
+        final String likes = "liked by " + viewItemList.get(position).getNumberLikes() + " people";
+        viewHolder.textLikes.setText(likes);
         viewHolder.imageOwner.setImageURI(viewItemList.get(position).getOwnerImage());
         viewHolder.imageMain.setImageURI(viewItemList.get(position).getImageUrl());
         viewHolder.textDesc.setText(viewItemList.get(position).getDesc());

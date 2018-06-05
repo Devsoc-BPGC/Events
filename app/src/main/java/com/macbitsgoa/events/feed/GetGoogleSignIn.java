@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -28,27 +29,32 @@ import java.io.IOException;
 
 /**
  * @author Aayush Singla
- *         This Activity can be used to make signIn available at specific places in app.
- *         use onActivityResult() in the calling method to get the result.
- *         use Intent.getExtra() using "account" to get the user account
+ *
+ *        This Activity can be used to make signIn available at specific places in app.
+ *         use onActivityResult() in the calling activity to get the result.
+ *         use Intent.getExtra() using key as KEY_ACCOUNT to get the user account
+ *         and KEY_TOKEN to get access token
  */
 
-public class getGoogleSignIn extends Activity {
-    private static final String TAG = "TAG";
+public class GetGoogleSignIn extends Activity {
+    private static final String TAG = "MAC->" + GetGoogleSignIn.class.getSimpleName();
     private static final int RC_SIGN_IN = 0;
-    GoogleSignInClient mGoogleSignInClient;
+    public static final String KEY_TOKEN = "token";
+    public static final String KEY_ACCOUNT = "account";
+    private static final int ERROR_CODE_PERMISSION_DENIED = 12501;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        final GoogleSignInOptions gso = new GoogleSignInOptions
+                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestScopes(new Scope(DriveScopes.DRIVE))
                 .requestIdToken(getString(R.string.server_client_id))
                 .requestServerAuthCode(getString(R.string.server_client_id))
                 .requestEmail()
                 .build();
         // Build a GoogleSignI\nClient with the options specified by gso.
-        mGoogleSignInClient = com.google.android.gms.auth.api.signin.GoogleSignIn.getClient(this, gso);
+        final GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         final Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -63,7 +69,7 @@ public class getGoogleSignIn extends Activity {
         if (requestCode == RC_SIGN_IN) {
             // The Task returned from this call is always completed, no need to attach
             // a listener.
-            final Task<GoogleSignInAccount> task = com.google.android.gms.auth.api.signin.GoogleSignIn.getSignedInAccountFromIntent(data);
+            final Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
     }
@@ -77,6 +83,11 @@ public class getGoogleSignIn extends Activity {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
+            if (e.getStatusCode() == ERROR_CODE_PERMISSION_DENIED)
+                Toast.makeText(this, "Permission Denied!", Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText(this, "Your request can't be processed.Please try again later."
+                        , Toast.LENGTH_LONG).show();
             returnResult(null);
         }
     }
@@ -84,13 +95,15 @@ public class getGoogleSignIn extends Activity {
     /**
      * @param account this method gets signedIn account and returns it to calling activity
      */
-    void returnResult(final GoogleSignInAccount account) {
+    private void returnResult(final GoogleSignInAccount account) {
         if (account != null) {
             final String accessToken = firebaseAuthWithGoogle(account);
             final Intent intent = new Intent();
-            intent.putExtra("account", account);
-            intent.putExtra("token", accessToken);
+            intent.putExtra(KEY_ACCOUNT, account);
+            intent.putExtra(KEY_TOKEN, accessToken);
             setResult(RESULT_OK, intent);
+            finish();
+        } else {
             finish();
         }
     }
@@ -103,11 +116,15 @@ public class getGoogleSignIn extends Activity {
     protected void onStart() {
         super.onStart();
         final GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        returnResult(account);
+        if (account != null)
+            returnResult(account);
     }
 
     private String firebaseAuthWithGoogle(final GoogleSignInAccount account) {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        final StrictMode.ThreadPolicy policy = new StrictMode
+                .ThreadPolicy.Builder()
+                .permitAll()
+                .build();
         StrictMode.setThreadPolicy(policy);
 
         final String authCode = account.getServerAuthCode();
@@ -123,6 +140,8 @@ public class getGoogleSignIn extends Activity {
                     .add("redirect_uri", getString(R.string.redirect_url))
                     .add("code", authCode)
                     .build();
+        } else {
+            Toast.makeText(this, "", Toast.LENGTH_LONG).show();
         }
 
         final Request request = new Request.Builder()
@@ -135,10 +154,8 @@ public class getGoogleSignIn extends Activity {
             final JSONObject jsonObject = new JSONObject(response.body().string());
             return (String) jsonObject.get("access_token");
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } catch (IOException | JSONException e) {
+            Log.e(TAG, e.getMessage(), e.fillInStackTrace());
         }
         return null;
     }

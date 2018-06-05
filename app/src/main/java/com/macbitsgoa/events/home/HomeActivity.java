@@ -14,11 +14,14 @@ import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.aboutfest.AboutFestCardFragment;
 import com.macbitsgoa.events.aboutmac.AboutMacCardFragment;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
-import com.macbitsgoa.events.feed.feedCardFragment;
+import com.macbitsgoa.events.maps.MapsActivity;
+import com.macbitsgoa.events.feed.FeedCardFragment;
 import com.macbitsgoa.events.timeline.TimelineCardFragment;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
@@ -106,7 +109,7 @@ public class HomeActivity extends AppCompatActivity implements
             featuresFragManager
                     .beginTransaction()
                     .add(R.id.ll_home,
-                            feedCardFragment.newInstance(),
+                            FeedCardFragment.newInstance(),
                             getString(R.string.frag_label_aboutfest_card)
                     )
                     .commit();
@@ -150,6 +153,13 @@ public class HomeActivity extends AppCompatActivity implements
                 startActivity(Intent.createChooser(shareIntent,
                         getString(R.string.choose_share_medium_prompt)));
                 break;
+            }
+
+            case (R.id.nav_maps) : {
+                final Intent mapIntent = new Intent(HomeActivity.this, MapsActivity.class);
+                startActivity(mapIntent);
+                break;
+
             }
 
             default: {

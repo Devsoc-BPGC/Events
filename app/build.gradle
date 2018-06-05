@@ -33,6 +33,13 @@ android {
         buildConfigField "String", "startDateFormat", "\"dd,MM,yyyy\""
         buildConfigField "String", "timelineTabDateFormat", "\"d MMM\""
         buildConfigField "String", "sessionTimeFormat", "\"h:m\""
+
+        buildConfigField "float", "mapDefZoom", "16.0f"
+        buildConfigField "float", "mapDefCentralLat", "15.392199f"
+        buildConfigField "float", "mapDefCentralLng", "73.878609f"
+        buildConfigField "String", "mapDefCentralTag", "\"BITS GOA\""
+
+
     }
     buildTypes {
         debug {
@@ -57,6 +64,12 @@ android {
     build.dependsOn lint
 }
 
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "androidx.constraintlayout:constraintlayout:1.1.0"
@@ -70,11 +83,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     def room_version = "2.0.0-alpha1"
-
     implementation "androidx.room:room-runtime:$room_version"
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+
     annotationProcessor "androidx.room:room-compiler:$room_version"
     def lifecycle_version = "2.0.0-alpha1"
-
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation 'com.google.dagger:dagger:2.16'
@@ -89,6 +102,7 @@ dependencies {
     implementation('com.google.apis:google-api-services-drive:v3-rev119-1.23.0') {
         exclude group: 'org.apache.httpcomponents'
     }
+    implementation 'com.github.esafirm.android-image-picker:imagepicker:1.13.0'
 
 }
 apply plugin: 'com.google.gms.google-services'

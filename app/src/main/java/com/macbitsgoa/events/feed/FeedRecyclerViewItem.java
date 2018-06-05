@@ -1,10 +1,11 @@
 package com.macbitsgoa.events.feed;
 
 /**
+ * Item for Feed Recycler View
  * @author Aayush Singla
  */
 
-class feedRecyclerViewItem {
+class FeedRecyclerViewItem {
     private String owner;
     private String ownerImage;
     private String imageUrl;
@@ -12,11 +13,12 @@ class feedRecyclerViewItem {
     private String id;
     private int numberLikes;
 
-    feedRecyclerViewItem() {
+    FeedRecyclerViewItem() {
 
     }
 
-    feedRecyclerViewItem(String id, String owner, String ownerImage, String imageUrl, int numberLikes, String desc) {
+    FeedRecyclerViewItem(final String id, final String owner, final String ownerImage,
+                         final String imageUrl, final int numberLikes, final String desc) {
         this.id = id;
         this.owner = owner;
         this.imageUrl = imageUrl;
@@ -25,27 +27,27 @@ class feedRecyclerViewItem {
         this.desc = desc;
     }
 
-    String getId() {
+    public String getId() {
         return id;
     }
 
-    String getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    String getOwnerImage() {
+    public String getOwnerImage() {
         return ownerImage;
     }
 
-    String getImageUrl() {
+    public String getImageUrl() {
         return imageUrl;
     }
 
-    String getDesc() {
+    public String getDesc() {
         return desc;
     }
 
-    int getNumberLikes() {
+    public int getNumberLikes() {
         return numberLikes;
     }
 

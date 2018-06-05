@@ -1,66 +1,83 @@
-package com.macbitsgoa.comrades.ref;
+package com.macbitsgoa.events.feed;
 
 import android.os.AsyncTask;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
-import com.macbitsgoa.comrades.BuildConfig;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
 import static android.webkit.MimeTypeMap.getFileExtensionFromUrl;
-import static com.macbitsgoa.comrades.ref.MetaDataAndPermissions.AUTHORIZATION_FIELD_KEY;
-import static com.macbitsgoa.comrades.ref.MetaDataAndPermissions.AUTHORIZATION_FIELD_VALUE_PREFIX;
+import static com.macbitsgoa.events.feed.MetaDataAndPermissions.AUTHORIZATION_FIELD_KEY;
+import static com.macbitsgoa.events.feed.MetaDataAndPermissions.AUTHORIZATION_FIELD_VALUE_PREFIX;
 
 /**
- * Code to upload file.
+ * Code to upload file to google drive.
+ *
  * @author aayushSingla
  */
-
-@SuppressWarnings("WeakerAccess")
-public class UploadFile extends AsyncTask<Void, Void, String> {
+public class UploadFile extends AsyncTask<Void, Void, Void> {
     private static final String TAG = "MAC->" + UploadFile.class.getSimpleName();
     private final String path;
     private final String accessToken;
-    private final String driveUploadUrl;
+    private String fileId;
+    private final String imageDesc;
 
-    UploadFile(final String path, final String accessToken, final String driveUploadUrl) {
+    /**
+     * @param path        the path of file to be uploaded
+     * @param accessToken the access token retrieved from google sign in
+     * @param imageDesc   description of image to be uploaded
+     */
+    UploadFile(final String path, final String accessToken, final String imageDesc) {
         this.path = path;
         this.accessToken = accessToken;
-        this.driveUploadUrl = driveUploadUrl;
+        this.imageDesc = imageDesc;
     }
 
     @Override
-    protected String doInBackground(final Void... voids) {
-        return uploadFile();
+    protected Void doInBackground(final Void... voids) {
+        final String response = uploadFile();
+
+        try {
+            final JSONObject jsonObject = new JSONObject(response);
+            fileId = (String) jsonObject.get("id");
+        } catch (final JSONException e) {
+            Log.e(TAG, e.getMessage(), e.fillInStackTrace());
+        }
+
+        return null;
     }
 
     private String uploadFile() {
         try {
             final File file = new File(path);
             final OkHttpClient okHttpClient = new OkHttpClient();
-
+            final long fileSize = file.length();
             final RequestBody requestBody = RequestBody.create(MediaType.parse(getMimeType(path)),
                     fileToBytes(file));
 
+            final String driveUploadUrl = "https://www.googleapis.com/upload/drive/v3/files?uploadType=media";
             final Request request = new Request.Builder()
                     .url(driveUploadUrl)
                     .addHeader("Content-Type", getMimeType(path))
-                    .addHeader("Content-Length", String.valueOf(file.length()))
+                    .addHeader("Content-Length", String.valueOf(fileSize))
                     .addHeader(AUTHORIZATION_FIELD_KEY,
-                            AUTHORIZATION_FIELD_VALUE_PREFIX + accessToken
-                    )
+                            AUTHORIZATION_FIELD_VALUE_PREFIX + accessToken)
                     .post(requestBody)
                     .build();
             final Response response = okHttpClient.newCall(request).execute();
             return response.body().string();
+
         } catch (final Exception e) {
             Log.e(TAG, e.getMessage(), e.fillInStackTrace());
         }
@@ -91,16 +108,13 @@ public class UploadFile extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPreExecute() {
-        if (BuildConfig.DEBUG) {
-            Log.i(TAG, "Uploading file");
-        }
+        Log.i(TAG, "Uploading file");
     }
 
     @Override
-    protected void onPostExecute(final String result) {
-        if (BuildConfig.DEBUG) {
-            Log.i(TAG, "File upload result is " + result);
-        }
+    protected void onPostExecute(final Void param) {
+        final MetaDataAndPermissions mdp = new MetaDataAndPermissions(fileId, accessToken, imageDesc);
+        mdp.execute();
     }
 
 

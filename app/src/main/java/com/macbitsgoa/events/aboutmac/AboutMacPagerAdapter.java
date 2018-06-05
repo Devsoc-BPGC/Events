@@ -13,10 +13,14 @@ public class AboutMacPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0: return MacLogoFragment.newInstance();
-            case 1: return DevelopersFragment.newInstance();
-            case 2: return MacConnectFragment.newInstance();
-            default: return MacLogoFragment.newInstance();
+            case 0:
+                return MacLogoFragment.newInstance();
+            case 1:
+                return DevelopersFragment.newInstance();
+            case 2:
+                return MacConnectFragment.newInstance();
+            default:
+                return MacLogoFragment.newInstance();
         }
     }
 

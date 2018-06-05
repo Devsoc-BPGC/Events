@@ -12,14 +12,14 @@ import com.macbitsgoa.events.R;
 import androidx.fragment.app.Fragment;
 
 /**
- * Use the {@link feedCardFragment#newInstance} factory method to
+ * Use the {@link FeedCardFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class feedCardFragment extends Fragment implements View.OnClickListener {
+public class FeedCardFragment extends Fragment implements View.OnClickListener {
 
     private MaterialCardView cardView;
 
-    private feedCardFragment() {
+    public FeedCardFragment() {
         // Required empty public constructor
     }
 
@@ -27,10 +27,10 @@ public class feedCardFragment extends Fragment implements View.OnClickListener {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment feedCardFragment.
+     * @return A new instance of fragment FeedCardFragment.
      */
-    public static feedCardFragment newInstance() {
-        final feedCardFragment fragment = new feedCardFragment();
+    public static FeedCardFragment newInstance() {
+        final FeedCardFragment fragment = new FeedCardFragment();
         final Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -58,7 +58,7 @@ public class feedCardFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(final View view) {
-        final Intent feedActivityIntent = new Intent(view.getContext(), feedActivity.class);
+        final Intent feedActivityIntent = new Intent(view.getContext(), FeedActivity.class);
         startActivity(feedActivityIntent);
     }
 }
