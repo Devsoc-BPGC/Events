@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.google.android.material.card.MaterialCardView;
 import com.macbitsgoa.events.R;
+import com.macbitsgoa.events.home.HomeCardInterface;
 
 import androidx.fragment.app.Fragment;
 
@@ -15,7 +16,8 @@ import androidx.fragment.app.Fragment;
  * The fragment for feature eateries to be shown on home screen
  * {@link com.macbitsgoa.events.home.HomeActivity}.
  */
-public class EateriesCardFragment extends Fragment implements View.OnClickListener {
+public class EateriesCardFragment extends Fragment
+        implements View.OnClickListener, HomeCardInterface {
 
     private MaterialCardView selfCard;
 
