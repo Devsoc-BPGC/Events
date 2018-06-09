@@ -22,6 +22,8 @@ android {
         resValue "bool", "eateries", "true"
         buildConfigField "boolean", "aboutFest", "true"
         resValue "bool", "aboutFest", "true"
+        buildConfigField "boolean", "feed", "true"
+        resValue "bool", "feed", "true"
         buildConfigField "boolean", "aboutMac", "true"
         resValue "bool", "aboutMac", "true"
         buildConfigField "boolean", "timeline", "true"
@@ -75,16 +77,24 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     def room_version = "2.0.0-alpha1"
-
     implementation "androidx.room:room-runtime:$room_version"
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
 
     annotationProcessor "androidx.room:room-compiler:$room_version"
     def lifecycle_version = "2.0.0-alpha1"
-
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation 'com.google.dagger:dagger:2.16'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
+    implementation group: 'com.squareup.okhttp', name: 'okhttp', version: '2.7.5'
+    implementation 'com.google.android.gms:play-services-auth:15.0.1'
+    implementation('com.google.api-client:google-api-client-android:1.23.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation('com.google.apis:google-api-services-drive:v3-rev119-1.23.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation 'com.github.esafirm.android-image-picker:imagepicker:1.13.0'
+
 }
 apply plugin: 'com.google.gms.google-services'

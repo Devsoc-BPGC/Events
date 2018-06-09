@@ -27,6 +27,7 @@ public class Converters {
 
     /**
      * Combines list of tags to comma separated string.
+     *
      * @param tags list of strings.
      * @return cs string.
      */

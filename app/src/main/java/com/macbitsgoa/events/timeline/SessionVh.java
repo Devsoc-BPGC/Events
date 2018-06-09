@@ -19,6 +19,7 @@ public class SessionVh extends RecyclerView.ViewHolder {
 
     /**
      * Constructor.
+     *
      * @param itemView created view.
      */
     public SessionVh(@NonNull final View itemView) {
@@ -29,6 +30,7 @@ public class SessionVh extends RecyclerView.ViewHolder {
 
     /**
      * Pass the data.
+     *
      * @param session {@link Session}
      */
     public void populate(@NonNull final Session session) {

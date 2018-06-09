@@ -30,14 +30,15 @@ public class SessionsRepository {
 
     /**
      * Default constructor.
+     *
      * @param sessionDao Data Access Object.
-     * @param executor Executor.
+     * @param executor   Executor.
      * @param webService {@link WebService} instance.
      */
     @Inject
     public SessionsRepository(final SessionDao sessionDao,
-                               final Executor executor,
-                               final WebService webService) {
+                              final Executor executor,
+                              final WebService webService) {
         this.sessionDao = sessionDao;
         this.executor = executor;
         this.webService = webService;

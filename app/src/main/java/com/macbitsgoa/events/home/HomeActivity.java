@@ -11,6 +11,7 @@ import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.aboutfest.AboutFestCardFragment;
 import com.macbitsgoa.events.aboutmac.AboutMacCardFragment;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
+import com.macbitsgoa.events.feed.FeedCardFragment;
 import com.macbitsgoa.events.maps.MapsActivity;
 import com.macbitsgoa.events.timeline.TimelineCardFragment;
 
@@ -80,6 +81,13 @@ public class HomeActivity extends AppCompatActivity implements
             fragmentTransaction.add(R.id.ll_home,
                     AboutMacCardFragment.newInstance(),
                     getString(R.string.frag_label_aboutmac_card)
+            );
+        }
+
+        if (BuildConfig.feed) {
+            fragmentTransaction.add(R.id.ll_home,
+                    FeedCardFragment.newInstance(),
+                    getString(R.string.frag_label_feed_card)
             );
         }
 

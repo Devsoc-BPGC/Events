@@ -1,6 +1,10 @@
 <!--suppress LongLine -->
 <resources>
     <string name="app_name">Events</string>
+    <string name="server_client_id">1007225187624-ve88c33iuivn0u1ulp8d3ajm8sbh95ai.apps.googleusercontent.com</string>
+    <string name="server_client_secret">T-VyF_aN8UEFx359muCmujqG</string>
+    <string name="redirect_url">https://events-f6847.firebaseapp.com/__/auth/handler</string>
+
     <string name="test_string_eateries">Eateries are available</string>
 
     <string name="spam_text">Download this app from PlayStore </string>
@@ -20,5 +24,8 @@
     <string name="title_activity_about_fest">AboutFest</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_feed">Feed</string>
+
+    <string name="frag_label_feed_card">Feed</string>
     <string name="title_activity_maps">Map</string>
 </resources>

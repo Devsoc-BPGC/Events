@@ -16,7 +16,8 @@ public class DevelopersList {
         this.email = email;
     }
 
-    public DevelopersList() {}
+    public DevelopersList() {
+    }
 
     public String getPhoto() {
         return photo;
