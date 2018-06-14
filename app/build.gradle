@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 'android-P'
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.macbitsgoa.events"
         manifestPlaceholders = [deepLinkDomain: "example.com"]
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         resConfigs "en"
@@ -66,20 +66,22 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "androidx.constraintlayout:constraintlayout:1.1.0"
-    implementation "com.google.android.material:material:1.0.0-alpha1"
+    implementation "androidx.constraintlayout:constraintlayout:1.1.2"
+    implementation "com.google.android.material:material:1.0.0-alpha3"
     implementation 'com.google.firebase:firebase-database:16.0.1'
     implementation 'com.google.firebase:firebase-core:16.0.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
-    implementation 'androidx.legacy:legacy-support-v13:1.0.0-alpha1'
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha3'
+    implementation 'androidx.legacy:legacy-support-v13:1.0.0-alpha3'
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha3'
     implementation 'com.facebook.fresco:fresco:1.9.0'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
     def room_version = "2.0.0-alpha1"
     implementation "androidx.room:room-runtime:$room_version"
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
 
+    implementation 'com.google.firebase:firebase-messaging:17.0.0'
     annotationProcessor "androidx.room:room-compiler:$room_version"
     def lifecycle_version = "2.0.0-alpha1"
     // ViewModel and LiveData
