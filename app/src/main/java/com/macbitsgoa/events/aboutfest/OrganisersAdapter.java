@@ -1,50 +1,38 @@
 package com.macbitsgoa.events.aboutfest;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.macbitsgoa.events.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class OrganisersAdapter
-        extends RecyclerView.Adapter<OrganisersAdapter.ViewHolder> {
-    private Context context;
-    private ArrayList<OrganisersList> organisersList = new ArrayList<OrganisersList>();
-    private TextView contact;
-    private TextView email;
+        extends RecyclerView.Adapter<OrganisersAdapter.OrganiserVh> {
+    private final List<Organiser> organisersList;
 
-
-    public OrganisersAdapter(ArrayList<OrganisersList> list, Context context) {
-        this.context = context;
+    public OrganisersAdapter(final List<Organiser> list) {
         organisersList = list;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View contacts = inflater.inflate(R.layout.item_organisers_rv, parent, false);
-        return new ViewHolder(contacts);
+    public OrganiserVh onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
+        final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        final View contacts = inflater.inflate(R.layout.vh_organisers, parent, false);
+        return new OrganiserVh(contacts);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        OrganisersList current = organisersList.get(position);
-        holder.setPhoto(current.getPhoto());
-        holder.setName(current.getName());
-        holder.setPost(current.getPost());
-        holder.setContact(current.getContact());
-        holder.setEmail(current.getEmail());
-        holder.handleClick(context);
+    public void onBindViewHolder(@NonNull final OrganiserVh holder, final int position) {
+        final Organiser current = organisersList.get(position);
+        holder.populate(current);
     }
 
     @Override
@@ -52,61 +40,20 @@ public class OrganisersAdapter
         return organisersList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        ViewHolder(final View itemView) {
+    public class OrganiserVh extends RecyclerView.ViewHolder {
+        OrganiserVh(final View itemView) {
             super(itemView);
         }
 
-        private void handleClick(final Context context) {
-
-            contact = itemView.findViewById(R.id.contact);
-            contact.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse("tel:" + contact.getText()));
-                    context.startActivity(intent);
-                }
-            });
-
-            email = itemView.findViewById(R.id.email);
-            email.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_SEND);
-                    intent.setType("message/rfc822");
-                    intent.putExtra(Intent.ACTION_SENDTO, email.getText());
-                    Intent mailer = Intent.createChooser(intent, "Choose your E-email application");
-                    context.startActivity(mailer);
-                }
-            });
-
-        }
-
-        private void setPhoto(String url) {
-            final SimpleDraweeView simpleDraweeView = itemView.findViewById(R.id.photo);
-            Uri imageUri = Uri.parse(url);
-            simpleDraweeView.setImageURI(imageUri);
-        }
-
-        private void setName(String name) {
-            TextView textView = (TextView) itemView.findViewById(R.id.name);
-            textView.setText(name);
-        }
-
-        private void setPost(String post) {
-            TextView textView = (TextView) itemView.findViewById(R.id.post);
-            textView.setText(post);
-        }
-
-        private void setContact(String contact) {
-            TextView textView = (TextView) itemView.findViewById(R.id.contact);
-            textView.setText(contact);
-        }
-
-        private void setEmail(String email) {
-            TextView textView = (TextView) itemView.findViewById(R.id.email);
-            textView.setText(email);
+        /**
+         * {@inheritDoc}
+         */
+        public void populate(final Organiser organiser) {
+            ((SimpleDraweeView) itemView.findViewById(R.id.iv_avatar)).setImageURI(organiser.photo);
+            ((TextView) itemView.findViewById(R.id.tv_person_name)).setText(organiser.name);
+            ((TextView) itemView.findViewById(R.id.tv_post)).setText(organiser.post);
+            ((TextView) itemView.findViewById(R.id.tv_phone)).setText(organiser.contact);
+            ((TextView) itemView.findViewById(R.id.tv_email)).setText(organiser.email);
         }
     }
 }

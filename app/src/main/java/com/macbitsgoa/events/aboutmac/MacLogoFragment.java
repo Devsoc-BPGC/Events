@@ -37,7 +37,7 @@ public class MacLogoFragment extends Fragment {
     }
 
     /**
-     * Creates the logo fragment in AboutFestActivity.
+     * Creates the logo fragment in AboutEventActivity.
      */
     public static MacLogoFragment newInstance() {
         MacLogoFragment logoFragment = new MacLogoFragment();

@@ -15,5 +15,9 @@ public final class FirebaseKeys {
     public static final String MAP_LONGITUDE = "longitude";
     public static final String MAP_VENUE_NAME = "venueName";
 
+    public static final String ABOUT_FEST = "aboutfest";
 
+    public static final String TOPIC_ABOUT_APP = "aboutAppUpdate";
+
+    public static final String FCM_KEY_TYPE = "type";
 }

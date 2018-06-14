@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 import com.macbitsgoa.events.BuildConfig;
 import com.macbitsgoa.events.R;
-import com.macbitsgoa.events.aboutfest.AboutFestCardFragment;
+import com.macbitsgoa.events.aboutfest.AboutEventActivity;
 import com.macbitsgoa.events.aboutmac.AboutMacCardFragment;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
 import com.macbitsgoa.events.feed.FeedCardFragment;
@@ -67,13 +67,6 @@ public class HomeActivity extends AppCompatActivity implements
             fragmentTransaction.add(R.id.ll_home,
                     EateriesCardFragment.newInstance(),
                     getString(R.string.frag_label_eateries_card)
-            );
-        }
-
-        if (BuildConfig.aboutFest) {
-            fragmentTransaction.add(R.id.ll_home,
-                    AboutFestCardFragment.newInstance(),
-                    getString(R.string.frag_label_aboutfest_card)
             );
         }
 
@@ -143,11 +136,16 @@ public class HomeActivity extends AppCompatActivity implements
                 break;
             }
 
-            case (R.id.nav_maps) : {
+            case (R.id.nav_maps): {
                 final Intent mapIntent = new Intent(HomeActivity.this, MapsActivity.class);
                 startActivity(mapIntent);
                 break;
 
+            }
+
+            case (R.id.nav_about_event): {
+                startActivity(new Intent(HomeActivity.this, AboutEventActivity.class));
+                break;
             }
 
             default: {
