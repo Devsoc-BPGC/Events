@@ -17,6 +17,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:paddingTop="@dimen/action_bar_height"
             android:id="@+id/ll_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

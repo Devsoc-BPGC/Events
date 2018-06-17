@@ -41,12 +41,12 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder,
                                  final int position) {
         final FeedViewHolder viewHolder = (FeedViewHolder) holder;
-        viewHolder.textOwner.setText(viewItemList.get(position).getOwner());
-        final String likes = "liked by " + viewItemList.get(position).getNumberLikes() + " people";
+        viewHolder.textOwner.setText(viewItemList.get(position).owner);
+        final String likes = "liked by " + viewItemList.get(position).likes + " people";
         viewHolder.textLikes.setText(likes);
-        viewHolder.imageOwner.setImageURI(viewItemList.get(position).getOwnerImage());
-        viewHolder.imageMain.setImageURI(viewItemList.get(position).getImageUrl());
-        viewHolder.textDesc.setText(viewItemList.get(position).getDesc());
+        viewHolder.imageOwner.setImageURI(viewItemList.get(position).ownerImage);
+        viewHolder.imageMain.setImageURI(viewItemList.get(position).imageUrl);
+        viewHolder.textDesc.setText(viewItemList.get(position).desc);
     }
 
 

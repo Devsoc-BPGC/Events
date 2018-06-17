@@ -20,12 +20,9 @@ android {
         // test build configuration variable
         buildConfigField "boolean", "eateries", "true"
         resValue "bool", "eateries", "true"
-        buildConfigField "boolean", "aboutFest", "true"
-        resValue "bool", "aboutFest", "true"
         buildConfigField "boolean", "feed", "true"
         resValue "bool", "feed", "true"
-        buildConfigField "boolean", "aboutMac", "true"
-        resValue "bool", "aboutMac", "true"
+        buildConfigField "boolean", "shouldShowMapOnHome", "true"
         buildConfigField "boolean", "timeline", "true"
 
         buildConfigField "int", "eventDuration", "4" // days
@@ -46,6 +43,8 @@ android {
             ext.enableCrashlytics = false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
         }
         release {
             minifyEnabled true
@@ -66,8 +65,8 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "androidx.constraintlayout:constraintlayout:1.1.2"
-    implementation "com.google.android.material:material:1.0.0-alpha3"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation 'com.google.android.material:material:1.0.0-alpha3'
     implementation 'com.google.firebase:firebase-database:16.0.1'
     implementation 'com.google.firebase:firebase-core:16.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha3'
@@ -80,7 +79,6 @@ dependencies {
     def room_version = "2.0.0-alpha1"
     implementation "androidx.room:room-runtime:$room_version"
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
-
     implementation 'com.google.firebase:firebase-messaging:17.0.0'
     annotationProcessor "androidx.room:room-compiler:$room_version"
     def lifecycle_version = "2.0.0-alpha1"
@@ -88,7 +86,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation 'com.google.dagger:dagger:2.16'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
-    implementation group: 'com.squareup.okhttp', name: 'okhttp', version: '2.7.5'
+    implementation 'com.squareup.okhttp:okhttp:2.7.5'
     implementation 'com.google.android.gms:play-services-auth:15.0.1'
     implementation('com.google.api-client:google-api-client-android:1.23.0') {
         exclude group: 'org.apache.httpcomponents'
@@ -97,6 +95,5 @@ dependencies {
         exclude group: 'org.apache.httpcomponents'
     }
     implementation 'com.github.esafirm.android-image-picker:imagepicker:1.13.0'
-
 }
 apply plugin: 'com.google.gms.google-services'

@@ -41,4 +41,4 @@ proguard/
 
 checkstyle-*-all.jar
 
-.idea
+/.idea
