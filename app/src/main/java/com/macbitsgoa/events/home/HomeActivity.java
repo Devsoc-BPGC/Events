@@ -9,9 +9,10 @@ import com.google.android.material.navigation.NavigationView;
 import com.macbitsgoa.events.BuildConfig;
 import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.aboutfest.AboutEventActivity;
-import com.macbitsgoa.events.aboutmac.AboutMacCardFragment;
+import com.macbitsgoa.events.aboutmac.AboutMacActivity;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
 import com.macbitsgoa.events.feed.FeedCardFragment;
+import com.macbitsgoa.events.maps.MapCardFragment;
 import com.macbitsgoa.events.maps.MapsActivity;
 import com.macbitsgoa.events.timeline.TimelineCardFragment;
 
@@ -65,22 +66,15 @@ public class HomeActivity extends AppCompatActivity implements
         // example use of build config variable
         if (BuildConfig.eateries) {
             fragmentTransaction.add(R.id.ll_home,
-                    EateriesCardFragment.newInstance(),
-                    getString(R.string.frag_label_eateries_card)
-            );
-        }
-
-        if (BuildConfig.aboutMac) {
-            fragmentTransaction.add(R.id.ll_home,
-                    AboutMacCardFragment.newInstance(),
-                    getString(R.string.frag_label_aboutmac_card)
+                    new EateriesCardFragment(),
+                    "eateries"
             );
         }
 
         if (BuildConfig.feed) {
             fragmentTransaction.add(R.id.ll_home,
-                    FeedCardFragment.newInstance(),
-                    getString(R.string.frag_label_feed_card)
+                    new FeedCardFragment(),
+                    "feed"
             );
         }
 
@@ -89,6 +83,12 @@ public class HomeActivity extends AppCompatActivity implements
                     new TimelineCardFragment(),
                     getString(R.string.timeline)
             );
+        }
+
+        if (BuildConfig.shouldShowMapOnHome) {
+            fragmentTransaction.add(R.id.ll_home,
+                    new MapCardFragment(),
+                    "map");
         }
         fragmentTransaction.commit();
     }
@@ -111,7 +111,6 @@ public class HomeActivity extends AppCompatActivity implements
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
-
     }
 
     private void initViews() {
@@ -148,6 +147,11 @@ public class HomeActivity extends AppCompatActivity implements
                 break;
             }
 
+            case (R.id.nav_about_developers): {
+                startActivity(new Intent(HomeActivity.this, AboutMacActivity.class));
+                break;
+            }
+
             default: {
                 break;
             }
@@ -160,7 +164,7 @@ public class HomeActivity extends AppCompatActivity implements
 
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
 
         switch (item.getItemId()) {
             case (android.R.id.home): {

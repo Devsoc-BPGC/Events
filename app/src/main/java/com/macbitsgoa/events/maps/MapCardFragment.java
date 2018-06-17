@@ -1,4 +1,4 @@
-package com.macbitsgoa.events.eateries;
+package com.macbitsgoa.events.maps;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,20 +13,19 @@ import com.macbitsgoa.events.home.HomeCardInterface;
 import androidx.fragment.app.Fragment;
 
 /**
- * The fragment for feature eateries to be shown on home screen
- * {@link com.macbitsgoa.events.home.HomeActivity}.
+ * @author Rushikesh Jogdand.
  */
-public class EateriesCardFragment extends Fragment
+public class MapCardFragment extends Fragment
         implements HomeCardInterface {
-
     @Override
     public View onCreateView(final LayoutInflater inflater,
                              final ViewGroup container, final Bundle savedInstanceState) {
         final MaterialCardView selfCard =
-                (MaterialCardView) inflater.inflate(R.layout.fragment_eateries_card,
+                (MaterialCardView) inflater.inflate(R.layout.fragment_map_card,
                         container, false);
         selfCard.setOnClickListener(view ->
-                startActivity(new Intent(view.getContext(), EateriesActivity.class)));
+                startActivity(new Intent(view.getContext(), MapsActivity.class)));
         return selfCard;
     }
+
 }

@@ -78,7 +78,7 @@
 
         <activity
             android:name=".maps.MapsActivity"
-            android:label="@string/title_activity_maps">
+            android:label="@string/map">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />

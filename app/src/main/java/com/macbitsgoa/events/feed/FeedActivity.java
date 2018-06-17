@@ -99,7 +99,7 @@ public class FeedActivity extends Activity implements ChildEventListener, View.O
     public void onChildChanged(@NonNull final DataSnapshot dataSnapshot, final String s) {
         final FeedRecyclerViewItem item = dataSnapshot.getValue(FeedRecyclerViewItem.class);
         for (final FeedRecyclerViewItem arrayItem : arrayList) {
-            if (Objects.equals(item.getId(), arrayItem.getId())) {
+            if (Objects.equals(item.id, arrayItem.id)) {
                 arrayList.remove(arrayItem);
                 arrayList.add(0, item);
                 break;
