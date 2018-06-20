@@ -34,7 +34,7 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SponsorAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final SponsorItem sponsorItem=sponsorItems.get(position);
         holder.textViewsponsorName.setText(sponsorItem.getSponsorName());
          Picasso.get()
