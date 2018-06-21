@@ -41,13 +41,11 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.ViewHold
                 .load(sponsorItem.getSponsorLogo())
                 .into(holder.imageViewsponsorImage);
 
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final CustomTabsIntent intent=new CustomTabsIntent.Builder().build();
-                final String launchUrl=sponsorItem.getSponsorClickUrl();
-                intent.launchUrl(context, Uri.parse(launchUrl));
-            }
+        holder.cardView.setOnClickListener((View v) -> {
+            final CustomTabsIntent intent=new CustomTabsIntent.Builder().build();
+            final String launchUrl=sponsorItem.getSponsorClickUrl();
+            intent.launchUrl(context, Uri.parse(launchUrl));
+
         });
     }
 
@@ -60,7 +58,7 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.ViewHold
 
         public TextView textViewsponsorName;
         public ImageView imageViewsponsorImage;
-        CardView cardView;
+        public CardView cardView;
 
 
         public ViewHolder(@NonNull View itemView) {
