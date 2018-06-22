@@ -96,7 +96,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".SponsorActivity"></activity>
+        <activity android:name=".sponsors.SponsorActivity"/>
     </application>
 
 </manifest>
