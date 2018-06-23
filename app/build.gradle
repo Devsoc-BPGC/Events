@@ -24,7 +24,7 @@ android {
         resValue "bool", "feed", "true"
         buildConfigField "boolean", "shouldShowMapOnHome", "true"
         buildConfigField "boolean", "timeline", "true"
-
+        buildConfigField "boolean","sponsors","true"
         buildConfigField "int", "eventDuration", "4" // days
         buildConfigField "String", "startDate", "\"30,05,2018\"" // "dd,mm,yyyy"
         buildConfigField "String", "startDateFormat", "\"dd,MM,yyyy\""
