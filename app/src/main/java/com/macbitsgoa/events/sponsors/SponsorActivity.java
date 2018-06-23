@@ -1,6 +1,7 @@
 package com.macbitsgoa.events.sponsors;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -53,7 +54,7 @@ public class SponsorActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.e("ClassName","error"+ databaseError.toString());
             }
         });
     }
