@@ -11,6 +11,7 @@ import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.aboutfest.AboutEventActivity;
 import com.macbitsgoa.events.aboutmac.AboutMacActivity;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
+import com.macbitsgoa.events.sponsors.SponsorsFragment;
 import com.macbitsgoa.events.feed.FeedCardFragment;
 import com.macbitsgoa.events.maps.MapCardFragment;
 import com.macbitsgoa.events.maps.MapsActivity;
@@ -90,6 +91,15 @@ public class HomeActivity extends AppCompatActivity implements
                     new MapCardFragment(),
                     "map");
         }
+
+        if (BuildConfig.sponsors){
+            fragmentTransaction.add(R.id.ll_home,
+                    new SponsorsFragment(),
+                    "sponsors");
+
+        }
+
+
         fragmentTransaction.commit();
     }
 
