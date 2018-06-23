@@ -20,10 +20,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class SponsorActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    RecyclerView.Adapter adapter;
-    List<SponsorItem> sponsorItems;
-    String sponsorName,sponsorClickUrl,sponsorLogo;
+    public RecyclerView recyclerView;
+    public RecyclerView.Adapter adapter;
+    public List<SponsorItem> sponsorItems;
+    public String sponsorName,sponsorClickUrl,sponsorLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
