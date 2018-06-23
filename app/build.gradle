@@ -24,7 +24,7 @@ android {
         resValue "bool", "feed", "true"
         buildConfigField "boolean", "shouldShowMapOnHome", "true"
         buildConfigField "boolean", "timeline", "true"
-
+        buildConfigField "boolean","sponsors","true"
         buildConfigField "int", "eventDuration", "4" // days
         buildConfigField "String", "startDate", "\"30,05,2018\"" // "dd,mm,yyyy"
         buildConfigField "String", "startDateFormat", "\"dd,MM,yyyy\""
@@ -76,10 +76,13 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.android.support:customtabs:28.1.0'
     def room_version = "2.0.0-alpha1"
     implementation "androidx.room:room-runtime:$room_version"
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
     implementation 'com.google.firebase:firebase-messaging:17.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0-alpha3'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     annotationProcessor "androidx.room:room-compiler:$room_version"
     def lifecycle_version = "2.0.0-alpha1"
     // ViewModel and LiveData
@@ -87,6 +90,7 @@ dependencies {
     implementation 'com.google.dagger:dagger:2.16'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
     implementation 'com.squareup.okhttp:okhttp:2.7.5'
+    implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.google.android.gms:play-services-auth:15.0.1'
     implementation('com.google.api-client:google-api-client-android:1.23.0') {
         exclude group: 'org.apache.httpcomponents'
