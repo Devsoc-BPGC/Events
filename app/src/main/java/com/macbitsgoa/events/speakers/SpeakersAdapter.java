@@ -3,7 +3,6 @@ package com.macbitsgoa.events.speakers;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,8 +30,6 @@ public class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Speake
 
     private Context context;
 
-    private static String TAG = SpeakersAdapter.class.getSimpleName();
-
     public SpeakersAdapter(ArrayList<String> nameList, ArrayList<String> descList, ArrayList<String> imgList, ArrayList<String> clickList, Context context) {
         NameList = nameList;
         DescList = descList;
@@ -54,8 +51,6 @@ public class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Speake
     @Override
     public void onBindViewHolder(@NonNull final SpeakerViewHolder holder, final int position) {
 
-        //Log.e(TAG,"Binding all data");
-
         holder.imageV.setImageURI(imgList.get(position));
         holder.descTV.setText(DescList.get(position));
         holder.nameTV.setText(NameList.get(position));
@@ -76,9 +71,9 @@ public class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Speake
     }
 
     public class SpeakerViewHolder extends RecyclerView.ViewHolder {
-        TextView nameTV;
-        TextView descTV;
-        SimpleDraweeView imageV;
+        private TextView nameTV;
+        private TextView descTV;
+        private SimpleDraweeView imageV;
 
         public SpeakerViewHolder(View itemView) {
             super(itemView);

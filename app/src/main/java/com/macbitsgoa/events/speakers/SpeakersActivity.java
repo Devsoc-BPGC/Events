@@ -27,7 +27,7 @@ public class SpeakersActivity extends FragmentActivity {
     private ArrayList<String> imgList;
     private ArrayList<String> clickList;
 
-    DatabaseReference databaseReference;
+    private DatabaseReference databaseReference;
 
     private static String TAG = SpeakersActivity.class.getSimpleName();
 
