@@ -97,6 +97,7 @@
         </service>
 
         <activity android:name=".sponsors.SponsorActivity"/>
+        <activity android:name=".speakers.SpeakersActivity" />
     </application>
 
 </manifest>
