@@ -27,8 +27,6 @@ public class SpeakersActivity extends FragmentActivity {
     private ArrayList<String> imgList;
     private ArrayList<String> clickList;
 
-    private DatabaseReference databaseReference;
-
     private static String TAG = SpeakersActivity.class.getSimpleName();
 
     @Override
@@ -45,7 +43,8 @@ public class SpeakersActivity extends FragmentActivity {
         descList = new ArrayList<>();
         imgList = new ArrayList<>();
         clickList = new ArrayList<>();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("speakers");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance()
+                .getReference().child("speakers");
         databaseReference.keepSynced(true);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
