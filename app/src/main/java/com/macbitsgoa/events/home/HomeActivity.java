@@ -11,6 +11,8 @@ import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.aboutfest.AboutEventActivity;
 import com.macbitsgoa.events.aboutmac.AboutMacActivity;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
+import com.macbitsgoa.events.speakers.SpeakerCardFragment;
+import com.macbitsgoa.events.speakers.SpeakersActivity;
 import com.macbitsgoa.events.sponsors.SponsorsFragment;
 import com.macbitsgoa.events.feed.FeedCardFragment;
 import com.macbitsgoa.events.maps.MapCardFragment;
@@ -92,13 +94,18 @@ public class HomeActivity extends AppCompatActivity implements
                     "map");
         }
 
-        if (BuildConfig.sponsors){
+        if (BuildConfig.sponsors) {
             fragmentTransaction.add(R.id.ll_home,
                     new SponsorsFragment(),
                     "sponsors");
 
         }
-
+        if (BuildConfig.speakers) {
+            fragmentTransaction.add(R.id.ll_home,
+                    new SpeakerCardFragment(),
+                    getString(R.string.frag_label_speakers)
+            );
+        }
 
         fragmentTransaction.commit();
     }
@@ -162,6 +169,11 @@ public class HomeActivity extends AppCompatActivity implements
                 break;
             }
 
+            case (R.id.nav_speakers): {
+                final Intent speakersIntent = new Intent(HomeActivity.this, SpeakersActivity.class);
+                startActivity(speakersIntent);
+                break;
+            }
             default: {
                 break;
             }
