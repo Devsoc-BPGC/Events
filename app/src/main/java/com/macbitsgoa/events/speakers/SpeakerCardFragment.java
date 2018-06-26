@@ -22,15 +22,6 @@ public class SpeakerCardFragment extends Fragment implements View.OnClickListene
 
     private MaterialCardView cardView;
 
-
-    public static SpeakerCardFragment newInstance() {
-        SpeakerCardFragment fragment = new SpeakerCardFragment();
-        Bundle bundle = new Bundle();
-        fragment.setArguments(bundle);
-
-        return fragment;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

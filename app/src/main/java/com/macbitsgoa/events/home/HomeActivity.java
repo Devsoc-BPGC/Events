@@ -102,7 +102,7 @@ public class HomeActivity extends AppCompatActivity implements
         }
         if (BuildConfig.speakers) {
             fragmentTransaction.add(R.id.ll_home,
-                    SpeakerCardFragment.newInstance(),
+                    new SpeakerCardFragment(),
                     getString(R.string.frag_label_speakers)
             );
         }
