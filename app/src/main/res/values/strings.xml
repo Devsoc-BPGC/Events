@@ -5,7 +5,7 @@
     <string name="server_client_secret">T-VyF_aN8UEFx359muCmujqG</string>
     <string name="redirect_url">https://events-f6847.firebaseapp.com/__/auth/handler</string>
 
-    <string name="test_string_eateries">Eateries are available</string>
+    <string name="test_string_eateries">Eateries</string>
 
     <string name="spam_text">Download this app from PlayStore </string>
     <string name="choose_share_medium_prompt">share via …</string>
