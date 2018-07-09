@@ -16,11 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class EateriesAdapter
         extends RecyclerView.Adapter<EateriesAdapter.ViewHolder> {
-    private Context context;
     private ArrayList<EateriesList> eateriesList = new ArrayList<>();
-
-    public EateriesAdapter(ArrayList<EateriesList> list, Context context) {
-        this.context = context;
+    public EateriesAdapter(ArrayList<EateriesList> list) {
         eateriesList = list;
     }
 

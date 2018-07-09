@@ -31,7 +31,7 @@ public class EateriesActivity extends Activity {
 
         recyclerView = (RecyclerView)findViewById(R.id.eateriesRecyclerView);
         layoutManager = new LinearLayoutManager(this);
-        adapter = new EateriesAdapter(eateriesList, this);
+        adapter = new EateriesAdapter(eateriesList);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
