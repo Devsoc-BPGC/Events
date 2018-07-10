@@ -22,9 +22,13 @@ public class AboutMacActivity extends FragmentActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(aboutMacViewPager, true);
 
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.colorMac));
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorMac));
+        }
+        else {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.colorMac, null));
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.colorMac, null));
         }
     }
 
