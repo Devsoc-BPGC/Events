@@ -98,7 +98,7 @@
 
         <activity android:name=".sponsors.SponsorActivity"/>
 
-        <activity android:name=".festMerch.festMerchActivity"/>
+        <activity android:name=".festMerch.FestMerchActivity"/>
     </application>
 
 </manifest>
