@@ -20,7 +20,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class festMerchActivity extends AppCompatActivity{
+public class FestMerchActivity extends AppCompatActivity{
 
     public RecyclerView recyclerView;
     public RecyclerView.Adapter adapter;
@@ -54,7 +54,7 @@ public class festMerchActivity extends AppCompatActivity{
                     merchandiseList.add(child.getValue(Merchandise.class));
                 }
 
-                adapter = new festMerchAdapter(merchandiseList,festMerchActivity.this, browser);
+                adapter = new FestMerchAdapter(merchandiseList, browser);
                 recyclerView.setAdapter(adapter);
             }
 

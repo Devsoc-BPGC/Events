@@ -11,7 +11,7 @@ import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.aboutfest.AboutEventActivity;
 import com.macbitsgoa.events.aboutmac.AboutMacActivity;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
-import com.macbitsgoa.events.festMerch.festMerchFragment;
+import com.macbitsgoa.events.festMerch.FestMerchFragment;
 import com.macbitsgoa.events.sponsors.SponsorsFragment;
 import com.macbitsgoa.events.feed.FeedCardFragment;
 import com.macbitsgoa.events.maps.MapCardFragment;
@@ -101,7 +101,7 @@ public class HomeActivity extends AppCompatActivity implements
 
         if (BuildConfig.festmerch){
             fragmentTransaction.add(R.id.ll_home,
-                    new festMerchFragment(),
+                    new FestMerchFragment(),
                     "fest merchandise");
         }
 

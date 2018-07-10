@@ -1,6 +1,5 @@
 package com.macbitsgoa.events.festMerch;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,34 +8,33 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.macbitsgoa.events.Browser;
 import com.macbitsgoa.events.R;
+import com.macbitsgoa.events.festMerch.Merchandise;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class festMerchAdapter extends RecyclerView.Adapter<festMerchAdapter.ViewHolder> {
+public class FestMerchAdapter extends RecyclerView.Adapter<FestMerchAdapter.ViewHolder> {
 
-    private Context context;
     private final Browser browser;
     private ArrayList<Merchandise> MerchandiseList;
 
-    public festMerchAdapter(ArrayList<Merchandise> list, Context context, Browser browser) {
-        this.context = context;
+    public FestMerchAdapter(ArrayList<Merchandise> list, Browser browser) {
         this.browser = browser;
         MerchandiseList = list;
     }
 
     @Override
-    public festMerchAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FestMerchAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View contacts = inflater.inflate(R.layout.item_merchandise_rv, parent, false);
-        return new festMerchAdapter.ViewHolder(contacts, browser);
+        return new FestMerchAdapter.ViewHolder(contacts, browser);
 
     }
 
     @Override
-    public void onBindViewHolder(festMerchAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(FestMerchAdapter.ViewHolder holder, int position) {
         holder.populate(MerchandiseList.get(position));
     }
 

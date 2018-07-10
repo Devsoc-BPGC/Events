@@ -10,7 +10,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.home.HomeCardInterface;
 
-public class festMerchFragment extends androidx.fragment.app.Fragment
+public class FestMerchFragment extends androidx.fragment.app.Fragment
         implements HomeCardInterface {
 
     @Override
@@ -20,7 +20,7 @@ public class festMerchFragment extends androidx.fragment.app.Fragment
                 (MaterialCardView) inflater.inflate(R.layout.fragment_festmerch_card,
                         container, false);
         selfCard.setOnClickListener(view ->
-                startActivity(new Intent(view.getContext(), festMerchActivity.class)));
+                startActivity(new Intent(view.getContext(), FestMerchActivity.class)));
         return selfCard;
     }
 
