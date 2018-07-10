@@ -1,0 +1,3 @@
+<resources>
+    <attr name="customTab_toolbar_color" format="color" />
+</resources>

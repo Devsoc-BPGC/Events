@@ -33,7 +33,7 @@ public class DevelopersFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_about_mac_developers, container, false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.developersRecyclerView);
+        recyclerView = view.findViewById(R.id.developersRecyclerView);
         layoutManager = new LinearLayoutManager(getContext());
         adapter = new DevelopersAdapter(developersList, getContext());
         recyclerView.setLayoutManager(layoutManager);

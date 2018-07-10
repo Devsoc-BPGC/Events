@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class DevelopersAdapter
         extends RecyclerView.Adapter<DevelopersAdapter.ViewHolder> {
     private Context context;
-    private ArrayList<DevelopersList> developersList = new ArrayList<DevelopersList>();
+    private ArrayList<DevelopersList> developersList;
     private TextView contact;
     private TextView email;
 
@@ -58,25 +58,19 @@ public class DevelopersAdapter
         private void handleClick(final Context context) {
 
             contact = itemView.findViewById(R.id.developers_contact);
-            contact.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse("tel:" + contact.getText()));
-                    context.startActivity(intent);
-                }
+            contact.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + contact.getText()));
+                context.startActivity(intent);
             });
 
             email = itemView.findViewById(R.id.developers_email);
-            email.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_SEND);
-                    intent.setType("message/rfc822");
-                    intent.putExtra(Intent.ACTION_SENDTO, email.getText());
-                    Intent mailer = Intent.createChooser(intent, "Choose your E-email application");
-                    context.startActivity(mailer);
-                }
+            email.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("message/rfc822");
+                intent.putExtra(Intent.ACTION_SENDTO, email.getText());
+                Intent mailer = Intent.createChooser(intent, "Choose your E-email application");
+                context.startActivity(mailer);
             });
 
         }
@@ -88,17 +82,17 @@ public class DevelopersAdapter
         }
 
         private void setName(String name) {
-            TextView textView = (TextView) itemView.findViewById(R.id.developers_name);
+            TextView textView = itemView.findViewById(R.id.developers_name);
             textView.setText(name);
         }
 
         private void setContact(String contact) {
-            TextView textView = (TextView) itemView.findViewById(R.id.developers_contact);
+            TextView textView = itemView.findViewById(R.id.developers_contact);
             textView.setText(contact);
         }
 
         private void setEmail(String email) {
-            TextView textView = (TextView) itemView.findViewById(R.id.developers_email);
+            TextView textView = itemView.findViewById(R.id.developers_email);
             textView.setText(email);
         }
     }
