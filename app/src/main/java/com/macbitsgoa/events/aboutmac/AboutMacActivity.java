@@ -16,10 +16,10 @@ public class AboutMacActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_mac);
 
-        ViewPager aboutMacViewPager = (ViewPager) findViewById(R.id.about_mac_viewpager);
+        ViewPager aboutMacViewPager = findViewById(R.id.about_mac_viewpager);
         aboutMacViewPager.setAdapter(new AboutMacPagerAdapter(getSupportFragmentManager()));
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(aboutMacViewPager, true);
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

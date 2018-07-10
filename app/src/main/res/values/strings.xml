@@ -11,6 +11,7 @@
     <string name="choose_share_medium_prompt">share via …</string>
     <string name="test_string_intent_type">text/plain</string>
 
+    <string name="invalid_url">Invalid URL</string>
 
     <string name="about_fest">About Fest</string>
     <string name="about_mac">About MAC</string>
@@ -24,5 +25,6 @@
     <string name="feed">Feed</string>
     <string name="frag_label_feed_card">Feed</string>
     <string name="map">Map</string>
+    <string name="fest_merch">Fest Merchandise</string>
     <string name="sponsors">Sponsors</string>
 </resources>
