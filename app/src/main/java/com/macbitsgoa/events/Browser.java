@@ -61,7 +61,7 @@ public final class Browser {
     /**
      * Host activity.
      */
-    final Activity hostActivity;
+    private final Activity hostActivity;
 
     /**
      * CustomTabsIntent Builder object.

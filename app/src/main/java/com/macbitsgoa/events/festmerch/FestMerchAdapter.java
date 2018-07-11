@@ -1,4 +1,4 @@
-package com.macbitsgoa.events.festMerch;
+package com.macbitsgoa.events.festmerch;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 public class FestMerchAdapter extends RecyclerView.Adapter<FestMerchAdapter.ViewHolder> {
 
     private final Browser browser;
-    private ArrayList<Merchandise> merchandiseList;
+    private ArrayList<com.macbitsgoa.events.festmerch.Merchandise> merchandiseList;
 
-    public FestMerchAdapter(ArrayList<Merchandise> list, Browser browser) {
+    public FestMerchAdapter(ArrayList<com.macbitsgoa.events.festmerch.Merchandise> list, Browser browser) {
         this.browser = browser;
         merchandiseList = list;
     }
@@ -58,7 +58,7 @@ public class FestMerchAdapter extends RecyclerView.Adapter<FestMerchAdapter.View
             priceTv = itemView.findViewById(R.id.item_merch_price);
         }
 
-        public void populate(@NonNull final Merchandise merchandise) {
+        public void populate(@NonNull final com.macbitsgoa.events.festmerch.Merchandise merchandise) {
             nameTv.setText(merchandise.name);
             descTv.setText(merchandise.desc);
             priceTv.setText(merchandise.price);
