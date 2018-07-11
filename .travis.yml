@@ -55,3 +55,9 @@ after_script:
   - echo "\n\n\n\n====================================================="
   - echo "lint results"
   - cat app/build/reports/lint-results.html | nc termbin.com 9999
+
+after_failure:
+  - echo "\n\n\n\n====================================================="
+  - echo "lint results"
+  - cat app/build/reports/lint-results.html | nc termbin.com 9999
+

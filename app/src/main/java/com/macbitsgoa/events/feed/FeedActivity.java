@@ -167,7 +167,7 @@ public class FeedActivity extends Activity implements ChildEventListener, View.O
 
     private void showSnackBar(final View view) {
         final Snackbar sb;
-        sb = Snackbar.make(view, "New Posts Added", BaseTransientBottomBar.LENGTH_INDEFINITE);
+        sb = Snackbar.make(view, "New Posts Added", Snackbar.LENGTH_INDEFINITE);
         if (!sb.isShownOrQueued()) {
             // styling for background of snackbar
             final View snackView = sb.getView();
