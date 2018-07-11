@@ -8,7 +8,6 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.macbitsgoa.events.Browser;
 import com.macbitsgoa.events.R;
-import com.macbitsgoa.events.festMerch.Merchandise;
 
 import java.util.ArrayList;
 
@@ -18,11 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class FestMerchAdapter extends RecyclerView.Adapter<FestMerchAdapter.ViewHolder> {
 
     private final Browser browser;
-    private ArrayList<Merchandise> MerchandiseList;
+    private ArrayList<Merchandise> merchandiseList;
 
     public FestMerchAdapter(ArrayList<Merchandise> list, Browser browser) {
         this.browser = browser;
-        MerchandiseList = list;
+        merchandiseList = list;
     }
 
     @Override
@@ -35,12 +34,12 @@ public class FestMerchAdapter extends RecyclerView.Adapter<FestMerchAdapter.View
 
     @Override
     public void onBindViewHolder(FestMerchAdapter.ViewHolder holder, int position) {
-        holder.populate(MerchandiseList.get(position));
+        holder.populate(merchandiseList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return MerchandiseList.size();
+        return merchandiseList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
