@@ -1,4 +1,4 @@
-package com.macbitsgoa.events.festMerch;
+package com.macbitsgoa.events.festmerch;
 
 public class Merchandise {
     public String image;

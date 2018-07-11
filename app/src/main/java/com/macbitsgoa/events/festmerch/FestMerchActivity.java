@@ -1,4 +1,4 @@
-package com.macbitsgoa.events.festMerch;
+package com.macbitsgoa.events.festmerch;
 
 import android.os.Bundle;
 import android.util.Log;

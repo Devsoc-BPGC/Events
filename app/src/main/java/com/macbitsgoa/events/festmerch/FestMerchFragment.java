@@ -1,4 +1,4 @@
-package com.macbitsgoa.events.festMerch;
+package com.macbitsgoa.events.festmerch;
 
 import android.content.Intent;
 import android.os.Bundle;
