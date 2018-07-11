@@ -60,7 +60,7 @@ public class DevelopersAdapter
             contact = itemView.findViewById(R.id.developers_contact);
             contact.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
+                public void onClick(View v) {
                     Intent intent = new Intent(Intent.ACTION_DIAL);
                     intent.setData(Uri.parse("tel:" + contact.getText()));
                     context.startActivity(intent);
@@ -70,7 +70,7 @@ public class DevelopersAdapter
             email = itemView.findViewById(R.id.developers_email);
             email.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
+                public void onClick(View v) {
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("message/rfc822");
                     intent.putExtra(Intent.ACTION_SENDTO, email.getText());
