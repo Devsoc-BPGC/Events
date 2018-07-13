@@ -6,5 +6,5 @@
     <color name="colorMacDark">#0063ab</color>
     <color name="colorAccent">#FF4081</color>
     <color name="feedGrey">#353434</color>
-
+    <color name="grey600">#757575</color>
 </resources>

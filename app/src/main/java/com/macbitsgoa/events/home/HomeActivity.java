@@ -96,9 +96,13 @@ public class HomeActivity extends AppCompatActivity implements
             fragmentTransaction.add(R.id.ll_home,
                     new SponsorsFragment(),
                     "sponsors");
-
         }
 
+        if (BuildConfig.festmerch){
+            fragmentTransaction.add(R.id.ll_home,
+                    new com.macbitsgoa.events.festmerch.FestMerchFragment(),
+                    "fest merchandise");
+        }
 
         fragmentTransaction.commit();
     }
