@@ -19,9 +19,6 @@ import androidx.fragment.app.Fragment;
 
 public class SpeakerCardFragment extends Fragment implements HomeCardInterface{
 
-    private MaterialCardView cardView;
-
-
 
     public static SpeakerCardFragment newInstance()
     {
@@ -34,7 +31,7 @@ public class SpeakerCardFragment extends Fragment implements HomeCardInterface{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        cardView = (MaterialCardView) inflater.inflate(R.layout.fragment_speakers_card,
+        MaterialCardView cardView = (MaterialCardView) inflater.inflate(R.layout.fragment_speakers_card,
                 container, false);
 
         cardView.setOnClickListener(new View.OnClickListener() {

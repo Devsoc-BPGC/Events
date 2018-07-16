@@ -3,7 +3,6 @@ package com.macbitsgoa.events.speakers;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -11,14 +10,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.macbitsgoa.events.R;
 
-import org.w3c.dom.NameList;
 
 import java.util.ArrayList;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 /*
  * Created by Hariram.R
@@ -29,7 +26,7 @@ public class SpeakersActivity extends FragmentActivity {
 
     private ArrayList<Speaker> SpeakerList = new ArrayList<>();
     
-    DatabaseReference databaseReference;
+    private DatabaseReference databaseReference;
 
     private static String TAG = SpeakersActivity.class.getSimpleName();
     @Override

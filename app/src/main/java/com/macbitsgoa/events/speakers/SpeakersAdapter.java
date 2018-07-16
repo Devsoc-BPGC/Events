@@ -1,9 +1,7 @@
 package com.macbitsgoa.events.speakers;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +13,7 @@ import com.macbitsgoa.events.R;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
-import androidx.browser.customtabs.CustomTabsCallback;
 import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.browser.customtabs.CustomTabsService;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 /*
@@ -32,8 +27,6 @@ public class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Speake
 
     private Context context;
 
-    private static String TAG = SpeakersAdapter.class.getSimpleName();
-
     public SpeakersAdapter(ArrayList<Speaker> speakerList, Context context) {
         SpeakerList = speakerList;
         this.context = context;
@@ -44,8 +37,7 @@ public class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Speake
     public SpeakerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view= layoutInflater.inflate(R.layout.item_speaker_details,parent,false);
-        SpeakerViewHolder viewHolder = new SpeakerViewHolder(view);
-        return viewHolder;
+        return new SpeakerViewHolder(view);
 
     }
 
@@ -61,9 +53,9 @@ public class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Speake
 
     public class SpeakerViewHolder extends RecyclerView.ViewHolder
     {
-        TextView nameTV;
-        TextView descTV;
-        SimpleDraweeView imageV;
+        private TextView nameTV;
+        private TextView descTV;
+        private SimpleDraweeView imageV;
 
         public SpeakerViewHolder(View itemView) {
             super(itemView);

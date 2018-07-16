@@ -1,10 +1,10 @@
 package com.macbitsgoa.events.speakers;
 
 public class Speaker {
-    String Name;
-    String Desc;
-    String imgURL;
-    String clickURL;
+    public String Name;
+    public String Desc;
+    public String imgURL;
+    public String clickURL;
 
     public Speaker() {
         Name = "";
