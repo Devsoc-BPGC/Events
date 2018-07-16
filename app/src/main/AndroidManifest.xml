@@ -96,8 +96,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".sponsors.SponsorActivity"/>
-        <activity android:name=".festmerch.FestMerchActivity"/>
+        <activity android:name=".sponsors.SponsorActivity" />
+        <activity android:name=".festmerch.FestMerchActivity" />
         <activity android:name=".speakers.SpeakersActivity" />
 
     </application>

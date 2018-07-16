@@ -27,6 +27,7 @@ public class SpeakersActivity extends FragmentActivity {
     private ArrayList<Speaker> SpeakerList = new ArrayList<>();
 
     private static String TAG = SpeakersActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,7 @@ public class SpeakersActivity extends FragmentActivity {
 
 
         RecyclerView speakersRV = findViewById(R.id.speakers_RV);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         speakersRV.setLayoutManager(layoutManager);
 
 
@@ -43,8 +44,7 @@ public class SpeakersActivity extends FragmentActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot child : dataSnapshot.getChildren())
-                {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
                     Speaker speaker1 = new Speaker();
                     speaker1.Name = child.child("name").getValue(String.class);
                     speaker1.Desc = child.child("desc").getValue(String.class);
@@ -54,18 +54,17 @@ public class SpeakersActivity extends FragmentActivity {
                     SpeakerList.add(speaker1);
                 }
 
-                SpeakersAdapter adapter = new SpeakersAdapter(SpeakerList,SpeakersActivity.this);
+                SpeakersAdapter adapter = new SpeakersAdapter(SpeakerList, SpeakersActivity.this);
                 speakersRV.setAdapter(adapter);
 
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.e(TAG,databaseError.getMessage());
+                Log.e(TAG, databaseError.getMessage());
 
             }
         });
-
 
 
     }

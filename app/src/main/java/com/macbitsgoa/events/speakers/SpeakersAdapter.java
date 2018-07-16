@@ -36,7 +36,7 @@ public class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Speake
     @Override
     public SpeakerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view= layoutInflater.inflate(R.layout.item_speaker_details,parent,false);
+        View view = layoutInflater.inflate(R.layout.item_speaker_details, parent, false);
         return new SpeakerViewHolder(view);
 
     }
@@ -51,8 +51,7 @@ public class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Speake
         return SpeakerList.size();
     }
 
-    public class SpeakerViewHolder extends RecyclerView.ViewHolder
-    {
+    public class SpeakerViewHolder extends RecyclerView.ViewHolder {
         private TextView nameTV;
         private TextView descTV;
         private SimpleDraweeView imageV;
@@ -64,8 +63,7 @@ public class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Speake
             descTV = itemView.findViewById(R.id.speaker_desc);
         }
 
-        public void populateSpeaker(Speaker speaker)
-        {
+        public void populateSpeaker(Speaker speaker) {
             nameTV.setText(speaker.Name);
             descTV.setText(speaker.Desc);
             imageV.setImageURI(speaker.imgURL);
@@ -79,9 +77,9 @@ public class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Speake
 
                     CustomTabsIntent.Builder intentBuilder = new CustomTabsIntent.Builder();
                     intentBuilder.setToolbarColor(R.color.colorPrimary);
-                    intentBuilder.setSecondaryToolbarColor( R.color.colorPrimaryDark);
+                    intentBuilder.setSecondaryToolbarColor(R.color.colorPrimaryDark);
                     CustomTabsIntent customTabsIntent = intentBuilder.build();
-                    customTabsIntent.launchUrl(context,Uri.parse(url));
+                    customTabsIntent.launchUrl(context, Uri.parse(url));
 
                 }
             });

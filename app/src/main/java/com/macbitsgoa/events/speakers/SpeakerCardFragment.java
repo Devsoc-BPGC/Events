@@ -13,15 +13,14 @@ import com.macbitsgoa.events.home.HomeCardInterface;
 import androidx.fragment.app.Fragment;
 
 /*
-* Created by Hariram.R
-* 13/06/2018
-* */
+ * Created by Hariram.R
+ * 13/06/2018
+ * */
 
-public class SpeakerCardFragment extends Fragment implements HomeCardInterface{
+public class SpeakerCardFragment extends Fragment implements HomeCardInterface {
 
 
-    public static SpeakerCardFragment newInstance()
-    {
+    public static SpeakerCardFragment newInstance() {
         SpeakerCardFragment fragment = new SpeakerCardFragment();
         Bundle bundle = new Bundle();
         fragment.setArguments(bundle);
@@ -37,7 +36,7 @@ public class SpeakerCardFragment extends Fragment implements HomeCardInterface{
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent launchSpeakersIntent = new Intent(view.getContext(),SpeakersActivity.class);
+                Intent launchSpeakersIntent = new Intent(view.getContext(), SpeakersActivity.class);
                 startActivity(launchSpeakersIntent);
 
             }
