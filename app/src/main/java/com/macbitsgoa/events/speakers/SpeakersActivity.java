@@ -25,8 +25,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class SpeakersActivity extends FragmentActivity {
 
     private ArrayList<Speaker> SpeakerList = new ArrayList<>();
-    
-    private DatabaseReference databaseReference;
 
     private static String TAG = SpeakersActivity.class.getSimpleName();
     @Override
@@ -40,7 +38,7 @@ public class SpeakersActivity extends FragmentActivity {
         speakersRV.setLayoutManager(layoutManager);
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("speakers");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("speakers");
         databaseReference.keepSynced(true);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
