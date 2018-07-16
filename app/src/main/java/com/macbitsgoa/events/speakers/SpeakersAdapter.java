@@ -76,8 +76,10 @@ public class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.Speake
                     context.startActivity(intent);*/
 
                     CustomTabsIntent.Builder intentBuilder = new CustomTabsIntent.Builder();
-                    intentBuilder.setToolbarColor(R.color.colorPrimary);
-                    intentBuilder.setSecondaryToolbarColor(R.color.colorPrimaryDark);
+                    intentBuilder.setToolbarColor(context.getResources().
+                            getColor(R.color.colorPrimary));
+                    intentBuilder.setSecondaryToolbarColor(context.getResources().
+                            getColor(R.color.colorPrimaryDark));
                     CustomTabsIntent customTabsIntent = intentBuilder.build();
                     customTabsIntent.launchUrl(context, Uri.parse(url));
 
