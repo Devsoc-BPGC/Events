@@ -15,10 +15,8 @@ public class TabFragment extends Fragment {
 
     private Tabs tabInfo;
 
-    public TabFragment() {}
-
-    public static TabFragment getInstance(Tabs tabInfo) {
-        final TabFragment tabFragment = new TabFragment();
+    public static TabFragment getInstance (Tabs tabInfo) {
+        TabFragment tabFragment = new TabFragment();
         tabFragment.tabInfo = tabInfo;
         return tabFragment;
     }
@@ -27,7 +25,6 @@ public class TabFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_timeline, container, false);
-        return rootView;
+        return inflater.inflate(R.layout.activity_timeline, container, false);
     }
 }

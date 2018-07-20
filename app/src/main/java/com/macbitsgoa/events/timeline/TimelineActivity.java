@@ -1,13 +1,8 @@
 package com.macbitsgoa.events.timeline;
 
 import android.os.Bundle;
-import android.support.*;
-import android.util.Log;
-import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 import com.macbitsgoa.events.BuildConfig;
 import com.macbitsgoa.events.R;
 
@@ -20,9 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-//import androidx.viewpager.widget.ViewPager;
 
 
 /**
@@ -31,23 +24,11 @@ import androidx.viewpager.widget.ViewPager;
  */
 public class TimelineActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-
-    private String eventName;
-    private String eventCategory;
-    private String eventSession;
-    private String eventVenue;
-    private String eventTime;
-
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private ValueEventListener mEventRefListener;
 
+    private ArrayList<Tabs> tabInfo = new ArrayList<>();
 
-    ArrayList<Tabs> tabInfo = new ArrayList<>();
-
-    DatabaseReference databaseReference;
-    //final int maxSize = 20;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -99,7 +80,7 @@ class ViewPagerAdapter extends FragmentPagerAdapter {
     private final List<Fragment> fragmentList = new ArrayList<>();
     private final List<String> fragmentTitleList = new ArrayList<>();
 
-    public ViewPagerAdapter(FragmentManager manager) {
+    ViewPagerAdapter(FragmentManager manager) {
         super(manager);
     }
 
