@@ -22,6 +22,6 @@ public class TabFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_timeline, container, false);
+        return inflater.inflate(R.layout.activity_timeline_event, container, false);
     }
 }

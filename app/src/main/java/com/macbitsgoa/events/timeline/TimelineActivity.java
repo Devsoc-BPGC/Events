@@ -35,7 +35,7 @@ public class TimelineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
 
-        final Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
+        final Toolbar toolbar = findViewById(R.id.activity_timeline_toolbar);
         toolbar.setTitle(getString(R.string.timeline));
         setSupportActionBar(toolbar);
 
