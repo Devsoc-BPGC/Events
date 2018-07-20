@@ -13,12 +13,9 @@ import androidx.fragment.app.Fragment;
 
 public class TabFragment extends Fragment {
 
-    private Tabs tabInfo;
 
     public static TabFragment getInstance (Tabs tabInfo) {
-        TabFragment tabFragment = new TabFragment();
-        tabFragment.tabInfo = tabInfo;
-        return tabFragment;
+        return new TabFragment();
     }
 
     @Nullable
