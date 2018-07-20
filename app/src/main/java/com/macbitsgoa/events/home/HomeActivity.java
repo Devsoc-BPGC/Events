@@ -15,6 +15,7 @@ import com.macbitsgoa.events.sponsors.SponsorsFragment;
 import com.macbitsgoa.events.feed.FeedCardFragment;
 import com.macbitsgoa.events.maps.MapCardFragment;
 import com.macbitsgoa.events.maps.MapsActivity;
+import com.macbitsgoa.events.timeline.TimelineActivity;
 import com.macbitsgoa.events.timeline.TimelineCardFragment;
 
 import androidx.annotation.NonNull;
@@ -163,6 +164,11 @@ public class HomeActivity extends AppCompatActivity implements
 
             case (R.id.nav_about_developers): {
                 startActivity(new Intent(HomeActivity.this, AboutMacActivity.class));
+                break;
+            }
+
+            case (R.id.nav_timeline): {
+                startActivity(new Intent(HomeActivity.this, TimelineActivity.class));
                 break;
             }
 
