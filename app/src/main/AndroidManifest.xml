@@ -64,6 +64,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
+
         </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
