@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--suppress LongLine -->
+<?xml version="1.0" encoding="utf-8"?><!--TODO: update to show more info. -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -23,17 +23,12 @@
         tools:text="[Eliminations] Robot Wars" />
 
     <com.google.android.material.chip.Chip
-        android:id="@+id/chip_duration"
+        android:id="@+id/chip_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:drawableStart="@drawable/ic_watch_24dp"
-        android:drawablePadding="4dp"
-        android:gravity="center_vertical"
-        android:paddingStart="4dp"
-        android:paddingEnd="8dp"
-        android:textAllCaps="false"
         android:textSize="12sp"
+        app:chipIcon="@drawable/ic_watch_24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_event_name"
         tools:text="50 min" />

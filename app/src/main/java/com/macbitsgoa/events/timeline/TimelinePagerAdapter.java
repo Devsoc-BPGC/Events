@@ -19,14 +19,14 @@ import static com.macbitsgoa.events.Utilities.TAG_PREFIX;
 
 /**
  * {@link FragmentStatePagerAdapter} for "tab" fragments of timeline activity.
+ *
  * @author Rushikesh Jogdand.
  */
 public class TimelinePagerAdapter extends FragmentStatePagerAdapter {
 
-    @SuppressWarnings("StringConcatenationMissingWhitespace")
     private static final String TAG = TAG_PREFIX + TimelinePagerAdapter.class.getSimpleName();
 
-    TimelinePagerAdapter(final FragmentManager fm) {
+    public TimelinePagerAdapter(final FragmentManager fm) {
         super(fm);
     }
 
@@ -35,7 +35,7 @@ public class TimelinePagerAdapter extends FragmentStatePagerAdapter {
         final String date = getDateForPosition(position);
         return date == null
                 ? new DayFragment()
-                : DayFragment.getInstance(date);
+                : DayFragment.getInstance(date, position);
     }
 
     private static String getDateForPosition(final int day) {

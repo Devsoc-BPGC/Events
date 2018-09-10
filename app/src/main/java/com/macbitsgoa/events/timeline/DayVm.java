@@ -1,34 +1,31 @@
 package com.macbitsgoa.events.timeline;
 
-import java.util.ArrayList;
+import android.app.Application;
+
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModel;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProviders;
+
 
 /**
- * View model for {@link DayFragment}.
+ * Data for a single day tab in timeline activity.
+ * Use this via {@link #getVmForDay(int, Fragment)}.
  * @author Rushikesh Jogdand.
  */
-public class DayVm extends ViewModel {
-    private List<String> startTimeList;
+public class DayVm extends AndroidViewModel {
+    public LiveData<List<Session>> sessions;
 
-    /**
-     * Initializes the view model with required parameters.
-     *
-     * @param date of the fragment in "dd,mm,yyyy" format
-     */
-    public void init(@NonNull final String date) {
-        startTimeList = new ArrayList<>(0);
-        startTimeList.add(date + ",10,00");
-        startTimeList.add(date + ",11,00");
-        startTimeList.add(date + ",12,00");
-        startTimeList.add(date + ",13,00");
-        startTimeList.add(date + ",14,00");
-        startTimeList.add(date + ",15,00");
+    public DayVm(final Application application, final int day) {
+        super(application);
+        final TimelineRepo repo = new TimelineRepo(application);
+        sessions = repo.getSessionsOfDay(day);
     }
 
-    public List<String> getStartTimeList() {
-        return startTimeList;
+    public static DayVm getVmForDay(int day, Fragment fragment) {
+        return ViewModelProviders.of(fragment, new DayVmFactory(fragment.getActivity().getApplication(), day)).get(DayVm.class);
     }
 }
+

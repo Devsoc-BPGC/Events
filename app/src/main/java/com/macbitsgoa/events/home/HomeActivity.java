@@ -17,6 +17,7 @@ import com.macbitsgoa.events.maps.MapCardFragment;
 import com.macbitsgoa.events.maps.MapsActivity;
 import com.macbitsgoa.events.timeline.TimelineActivity;
 import com.macbitsgoa.events.timeline.TimelineCardFragment;
+import com.macbitsgoa.events.timeline.TimelineRepo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -30,6 +31,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import static com.macbitsgoa.events.Events.playStoreLink;
 import static com.macbitsgoa.events.Utilities.MIME_TYPE_PLAINTEXT;
+import static com.macbitsgoa.events.timeline.TimelineActivity.launchTimeLineActivity;
 
 /**
  * Main Activity of the App.
@@ -168,7 +170,7 @@ public class HomeActivity extends AppCompatActivity implements
             }
 
             case (R.id.nav_timeline): {
-                startActivity(new Intent(HomeActivity.this, TimelineActivity.class));
+                launchTimeLineActivity(this);
                 break;
             }
 
