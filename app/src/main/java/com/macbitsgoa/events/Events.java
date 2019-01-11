@@ -34,7 +34,7 @@ public class Events extends Application {
         FirebaseMessaging.getInstance().subscribeToTopic(TOPIC_ABOUT_APP)
                 .addOnCompleteListener(task -> {
                     if (BuildConfig.DEBUG) {
-                        Log.i(TAG, "subscription to topis" + TOPIC_ABOUT_APP
+                        Log.i(TAG, "subscription to topics" + TOPIC_ABOUT_APP
                                 + " isSuccessful : " + task.isSuccessful());
                     }
                 });
