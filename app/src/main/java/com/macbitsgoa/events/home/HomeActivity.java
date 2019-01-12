@@ -70,11 +70,12 @@ public class HomeActivity extends AppCompatActivity implements
         }
         // example use of build config variable
 
+        if(BuildConfig.timer) {
             fragmentTransaction.add(R.id.ll_home,
                     new TimerCardFragment(),
                     "timer"
             );
-
+        }
 
         if (BuildConfig.eateries) {
             fragmentTransaction.add(R.id.ll_home,

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
+import com.macbitsgoa.events.BuildConfig;
 import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.home.HomeCardInterface;
 
@@ -35,12 +36,6 @@ public class TimerCardFragment extends Fragment
                         container, false);
         final TextView tv= (TextView) selfCard.findViewById(R.id.timer_text);
 
-        int daysToGo =1;
-        int hoursToGo = 0;
-        int minutesToGo = 0;
-        int secondsToGo = 30;
-
-        int millisToGo = secondsToGo*1000+minutesToGo*1000*60+hoursToGo*1000*60*60+daysToGo*1000*60*60*24;
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
         formatter.setLenient(false);
@@ -62,7 +57,7 @@ public class TimerCardFragment extends Fragment
 
         long diff = milliseconds - startTime;
 
-        new CountDownTimer(diff,1000) {
+        new CountDownTimer(diff,1) {
 
             @Override
             public void onTick(long millis) {
@@ -70,17 +65,16 @@ public class TimerCardFragment extends Fragment
                 int seconds = (int) (millis / 1000) % 60 ;
                 int minutes = (int) ((millis / (1000*60)) % 60);
                 int hours   = (int) ((millis / (1000*60*60)) % 24);
-                String text = String.format("%02d days, %02d hours, %02d minutes, %02d seconds",days,hours,minutes,seconds);
+                String text = String.format("%02d Days \n %02d:%02d:%02d.%03d",days,hours,minutes,seconds,millis%1000);
                 tv.setText(text);
             }
 
             @Override
             public void onFinish() {
-                tv.setText("Kabooom");
+                tv.setText(BuildConfig.eventName);
             }
         }.start();
-        //selfCard.setOnClickListener(view ->
-                //startActivity(new Intent(view.getContext(), EateriesActivity.class)));
+
         return selfCard;
     }
 }

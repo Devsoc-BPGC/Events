@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/timer_text"
         android:text="@string/timer"
+        android:textAlignment="gravity"
         android:textSize="32sp"
         android:layout_gravity="center"/>
 
