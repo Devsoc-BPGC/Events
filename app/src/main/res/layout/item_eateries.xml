@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:id="@+id/cardview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:cardElevation="5dp"
+    android:layout_margin="4dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@color/colorPrimaryDark"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/eateries_pic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:viewAspectRatio="1.33"
+            app:placeholderImage="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/eateries_name"
+            android:gravity="left"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:id="@+id/eateries_desc"
+            android:textStyle="italic"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:id="@+id/eateries_loc"
+            android:gravity="right"
+            android:textSize="25sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
