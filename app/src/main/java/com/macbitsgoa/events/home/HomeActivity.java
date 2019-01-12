@@ -18,6 +18,7 @@ import com.macbitsgoa.events.maps.MapsActivity;
 import com.macbitsgoa.events.timeline.TimelineActivity;
 import com.macbitsgoa.events.timeline.TimelineCardFragment;
 import com.macbitsgoa.events.timeline.TimelineRepo;
+import com.macbitsgoa.events.timer.TimerCardFragment;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -68,6 +69,14 @@ public class HomeActivity extends AppCompatActivity implements
             }
         }
         // example use of build config variable
+
+        if(BuildConfig.timer) {
+            fragmentTransaction.add(R.id.ll_home,
+                    new TimerCardFragment(),
+                    "timer"
+            );
+        }
+
         if (BuildConfig.eateries) {
             fragmentTransaction.add(R.id.ll_home,
                     new EateriesCardFragment(),

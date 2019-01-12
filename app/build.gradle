@@ -26,12 +26,14 @@ android {
         buildConfigField "boolean", "timeline", "true"
         buildConfigField "boolean","sponsors","true"
         buildConfigField "boolean","festmerch","true"
+        buildConfigField "boolean","timer","true"
         buildConfigField "int", "eventDuration", "4" // days
         buildConfigField "String", "startDate", "\"30,05,2018\"" // "dd,mm,yyyy"
+        buildConfigField "String", "timerEndDate", "\"31.01.2019, 17:30:00\""
+        buildConfigField "String", "eventName", "\"Quark'19\""
         buildConfigField "String", "startDateFormat", "\"dd,MM,yyyy\""
         buildConfigField "String", "timelineTabDateFormat", "\"d MMM\""
         buildConfigField "String", "sessionTimeFormat", "\"h:m\""
-
         buildConfigField "float", "mapDefZoom", "16.0f"
         buildConfigField "float", "mapDefCentralLat", "15.392199f"
         buildConfigField "float", "mapDefCentralLng", "73.878609f"
