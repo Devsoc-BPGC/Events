@@ -2,14 +2,28 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="@dimen/min_feature_card_height">
+    android:layout_height="238dp"
+    android:maxHeight="@dimen/min_feature_card_height">
+
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/animgif"
+        android:background="#000000"
+        android:foregroundGravity="fill"
+        android:src="@drawable/animq"
+        />
+
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/timer_text"
         android:text="@string/timer"
         android:textAlignment="gravity"
+        android:textColor="@color/colorMac"
         android:textSize="32sp"
         android:layout_gravity="center"/>
 

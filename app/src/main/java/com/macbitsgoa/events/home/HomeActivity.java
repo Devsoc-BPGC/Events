@@ -11,6 +11,7 @@ import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.aboutfest.AboutEventActivity;
 import com.macbitsgoa.events.aboutmac.AboutMacActivity;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
+import com.macbitsgoa.events.speakers.SpeakersActivity;
 import com.macbitsgoa.events.sponsors.SponsorsFragment;
 import com.macbitsgoa.events.feed.FeedCardFragment;
 import com.macbitsgoa.events.maps.MapCardFragment;
@@ -180,6 +181,10 @@ public class HomeActivity extends AppCompatActivity implements
 
             case (R.id.nav_timeline): {
                 launchTimeLineActivity(this);
+                break;
+            }
+            case (R.id.nav_speakers): {
+                startActivity(new Intent(HomeActivity.this, SpeakersActivity.class));
                 break;
             }
 

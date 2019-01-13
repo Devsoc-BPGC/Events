@@ -1,13 +1,11 @@
 package com.macbitsgoa.events.timer;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.google.android.material.card.MaterialCardView;
 import com.macbitsgoa.events.BuildConfig;
 import com.macbitsgoa.events.R;
@@ -18,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import androidx.fragment.app.Fragment;
+
 
 /**
  * The fragment for feature eateries to be shown on home screen
