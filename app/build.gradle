@@ -24,9 +24,9 @@ android {
         resValue "bool", "feed", "true"
         buildConfigField "boolean", "shouldShowMapOnHome", "true"
         buildConfigField "boolean", "timeline", "true"
-        buildConfigField "boolean","sponsors","true"
-        buildConfigField "boolean","festmerch","true"
-        buildConfigField "boolean","timer","true"
+        buildConfigField "boolean", "sponsors", "true"
+        buildConfigField "boolean", "festmerch", "true"
+        buildConfigField "boolean", "timer", "true"
         buildConfigField "int", "eventDuration", "4" // days
         buildConfigField "String", "startDate", "\"30,05,2018\"" // "dd,mm,yyyy"
         buildConfigField "String", "timerEndDate", "\"31.01.2019, 17:30:00\""
@@ -97,6 +97,8 @@ dependencies {
         exclude group: 'org.apache.httpcomponents'
     }
     implementation 'com.github.esafirm.android-image-picker:imagepicker:1.13.0'
+
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
 
     // https://github.com/amitshekhariitbhu/Android-Debug-Database
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.4'

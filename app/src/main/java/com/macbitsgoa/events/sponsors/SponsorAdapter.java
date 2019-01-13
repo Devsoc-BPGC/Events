@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.macbitsgoa.events.R;
 import com.squareup.picasso.Picasso;
 
@@ -37,9 +40,11 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final SponsorItem sponsorItem=sponsorItems.get(position);
         holder.textViewsponsorName.setText(sponsorItem.getSponsorName());
-         Picasso.get()
-                .load(sponsorItem.getSponsorLogo())
-                .into(holder.imageViewsponsorImage);
+         Fresco.initialize(context);
+         holder.imageViewsponsorImage.setImageURI(sponsorItem.getSponsorLogo());
+         //Picasso.get()
+              //  .load(sponsorItem.getSponsorLogo())
+              //  .into(holder.imageViewsponsorImage);
 
         holder.cardView.setOnClickListener((View v) -> {
             final CustomTabsIntent intent=new CustomTabsIntent.Builder().build();
@@ -57,8 +62,8 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView textViewsponsorName;
-        public ImageView imageViewsponsorImage;
         public CardView cardView;
+        public SimpleDraweeView imageViewsponsorImage;
 
 
         public ViewHolder(@NonNull View itemView) {
