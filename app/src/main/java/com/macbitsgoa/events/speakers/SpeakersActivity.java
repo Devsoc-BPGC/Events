@@ -59,7 +59,7 @@ public class SpeakersActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("merch");
+        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("speakers");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
