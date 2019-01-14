@@ -28,7 +28,8 @@ public class SpeakersActivity extends AppCompatActivity {
     public RecyclerView recyclerView;
     public RecyclerView.Adapter adapter;
     private Browser browser;
-    private ArrayList<Speakers> speakersList = new ArrayList<>(0);
+    private ArrayList<Speakers> speakerList = new ArrayList<>(0); //ChangeMade
+    public String desc,designation,imageUrl,name,onClickUrl;  //ChangeMade
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,16 +60,24 @@ public class SpeakersActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("merch");
+        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference().child("speakers");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    speakersList.add(child.getValue(Speakers.class));
+                    //speakersList.add(child.getValue(Speakers.class));
+                    desc=child.child("desc").getValue(String.class); //ChangeStarted
+                    designation=child.child("designation").getValue(String.class);
+                    imageUrl=child.child("imageUrl").getValue(String.class);
+                    name=child.child("name").getValue(String.class);
+                    onClickUrl=child.child("onClickUrl").getValue(String.class);
+
+                    Speakers speakersList=new Speakers(imageUrl,name,desc,designation,onClickUrl);
+                    speakerList.add(speakersList);
                 }
 
-                adapter = new SpeakersAdapter(speakersList, browser);
+                adapter = new SpeakersAdapter(speakerList, browser, getApplicationContext()); //ChangeEnded
                 recyclerView.setAdapter(adapter);
             }
 

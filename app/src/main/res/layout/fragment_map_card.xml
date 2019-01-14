@@ -1,14 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="238dp"
+
+    android:layout_marginHorizontal="24dp"
+    android:layout_marginBottom="24dp"
+    app:cardCornerRadius="8dp"
     android:minHeight="@dimen/min_feature_card_height">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/item_sponsors_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:actualImageResource="@drawable/maps"
+            app:placeholderImage="@drawable/thumb_placeholder"
+            app:roundedCornerRadius="0dp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/custom_gradient_bottom_b"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="top"
+            android:background="@drawable/custom_gradient_top_b"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:background="@drawable/backgroundtint"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:tint="#cecece"
+        android:src="@drawable/ic_map_black_24dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/map"
-        android:textSize="32sp"
+        android:textSize="50sp"
+        android:fontFamily="@font/bgothm"
+        android:textColor="#cecece"
         android:layout_gravity="center"/>
-
+    </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

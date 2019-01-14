@@ -96,9 +96,35 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".sponsors.SponsorActivity" />
-        <activity android:name=".festmerch.FestMerchActivity" />
-        <activity android:name=".speakers.SpeakersActivity"></activity>
+        <activity
+            android:name=".sponsors.SponsorActivity"
+            android:parentActivityName=".home.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.macbitsgoa.events.home.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".festmerch.FestMerchActivity"
+            android:parentActivityName=".home.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.macbitsgoa.events.home.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".Nights.NightsActivity"
+            android:parentActivityName=".home.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.macbitsgoa.events.home.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".speakers.SpeakersActivity"
+            android:parentActivityName=".home.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.macbitsgoa.events.home.HomeActivity" />
+        </activity>
+        <activity android:name=".SocialActivity"></activity>
     </application>
 
 </manifest>

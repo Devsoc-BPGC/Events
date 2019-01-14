@@ -1,10 +1,12 @@
 package com.macbitsgoa.events.festmerch;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.macbitsgoa.events.Browser;
 import com.macbitsgoa.events.R;
@@ -17,10 +19,12 @@ import androidx.recyclerview.widget.RecyclerView;
 public class FestMerchAdapter extends RecyclerView.Adapter<FestMerchAdapter.ViewHolder> {
 
     private final Browser browser;
+    private Context context;
     private ArrayList<com.macbitsgoa.events.festmerch.Merchandise> merchandiseList;
 
-    public FestMerchAdapter(ArrayList<com.macbitsgoa.events.festmerch.Merchandise> list, Browser browser) {
+    public FestMerchAdapter(ArrayList<com.macbitsgoa.events.festmerch.Merchandise> list, Browser browser, Context context) {
         this.browser = browser;
+        this.context = context;
         merchandiseList = list;
     }
 
@@ -34,6 +38,7 @@ public class FestMerchAdapter extends RecyclerView.Adapter<FestMerchAdapter.View
 
     @Override
     public void onBindViewHolder(FestMerchAdapter.ViewHolder holder, int position) {
+        Fresco.initialize(context);
         holder.populate(merchandiseList.get(position));
     }
 

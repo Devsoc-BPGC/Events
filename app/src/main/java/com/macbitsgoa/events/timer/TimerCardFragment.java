@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.material.card.MaterialCardView;
 import com.macbitsgoa.events.BuildConfig;
 import com.macbitsgoa.events.R;
@@ -30,11 +33,13 @@ public class TimerCardFragment extends Fragment
     @Override
     public View onCreateView(final LayoutInflater inflater,
                              final ViewGroup container, final Bundle savedInstanceState) {
+        Fresco.initialize(getContext());
         final MaterialCardView selfCard =
                 (MaterialCardView) inflater.inflate(R.layout.fragment_timer_card,
                         container, false);
-        final TextView tv= (TextView) selfCard.findViewById(R.id.timer_text);
-
+        final TextView tv1= (TextView) selfCard.findViewById(R.id.timer_text_day);
+        final TextView tv2= (TextView) selfCard.findViewById(R.id.timer_text_time);
+        final SimpleDraweeView q19= selfCard.findViewById(R.id.item_timer_image);
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
         formatter.setLenient(false);
@@ -64,13 +69,17 @@ public class TimerCardFragment extends Fragment
                 int seconds = (int) (millis / 1000) % 60 ;
                 int minutes = (int) ((millis / (1000*60)) % 60);
                 int hours   = (int) ((millis / (1000*60*60)) % 24);
-                String text = String.format("%02d Days \n %02d:%02d:%02d.%03d",days,hours,minutes,seconds,millis%1000);
-                tv.setText(text);
+                String text1 = String.format("%02d Days",days);
+                tv1.setText(text1);
+                String text2 = String.format("%02d:%02d:%02d",hours,minutes,seconds);
+                tv2.setText(text2);
             }
 
             @Override
             public void onFinish() {
-                tv.setText(BuildConfig.eventName);
+                tv1.setVisibility(View.GONE);
+                tv2.setVisibility(View.GONE);
+                q19.setVisibility(View.VISIBLE);
             }
         }.start();
 

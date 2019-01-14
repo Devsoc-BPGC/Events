@@ -68,7 +68,7 @@ public class FestMerchActivity extends AppCompatActivity{
                     merchandiseList.add(child.getValue(Merchandise.class));
                 }
 
-                adapter = new FestMerchAdapter(merchandiseList, browser);
+                adapter = new FestMerchAdapter(merchandiseList, browser, getApplicationContext());
                 recyclerView.setAdapter(adapter);
             }
 

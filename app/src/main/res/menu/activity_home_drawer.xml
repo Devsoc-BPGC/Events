@@ -19,6 +19,11 @@
             android:icon="@drawable/ic_timeline_black_24dp" />
 
         <item
+            android:id="@+id/nav_nights"
+            android:title="Nights"
+            android:icon="@drawable/ic_star_black_24dp" />
+
+        <item
             android:id="@+id/nav_speakers"
             android:title="Speakers"
             android:icon="@drawable/ic_speaker_black_24dp" />
