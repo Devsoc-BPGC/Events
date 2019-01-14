@@ -96,6 +96,7 @@
             </intent-filter>
         </service>
 
+
         <activity
             android:name=".sponsors.SponsorActivity"
             android:parentActivityName=".home.HomeActivity">
@@ -125,6 +126,7 @@
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
         </activity>
         <activity android:name=".SocialActivity"></activity>
+
     </application>
 
 </manifest>
