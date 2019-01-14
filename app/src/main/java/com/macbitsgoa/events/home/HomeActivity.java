@@ -2,23 +2,23 @@ package com.macbitsgoa.events.home;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 import com.macbitsgoa.events.BuildConfig;
+import com.macbitsgoa.events.Nights.NightsActivity;
 import com.macbitsgoa.events.R;
+import com.macbitsgoa.events.SocialActivity;
 import com.macbitsgoa.events.aboutfest.AboutEventActivity;
 import com.macbitsgoa.events.aboutmac.AboutMacActivity;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
 import com.macbitsgoa.events.speakers.SpeakersActivity;
 import com.macbitsgoa.events.sponsors.SponsorsFragment;
-import com.macbitsgoa.events.feed.FeedCardFragment;
 import com.macbitsgoa.events.maps.MapCardFragment;
 import com.macbitsgoa.events.maps.MapsActivity;
-import com.macbitsgoa.events.timeline.TimelineActivity;
 import com.macbitsgoa.events.timeline.TimelineCardFragment;
-import com.macbitsgoa.events.timeline.TimelineRepo;
 import com.macbitsgoa.events.timer.TimerCardFragment;
 
 import androidx.annotation.NonNull;
@@ -32,6 +32,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import static com.macbitsgoa.events.Events.playStoreLink;
+import static com.macbitsgoa.events.Utilities.EVENTS;
 import static com.macbitsgoa.events.Utilities.MIME_TYPE_PLAINTEXT;
 import static com.macbitsgoa.events.timeline.TimelineActivity.launchTimeLineActivity;
 
@@ -45,6 +46,7 @@ public class HomeActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
+
 
     @Override
     public void onBackPressed() {
@@ -85,12 +87,12 @@ public class HomeActivity extends AppCompatActivity implements
             );
         }
 
-        if (BuildConfig.feed) {
+        /*if (BuildConfig.feed) {
             fragmentTransaction.add(R.id.ll_home,
                     new FeedCardFragment(),
                     "feed"
             );
-        }
+        }*/
 
         if (BuildConfig.timeline) {
             fragmentTransaction.add(R.id.ll_home,
@@ -127,6 +129,7 @@ public class HomeActivity extends AppCompatActivity implements
         initViews();
 
         drawerLayout = findViewById(R.id.drawer_layout);
+
 
         final NavigationView navigationView;
         navigationView = findViewById(R.id.nav_view);
@@ -169,6 +172,18 @@ public class HomeActivity extends AppCompatActivity implements
 
             }
 
+            case (R.id.nav_registration): {
+                Uri uri = Uri.parse(EVENTS);
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                break;
+            }
+
+            case (R.id.nav_nights): {
+                startActivity(new Intent(HomeActivity.this, NightsActivity.class));
+                break;
+
+            }
+
             case (R.id.nav_about_event): {
                 startActivity(new Intent(HomeActivity.this, AboutEventActivity.class));
                 break;
@@ -187,6 +202,11 @@ public class HomeActivity extends AppCompatActivity implements
                 startActivity(new Intent(HomeActivity.this, SpeakersActivity.class));
                 break;
             }
+            case (R.id.nav_social): {
+                startActivity(new Intent(HomeActivity.this, SocialActivity.class));
+                break;
+            }
+
 
             default: {
                 break;

@@ -1,30 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="238dp"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="#00000000"
     android:maxHeight="@dimen/min_feature_card_height">
 
 
-    <pl.droidsonroids.gif.GifImageView
+    <!--pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/animgif"
         android:background="#000000"
         android:foregroundGravity="fill"
-        android:src="@drawable/animq"
-        />
+        android:src="@drawable/animt"
+        /-->
 
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingBottom="20dp"
+    >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/timer_text"
+        android:id="@+id/timer_text_day"
         android:text="@string/timer"
         android:textAlignment="gravity"
-        android:textColor="@color/colorMac"
-        android:textSize="32sp"
+        android:textColor="#cecece"
+        android:textSize="60sp"
+        android:background="#00000000"
+        android:fontFamily="@font/bgothm"
         android:layout_gravity="center"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="22dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timer_text_time"
+        android:text="@string/timer"
+        android:textAlignment="gravity"
+        android:textColor="#cecece"
+        android:textSize="50sp"
+        android:background="#00000000"
+        android:fontFamily="@font/bgothm"
+        android:layout_gravity="center"/>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/item_timer_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:roundedCornerRadius="0dp"
+        android:paddingHorizontal="22dp"
+        android:paddingBottom="22dp"
+        android:visibility="gone"
+        app:actualImageResource="@drawable/q19"
+        />
+</LinearLayout>
+
 
 </com.google.android.material.card.MaterialCardView>

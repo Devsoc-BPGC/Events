@@ -1,10 +1,12 @@
 package com.macbitsgoa.events.speakers;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.macbitsgoa.events.Browser;
 import com.macbitsgoa.events.R;
@@ -17,11 +19,14 @@ import androidx.recyclerview.widget.RecyclerView;
 public class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.ViewHolder>
 {
     private final Browser browser;
+    private Context context;
     private ArrayList<com.macbitsgoa.events.speakers.Speakers> speakersList;
 
-    public SpeakersAdapter(ArrayList<com.macbitsgoa.events.speakers.Speakers> list, Browser browser) {
+    public SpeakersAdapter(ArrayList<com.macbitsgoa.events.speakers.Speakers> list, Browser browser, Context context) {
         this.browser = browser;
         speakersList = list;
+        this.context = context;
+
     }
 
     @Override
@@ -34,6 +39,7 @@ public class SpeakersAdapter extends RecyclerView.Adapter<SpeakersAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(SpeakersAdapter.ViewHolder holder, int position) {
+        Fresco.initialize(context);
         holder.populate(speakersList.get(position));
     }
 
