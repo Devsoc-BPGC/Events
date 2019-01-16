@@ -12,14 +12,15 @@
     <application
         android:name=".Events"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_quark"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_quark_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity
             android:name=".home.HomeActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,6 +42,7 @@
             android:name=".eateries.EateriesActivity"
             android:enabled="@bool/eateries"
             android:label="@string/title_activity_eateries"
+            android:screenOrientation="portrait"
             android:parentActivityName=".home.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -48,19 +50,22 @@
         </activity>
         <activity
             android:name=".aboutfest.AboutEventActivity"
-            android:parentActivityName=".home.HomeActivity">
+            android:parentActivityName=".home.HomeActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
         </activity>
         <activity
             android:name=".aboutmac.AboutMacActivity"
-            android:parentActivityName=".home.HomeActivity">
+            android:parentActivityName=".home.HomeActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
         </activity>
-        <activity android:name=".timeline.TimelineActivity">
+        <activity android:name=".timeline.TimelineActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
@@ -79,13 +84,16 @@
 
         <activity
             android:name=".maps.MapsActivity"
-            android:label="@string/map">
+            android:label="@string/map"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
         </activity>
-        <activity android:name=".feed.FeedActivity" />
-        <activity android:name=".feed.GetGoogleSignInActivity" />
+        <activity android:name=".feed.FeedActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".feed.GetGoogleSignInActivity"
+            android:screenOrientation="portrait"/>
 
         <service
             android:name=".FcmService"
@@ -99,28 +107,32 @@
 
         <activity
             android:name=".sponsors.SponsorActivity"
-            android:parentActivityName=".home.HomeActivity">
+            android:parentActivityName=".home.HomeActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
         </activity>
         <activity
             android:name=".festmerch.FestMerchActivity"
-            android:parentActivityName=".home.HomeActivity">
+            android:parentActivityName=".home.HomeActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
         </activity>
         <activity
             android:name=".Nights.NightsActivity"
-            android:parentActivityName=".home.HomeActivity">
+            android:parentActivityName=".home.HomeActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
         </activity>
         <activity
             android:name=".speakers.SpeakersActivity"
-            android:parentActivityName=".home.HomeActivity">
+            android:parentActivityName=".home.HomeActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />

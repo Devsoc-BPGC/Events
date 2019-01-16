@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.android.material.card.MaterialCardView;
 import com.macbitsgoa.events.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.ViewHolder> {
@@ -40,11 +40,11 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final SponsorItem sponsorItem=sponsorItems.get(position);
         holder.textViewsponsorName.setText(sponsorItem.getSponsorName());
-         Fresco.initialize(context);
-         holder.imageViewsponsorImage.setImageURI(sponsorItem.getSponsorLogo());
-         //Picasso.get()
-              //  .load(sponsorItem.getSponsorLogo())
-              //  .into(holder.imageViewsponsorImage);
+        Fresco.initialize(context);
+        holder.imageViewsponsorImage.setImageURI(sponsorItem.getSponsorLogo());
+        //Picasso.get()
+        //  .load(sponsorItem.getSponsorLogo())
+        //  .into(holder.imageViewsponsorImage);
 
         holder.cardView.setOnClickListener((View v) -> {
             final CustomTabsIntent intent=new CustomTabsIntent.Builder().build();
@@ -62,7 +62,7 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView textViewsponsorName;
-        public CardView cardView;
+        public MaterialCardView cardView;
         public SimpleDraweeView imageViewsponsorImage;
 
 

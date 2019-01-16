@@ -9,12 +9,14 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 import com.macbitsgoa.events.BuildConfig;
 import com.macbitsgoa.events.Nights.NightsActivity;
+import com.macbitsgoa.events.Nights.NightsFragment;
 import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.SocialActivity;
 import com.macbitsgoa.events.aboutfest.AboutEventActivity;
 import com.macbitsgoa.events.aboutmac.AboutMacActivity;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
 import com.macbitsgoa.events.speakers.SpeakersActivity;
+import com.macbitsgoa.events.speakers.SpeakersFragment;
 import com.macbitsgoa.events.sponsors.SponsorsFragment;
 import com.macbitsgoa.events.maps.MapCardFragment;
 import com.macbitsgoa.events.maps.MapsActivity;
@@ -25,6 +27,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -87,6 +90,20 @@ public class HomeActivity extends AppCompatActivity implements
             );
         }
 
+        if (BuildConfig.nights) {
+            fragmentTransaction.add(R.id.ll_home,
+                    new NightsFragment(),
+                    "nights"
+            );
+        }
+
+        if (BuildConfig.speakers) {
+            fragmentTransaction.add(R.id.ll_home,
+                    new SpeakersFragment(),
+                    "speakers"
+            );
+        }
+
         /*if (BuildConfig.feed) {
             fragmentTransaction.add(R.id.ll_home,
                     new FeedCardFragment(),
@@ -101,11 +118,11 @@ public class HomeActivity extends AppCompatActivity implements
             );
         }
 
-        if (BuildConfig.shouldShowMapOnHome) {
+        /*if (BuildConfig.shouldShowMapOnHome) {
             fragmentTransaction.add(R.id.ll_home,
                     new MapCardFragment(),
                     "map");
-        }
+        }*/
 
         if (BuildConfig.sponsors){
             fragmentTransaction.add(R.id.ll_home,
@@ -165,16 +182,18 @@ public class HomeActivity extends AppCompatActivity implements
                 break;
             }
 
-            case (R.id.nav_maps): {
+            /*case (R.id.nav_maps): {
                 final Intent mapIntent = new Intent(HomeActivity.this, MapsActivity.class);
                 startActivity(mapIntent);
                 break;
 
-            }
+            }*/
 
             case (R.id.nav_registration): {
-                Uri uri = Uri.parse(EVENTS);
-                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                final CustomTabsIntent intent=new CustomTabsIntent.Builder().build();
+                intent.launchUrl(HomeActivity.this, Uri.parse(EVENTS));
+                //Uri uri = Uri.parse(EVENTS);
+                //startActivity(new Intent(Intent.ACTION_VIEW, uri));
                 break;
             }
 

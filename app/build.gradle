@@ -26,6 +26,8 @@ android {
         buildConfigField "boolean", "timeline", "true"
         buildConfigField "boolean", "sponsors", "true"
         buildConfigField "boolean", "festmerch", "true"
+        buildConfigField "boolean", "speakers", "true"
+        buildConfigField "boolean", "nights", "true"
         buildConfigField "boolean", "timer", "true"
         buildConfigField "int", "eventDuration", "4" // days
         buildConfigField "String", "startDate", "\"30,05,2018\"" // "dd,mm,yyyy"

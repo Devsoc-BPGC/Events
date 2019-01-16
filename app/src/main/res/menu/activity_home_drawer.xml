@@ -28,14 +28,14 @@
             android:title="Speakers"
             android:icon="@drawable/ic_speaker_black_24dp" />
 
-        <item
+        <!--item
             android:id="@+id/nav_maps"
             android:title="Maps"
-            android:icon="@drawable/ic_maps_black_24dp" />
+            android:icon="@drawable/ic_maps_black_24dp" /-->
 
         <item
             android:id="@+id/nav_about_event"
-            android:title="About Event"
+            android:title="About Quark'19"
             android:icon="@drawable/ic_about_event_black_24dp" />
 
         <item
