@@ -5,6 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Connect"
+        android:textColor="#ffffff"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:fontFamily="@font/bgothm"/>
+
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/facebook_connect"
         android:layout_width="match_parent"
@@ -13,7 +22,7 @@
         android:layout_gravity="center"
         app:actualImageResource="@drawable/facebook"
         app:actualImageScaleType="fitCenter"
-        android:padding="50sp"></com.facebook.drawee.view.SimpleDraweeView>
+        android:padding="30sp"></com.facebook.drawee.view.SimpleDraweeView>
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/playstore_connect"
@@ -23,7 +32,7 @@
         android:layout_gravity="center"
         app:actualImageResource="@drawable/appstore"
         app:actualImageScaleType="fitCenter"
-        android:padding="50sp"></com.facebook.drawee.view.SimpleDraweeView>
+        android:padding="30sp"></com.facebook.drawee.view.SimpleDraweeView>
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/linkedin_connect"
@@ -33,5 +42,5 @@
         android:layout_gravity="center"
         app:actualImageResource="@drawable/linkedin"
         app:actualImageScaleType="fitCenter"
-        android:padding="50sp"></com.facebook.drawee.view.SimpleDraweeView>
+        android:padding="30sp"></com.facebook.drawee.view.SimpleDraweeView>
 </LinearLayout>

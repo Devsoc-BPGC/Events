@@ -13,11 +13,12 @@
 
     <string name="invalid_url">Invalid URL</string>
 
-    <string name="about_fest">About Fest</string>
+    <string name="about_fest">About Quark\'19</string>
     <string name="about_mac">About MAC</string>
     <string name="timeline">Timeline</string>
     <string name="timer">Timer Test</string>
     <string name="eateries">Eateries</string>
+    <string name="social">Social</string>
     <string name="title_activity_eateries">EateriesActivity</string>
     <string name="eateries_activity_placeholder">Someone please finish me!</string>
     <string name="title_activity_about_fest">AboutFest</string>

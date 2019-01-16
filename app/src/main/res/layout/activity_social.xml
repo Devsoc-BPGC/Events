@@ -1,37 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/fb_q"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        app:actualImageResource="@drawable/facebook"
-        app:actualImageScaleType="fitCenter"
-        android:padding="50sp"/>
+        android:id="@+id/social_appbar"
+        android:background="#00000000"
+        android:elevation="0dp"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/ins_q"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        app:actualImageResource="@drawable/insta"
-        app:actualImageScaleType="fitCenter"
-        android:padding="50sp"/>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/social_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="0dp"
+            android:background="#00000000"
+            app:layout_scrollFlags="enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/tw_q"
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        app:actualImageResource="@drawable/twitter"
-        app:actualImageScaleType="fitCenter"
-        android:padding="50sp"/>
-</LinearLayout>
+        android:layout_height="match_parent">
+    <!--pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:scaleType="fitXY"
+        android:src="@drawable/animz"
+        /-->
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        app:actualImageResource="@drawable/bg2"
+        app:actualImageScaleType="fitXY"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:paddingTop="@dimen/action_bar_height"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingVertical="90dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/fb_q"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:padding="30sp"
+                app:actualImageResource="@drawable/facebook"
+                app:actualImageScaleType="fitCenter"
+                />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/ins_q"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:padding="30sp"
+                app:actualImageResource="@drawable/insta"
+                app:actualImageScaleType="fitCenter" />
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/tw_q"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            app:actualImageResource="@drawable/twitter"
+            app:actualImageScaleType="fitCenter"
+            android:padding="30sp"/>
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/li_q"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:padding="30sp"
+                app:actualImageResource="@drawable/linkedin"
+                app:actualImageScaleType="fitCenter" />
+        </LinearLayout>
+    </LinearLayout>
+    </FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

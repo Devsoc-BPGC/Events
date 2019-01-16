@@ -9,12 +9,14 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 import com.macbitsgoa.events.BuildConfig;
 import com.macbitsgoa.events.Nights.NightsActivity;
+import com.macbitsgoa.events.Nights.NightsFragment;
 import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.SocialActivity;
 import com.macbitsgoa.events.aboutfest.AboutEventActivity;
 import com.macbitsgoa.events.aboutmac.AboutMacActivity;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
 import com.macbitsgoa.events.speakers.SpeakersActivity;
+import com.macbitsgoa.events.speakers.SpeakersFragment;
 import com.macbitsgoa.events.sponsors.SponsorsFragment;
 import com.macbitsgoa.events.maps.MapCardFragment;
 import com.macbitsgoa.events.maps.MapsActivity;
@@ -84,6 +86,20 @@ public class HomeActivity extends AppCompatActivity implements
             fragmentTransaction.add(R.id.ll_home,
                     new EateriesCardFragment(),
                     "eateries"
+            );
+        }
+
+        if (BuildConfig.nights) {
+            fragmentTransaction.add(R.id.ll_home,
+                    new NightsFragment(),
+                    "nights"
+            );
+        }
+
+        if (BuildConfig.speakers) {
+            fragmentTransaction.add(R.id.ll_home,
+                    new SpeakersFragment(),
+                    "speakers"
             );
         }
 

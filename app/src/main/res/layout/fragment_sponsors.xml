@@ -5,15 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="238dp"
 
+    app:cardBackgroundColor="#00000000"
     android:layout_marginHorizontal="24dp"
     android:layout_marginBottom="24dp"
     app:cardCornerRadius="8dp"
     android:minHeight="@dimen/min_feature_card_height"
+    android:background="#00000000"
     tools:context="com.macbitsgoa.events.sponsors.SponsorsFragment">
 
 
     <FrameLayout
         android:layout_width="match_parent"
+        android:background="#00000000"
         android:layout_height="match_parent">
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/item_sponsors_image"
@@ -21,7 +24,7 @@
         android:layout_height="match_parent"
         app:actualImageResource="@drawable/sponsors"
         app:roundedCornerRadius="0dp"
-        app:placeholderImage="@drawable/thumb_placeholder"
+        android:background="#00000000"
          />
         <View
             android:layout_width="match_parent"

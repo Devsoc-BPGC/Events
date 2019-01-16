@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.android.material.card.MaterialCardView;
 import com.macbitsgoa.events.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.browser.customtabs.CustomTabsIntent;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.ViewHolder> {
@@ -62,7 +62,7 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView textViewsponsorName;
-        public CardView cardView;
+        public MaterialCardView cardView;
         public SimpleDraweeView imageViewsponsorImage;
 
 

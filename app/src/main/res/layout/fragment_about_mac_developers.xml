@@ -9,11 +9,14 @@
         android:layout_height="wrap_content"
         android:text="Developers"
         android:textColor="#ffffff"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:gravity="center"
+        android:fontFamily="@font/bgothm"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/developersRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"></androidx.recyclerview.widget.RecyclerView>
+        android:background="#00000000"
+        android:orientation="vertical"/>
 </LinearLayout>

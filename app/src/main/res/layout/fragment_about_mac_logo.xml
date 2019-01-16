@@ -3,17 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
     android:layout_height="match_parent">
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/maclogo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="256dp"
+        android:layout_height="256dp"
         android:layout_gravity="center"
         android:layout_marginTop="0sp"
-        app:roundAsCircle="true"
-        app:roundingBorderWidth="5sp"
-        app:roundingBorderColor="#ffffff"
         app:actualImageScaleType="fitCenter"
+        app:roundingBorderWidth="5dp"
+        app:roundingBorderColor="#ffffff"
+        app:actualImageResource="@drawable/maclogopng"
         app:placeholderImage="@mipmap/ic_launcher_round" />
 </LinearLayout>
