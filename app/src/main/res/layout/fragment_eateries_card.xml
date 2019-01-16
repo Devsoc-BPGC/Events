@@ -4,6 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="238dp"
+    android:background="#00000000"
+    app:cardBackgroundColor="#00000000"
     android:layout_marginHorizontal="24dp"
     android:layout_marginBottom="24dp"
     app:cardCornerRadius="8dp"
@@ -12,25 +14,27 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/item_eateries_image"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:roundedCornerRadius="0dp"
-        app:actualImageResource="@drawable/eateries"
-        app:placeholderImage="@drawable/thumb_placeholder"
-         />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_gravity="bottom"
-        android:background="@drawable/custom_gradient_bottom_b"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_gravity="top"
-        android:background="@drawable/custom_gradient_top_b"/>
+        android:background="#00000000"
+        >
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/item_eateries_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:roundedCornerRadius="0dp"
+            android:background="#00000000"
+            app:actualImageResource="@drawable/eateries"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/custom_gradient_bottom_b"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="top"
+            android:background="@drawable/custom_gradient_top_b"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -50,14 +54,14 @@
             android:layout_gravity="center"
             android:tint="#cecece"
             android:src="@drawable/ic_restaurant_menu_black_24dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/test_string_eateries"
-        android:textSize="50sp"
-        android:textColor="#cecece"
-        android:fontFamily="@font/bgothm"
-        android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/test_string_eateries"
+            android:textSize="50sp"
+            android:textColor="#cecece"
+            android:fontFamily="@font/bgothm"
+            android:layout_gravity="center"/>
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

@@ -54,7 +54,7 @@ public class MacLogoFragment extends Fragment {
                 String url = dataSnapshot.getValue(String.class);
                 Uri imageUri = Uri.parse(url);
                 SimpleDraweeView draweeView = (SimpleDraweeView) view.findViewById(R.id.maclogo);
-                draweeView.setImageURI(imageUri);
+                //draweeView.setImageURI(imageUri);
             }
 
             @Override

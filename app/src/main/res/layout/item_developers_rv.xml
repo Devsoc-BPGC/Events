@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:fresco="http://schemas.android.com/apk/res-auto"
-    fresco:cardBackgroundColor="@color/colorMacDark"
-    fresco:cardCornerRadius="10sp"
-    fresco:cardElevation="2sp"
-    android:elevation="3dp"
-    android:layout_margin="2dp"
-    android:layout_marginBottom="5dp"
+    app:cardBackgroundColor="#99000000"
+    android:layout_marginHorizontal="24dp"
+    android:layout_marginTop="24dp"
+    app:cardCornerRadius="8dp"
+    android:backgroundTint="#55000000"
     android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#00000000"
+        >
 
 
         <LinearLayout
@@ -23,26 +25,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:background="#00000000">
+
 
             <com.facebook.drawee.view.SimpleDraweeView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/developers_photo"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="center"
                 android:layout_gravity="center"
-                fresco:roundAsCircle="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                fresco:actualImageResource="@drawable/defaultprofile" />
+                android:background="#00000000"
+                app:roundAsCircle="true"
+                android:layout_marginHorizontal="7dp"
+                app:actualImageResource="@drawable/ic_person_black_24dp" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="7dp"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#00000000">
 
                 <TextView
                     android:id="@+id/developers_name"
@@ -60,6 +65,8 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="5dp"
                     android:text="Contact"
+                    android:autoLink="phone"
+                    android:textColorLink="#ffffff"
                     android:textColor="#ffffff"
                     android:textSize="18sp" />
 
@@ -69,6 +76,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:text="E-mail"
+                    android:autoLink="phone"
+                    android:textColorLink="#ffffff"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
                     android:layout_marginTop="5dp"
@@ -80,4 +89,4 @@
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

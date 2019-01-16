@@ -72,7 +72,7 @@ public class NightsAdapter extends RecyclerView.Adapter<NightsAdapter.ViewHolder
             eventTimeTv.setText(nights.time);
             imageIv.setImageURI(nights.imageURL);
             //if (nights.onClick != null) {
-               // itemView.setOnClickListener(view -> browser.launchUrl(nights.onClick));
+            // itemView.setOnClickListener(view -> browser.launchUrl(nights.onClick));
             //}
         }
 

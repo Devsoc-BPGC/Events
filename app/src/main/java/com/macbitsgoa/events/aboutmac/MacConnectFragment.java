@@ -9,9 +9,12 @@ import android.view.ViewGroup;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.macbitsgoa.events.R;
+import com.macbitsgoa.events.SocialActivity;
 
+import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.fragment.app.Fragment;
 
+import static com.macbitsgoa.events.Utilities.FB_Q;
 import static com.macbitsgoa.events.Utilities.FB_URL;
 import static com.macbitsgoa.events.Utilities.LINKEDIN_URL;
 import static com.macbitsgoa.events.Utilities.PLAY_STORE_DEV_URL;
@@ -43,25 +46,22 @@ public class MacConnectFragment extends Fragment {
         SimpleDraweeView facebookConnect =
                 view.findViewById(R.id.facebook_connect);
         facebookConnect.setOnClickListener(view -> {
-            Uri uri = Uri.parse(FB_URL);
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(intent);
+            final CustomTabsIntent intent=new CustomTabsIntent.Builder().build();
+            intent.launchUrl(getContext(), Uri.parse(FB_URL));
         });
 
         SimpleDraweeView playStoreConnect =
                 view.findViewById(R.id.playstore_connect);
         playStoreConnect.setOnClickListener(view -> {
-            Uri uri = Uri.parse(PLAY_STORE_DEV_URL);
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(intent);
+            final CustomTabsIntent intent=new CustomTabsIntent.Builder().build();
+            intent.launchUrl(getContext(), Uri.parse(PLAY_STORE_DEV_URL));
         });
 
         SimpleDraweeView linkedinConnect =
                 view.findViewById(R.id.linkedin_connect);
         linkedinConnect.setOnClickListener(view -> {
-            Uri uri = Uri.parse(LINKEDIN_URL);
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(intent);
+            final CustomTabsIntent intent=new CustomTabsIntent.Builder().build();
+            intent.launchUrl(getContext(), Uri.parse(LINKEDIN_URL));
         });
     }
 }

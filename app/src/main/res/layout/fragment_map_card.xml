@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="238dp"
-
+    android:background="#00000000"
+    app:cardBackgroundColor="#00000000"
     android:layout_marginHorizontal="24dp"
     android:layout_marginBottom="24dp"
     app:cardCornerRadius="8dp"
@@ -12,13 +13,14 @@
 
     <FrameLayout
         android:layout_width="match_parent"
+        android:background="#00000000"
         android:layout_height="match_parent">
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/item_sponsors_image"
+            android:background="#00000000"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:actualImageResource="@drawable/maps"
-            app:placeholderImage="@drawable/thumb_placeholder"
             app:roundedCornerRadius="0dp"
             />
         <View
@@ -44,19 +46,19 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:orientation="vertical">
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:tint="#cecece"
-        android:src="@drawable/ic_map_black_24dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/map"
-        android:textSize="50sp"
-        android:fontFamily="@font/bgothm"
-        android:textColor="#cecece"
-        android:layout_gravity="center"/>
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:tint="#cecece"
+            android:src="@drawable/ic_map_black_24dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/map"
+            android:textSize="50sp"
+            android:fontFamily="@font/bgothm"
+            android:textColor="#cecece"
+            android:layout_gravity="center"/>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

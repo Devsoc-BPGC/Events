@@ -1,11 +1,15 @@
 package com.macbitsgoa.events.aboutfest;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.macbitsgoa.events.R;
+import com.macbitsgoa.events.eateries.EateriesActivity;
+import com.macbitsgoa.events.home.HomeActivity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,12 +26,22 @@ public class AboutEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_app);
         final Toolbar toolbar = findViewById(R.id.about_event_toolbar);
+        toolbar.setTitle(getString(R.string.about_fest));
         setSupportActionBar(toolbar);
-        final ActionBar ab = getSupportActionBar();
-        if (ab != null) {
-            ab.setDisplayShowHomeEnabled(true);
-            ab.setDisplayHomeAsUpEnabled(true);
-        }
+
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_arrow_back_black_24dp));
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // perform whatever you want on back arrow click
+                Intent intent = new Intent(AboutEventActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         final String aboutFestData = getPref(this).getString(KEY_ABOUT_FEST, "");
         if (aboutFestData.isEmpty()) {
             finish();
