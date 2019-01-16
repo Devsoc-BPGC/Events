@@ -10,7 +10,7 @@
     android:paddingHorizontal="18sp">
 
     <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/my_image_view"
+        android:id="@+id/sdv_bg"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
