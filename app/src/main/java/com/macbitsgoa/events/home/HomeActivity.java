@@ -83,12 +83,13 @@ public class HomeActivity extends AppCompatActivity implements
             );
         }
 
-        if (BuildConfig.eateries) {
+        if (BuildConfig.speakers) {
             fragmentTransaction.add(R.id.ll_home,
-                    new EateriesCardFragment(),
-                    "eateries"
+                    new SpeakersFragment(),
+                    "speakers"
             );
         }
+
 
         if (BuildConfig.nights) {
             fragmentTransaction.add(R.id.ll_home,
@@ -97,12 +98,7 @@ public class HomeActivity extends AppCompatActivity implements
             );
         }
 
-        if (BuildConfig.speakers) {
-            fragmentTransaction.add(R.id.ll_home,
-                    new SpeakersFragment(),
-                    "speakers"
-            );
-        }
+
 
         /*if (BuildConfig.feed) {
             fragmentTransaction.add(R.id.ll_home,
@@ -111,13 +107,24 @@ public class HomeActivity extends AppCompatActivity implements
             );
         }*/
 
+        if (BuildConfig.festmerch){
+            fragmentTransaction.add(R.id.ll_home,
+                    new com.macbitsgoa.events.festmerch.FestMerchFragment(),
+                    "fest merchandise");
+        }
+
+        if (BuildConfig.eateries) {
+            fragmentTransaction.add(R.id.ll_home,
+                    new EateriesCardFragment(),
+                    "exhibition"
+            );
+        }
         if (BuildConfig.timeline) {
             fragmentTransaction.add(R.id.ll_home,
                     new TimelineCardFragment(),
                     getString(R.string.timeline)
             );
         }
-
         /*if (BuildConfig.shouldShowMapOnHome) {
             fragmentTransaction.add(R.id.ll_home,
                     new MapCardFragment(),
@@ -130,11 +137,6 @@ public class HomeActivity extends AppCompatActivity implements
                     "sponsors");
         }
 
-        if (BuildConfig.festmerch){
-            fragmentTransaction.add(R.id.ll_home,
-                    new com.macbitsgoa.events.festmerch.FestMerchFragment(),
-                    "fest merchandise");
-        }
 
         fragmentTransaction.commit();
     }

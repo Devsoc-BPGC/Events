@@ -65,6 +65,7 @@ public class NightsActivity extends AppCompatActivity{
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                NightList.clear();
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     //speakersList.add(child.getValue(Speakers.class));
                     desc=child.child("desc").getValue(String.class);

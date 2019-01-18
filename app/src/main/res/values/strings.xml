@@ -5,7 +5,7 @@
     <string name="server_client_secret">T-VyF_aN8UEFx359muCmujqG</string>
     <string name="redirect_url">https://events-f6847.firebaseapp.com/__/auth/handler</string>
 
-    <string name="test_string_eateries">Eateries</string>
+    <string name="test_string_eateries">Exhibition</string>
 
     <string name="spam_text">Download this app from PlayStore </string>
     <string name="choose_share_medium_prompt">share via …</string>
@@ -17,7 +17,7 @@
     <string name="about_mac">About MAC</string>
     <string name="timeline">Timeline</string>
     <string name="timer">Timer Test</string>
-    <string name="eateries">Eateries</string>
+    <string name="eateries">Exhibition</string>
     <string name="social">Social</string>
     <string name="title_activity_eateries">EateriesActivity</string>
     <string name="eateries_activity_placeholder">Someone please finish me!</string>
