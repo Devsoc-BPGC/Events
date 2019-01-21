@@ -53,7 +53,7 @@
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:tint="#cecece"
-            android:src="@drawable/ic_restaurant_menu_black_24dp"/>
+            android:src="@drawable/science"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
