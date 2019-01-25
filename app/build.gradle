@@ -7,7 +7,7 @@ android {
         manifestPlaceholders = [deepLinkDomain: "example.com"]
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 2
+        versionCode 3
         versionName "1.0"
         resConfigs "en"
 
