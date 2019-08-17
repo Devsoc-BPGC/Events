@@ -3,25 +3,24 @@
     package="com.macbitsgoa.events">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality.
-    -->
     <application
         android:name=".Events"
         android:allowBackup="false"
         android:icon="@mipmap/ic_quark"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_quark_round"
         android:supportsRtl="false"
-        android:theme="@style/AppTheme"
-        android:largeHeap="true">
+        android:theme="@style/AppTheme">
+        <activity android:name=".home.QrScannerActivity"></activity>
         <activity
             android:name=".home.HomeActivity"
-            android:theme="@style/SplashTheme"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,8 +42,8 @@
             android:name=".eateries.EateriesActivity"
             android:enabled="@bool/eateries"
             android:label="@string/title_activity_eateries"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".home.HomeActivity">
+            android:parentActivityName=".home.HomeActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
@@ -65,7 +64,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
         </activity>
-        <activity android:name=".timeline.TimelineActivity"
+        <activity
+            android:name=".timeline.TimelineActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -91,10 +91,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
         </activity>
-        <activity android:name=".feed.FeedActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".feed.GetGoogleSignInActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".feed.FeedActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".feed.GetGoogleSignInActivity"
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".FcmService"
@@ -104,7 +106,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
 
         <activity
             android:name=".sponsors.SponsorActivity"
@@ -138,9 +139,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
         </activity>
-        <activity android:name=".SocialActivity">
-        </activity>
-
+        <activity android:name=".SocialActivity"></activity>
     </application>
 
 </manifest>

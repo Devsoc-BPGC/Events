@@ -1,10 +1,16 @@
 package com.macbitsgoa.events.home;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.macbitsgoa.events.BuildConfig;
@@ -24,15 +30,20 @@ import com.macbitsgoa.events.timeline.TimelineCardFragment;
 import com.macbitsgoa.events.timer.TimerCardFragment;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import javax.xml.transform.Result;
 
 import static com.macbitsgoa.events.Events.playStoreLink;
 import static com.macbitsgoa.events.Utilities.EVENTS;
@@ -49,7 +60,10 @@ public class HomeActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
+    private Menu menu;
 
+    private int code=1001;
+  final   int My_Camera_Request_Code=102;
 
     @Override
     public void onBackPressed() {
@@ -160,12 +174,45 @@ public class HomeActivity extends AppCompatActivity implements
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
+
+        if(ContextCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
+            Toast.makeText(HomeActivity.this,"permission not granted",Toast.LENGTH_LONG).show();
+            ActivityCompat.requestPermissions(HomeActivity.this,new String[]{Manifest.permission.CAMERA},My_Camera_Request_Code);
+
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case My_Camera_Request_Code:{
+                if(grantResults.length>0 &&grantResults[0] ==PackageManager.PERMISSION_GRANTED){
+
+                } else {
+
+                }
+            }
+        }
+
+
     }
 
     private void initViews() {
         setContentView(R.layout.activity_home);
         drawerLayout = findViewById(R.id.drawer_layout);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.actionbar_menu_items,menu);
+        return true;
+
+
+    }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull final MenuItem menuItem) {
@@ -248,6 +295,9 @@ public class HomeActivity extends AppCompatActivity implements
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
             }
+            case R.id.menu_camera:
+                openQRScaner();
+
 
             default: {
                 return super.onOptionsItemSelected(item);
@@ -255,4 +305,19 @@ public class HomeActivity extends AppCompatActivity implements
         }
     }
 
+
+    public void openQRScaner(){
+
+      Intent intent=new Intent(HomeActivity.this,QrScannerActivity.class);
+      startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(resultCode==RESULT_OK&&requestCode==code){
+            Intent intent=getIntent();
+            Log.e("kartik","inside on activity result");
+            Toast.makeText(HomeActivity.this,"result is "+intent.getStringExtra("result"),Toast.LENGTH_LONG).show();
+        }
+    }
 }
