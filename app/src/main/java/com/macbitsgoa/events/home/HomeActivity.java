@@ -2,6 +2,7 @@ package com.macbitsgoa.events.home;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.macbitsgoa.events.BuildConfig;
 import com.macbitsgoa.events.Nights.NightsActivity;
 import com.macbitsgoa.events.Nights.NightsFragment;
+import com.macbitsgoa.events.QrScaner.QrScannerActivity;
 import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.SocialActivity;
 import com.macbitsgoa.events.aboutfest.AboutEventActivity;
@@ -24,8 +26,6 @@ import com.macbitsgoa.events.eateries.EateriesCardFragment;
 import com.macbitsgoa.events.speakers.SpeakersActivity;
 import com.macbitsgoa.events.speakers.SpeakersFragment;
 import com.macbitsgoa.events.sponsors.SponsorsFragment;
-import com.macbitsgoa.events.maps.MapCardFragment;
-import com.macbitsgoa.events.maps.MapsActivity;
 import com.macbitsgoa.events.timeline.TimelineCardFragment;
 import com.macbitsgoa.events.timer.TimerCardFragment;
 
@@ -43,8 +43,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import javax.xml.transform.Result;
-
 import static com.macbitsgoa.events.Events.playStoreLink;
 import static com.macbitsgoa.events.Utilities.EVENTS;
 import static com.macbitsgoa.events.Utilities.MIME_TYPE_PLAINTEXT;
@@ -60,7 +58,6 @@ public class HomeActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
-    private Menu menu;
 
     private int code=1001;
   final   int My_Camera_Request_Code=102;
@@ -204,15 +201,7 @@ public class HomeActivity extends AppCompatActivity implements
         drawerLayout = findViewById(R.id.drawer_layout);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.actionbar_menu_items,menu);
-        return true;
-
-
-    }
-
+   
 
     @Override
     public boolean onNavigationItemSelected(@NonNull final MenuItem menuItem) {
@@ -274,6 +263,10 @@ public class HomeActivity extends AppCompatActivity implements
                 startActivity(new Intent(HomeActivity.this, SocialActivity.class));
                 break;
             }
+            case R.id.qr_scanner :{
+                startActivityForResult(new Intent(HomeActivity.this,QrScannerActivity.class),code);
+                break;
+            }
 
 
             default: {
@@ -295,8 +288,6 @@ public class HomeActivity extends AppCompatActivity implements
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
             }
-            case R.id.menu_camera:
-                openQRScaner();
 
 
             default: {
@@ -306,18 +297,15 @@ public class HomeActivity extends AppCompatActivity implements
     }
 
 
-    public void openQRScaner(){
-
-      Intent intent=new Intent(HomeActivity.this,QrScannerActivity.class);
-      startActivity(intent);
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(resultCode==RESULT_OK&&requestCode==code){
-            Intent intent=getIntent();
-            Log.e("kartik","inside on activity result");
-            Toast.makeText(HomeActivity.this,"result is "+intent.getStringExtra("result"),Toast.LENGTH_LONG).show();
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode== Activity.RESULT_OK&&requestCode==code){
+
+            String code =data.getStringExtra("qr_result");
+            Toast.makeText(HomeActivity.this,"result is "+code,Toast.LENGTH_LONG).show();
         }
     }
 }

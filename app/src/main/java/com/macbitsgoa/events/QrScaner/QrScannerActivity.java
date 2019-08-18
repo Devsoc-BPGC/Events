@@ -1,11 +1,10 @@
-package com.macbitsgoa.events.home;
+package com.macbitsgoa.events.QrScaner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Camera;
-import android.graphics.PointF;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,7 +37,12 @@ public class QrScannerActivity extends AppCompatActivity  {
           QrScannerActivity.this.runOnUiThread(new Runnable() {
               @Override
               public void run() {
-                  Toast.makeText(QrScannerActivity.this,result.getText(),Toast.LENGTH_LONG).show();
+                 // Toast.makeText(QrScannerActivity.this,result.getText(),Toast.LENGTH_LONG).show();
+                  Intent data =new Intent();
+                  data.putExtra("qr_result",result.getText());
+                 // Log.e("kartik",result.getText());
+                  setResult(Activity.RESULT_OK,data);
+                  finish();
 
 
               }

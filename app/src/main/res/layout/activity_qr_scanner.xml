@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.macbitsgoa.events.home.QrScannerActivity"
+    tools:context="com.macbitsgoa.events.QrScaner.QrScannerActivity"
     android:orientation="vertical">
     <com.budiyev.android.codescanner.CodeScannerView
         android:id="@+id/scanner_view"
