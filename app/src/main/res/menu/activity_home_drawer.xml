@@ -2,6 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="none">
+        <item android:id="@+id/qr_scanner"
+            android:title="QR Scanner"
+            android:icon="@drawable/camera_icon"/>
 
         <item
             android:id="@+id/nav_registration"
