@@ -3,7 +3,8 @@
     package="com.macbitsgoa.events">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -16,7 +17,8 @@
         android:roundIcon="@mipmap/ic_quark_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".QrScaner.QrScannerActivity"></activity>
+        <activity android:name=".DosmEvent.ProfileAndLeaderboardActivity"></activity>
+        <activity android:name=".QrScaner.QrScannerActivity" />
         <activity
             android:name=".home.HomeActivity"
             android:screenOrientation="portrait"
@@ -139,7 +141,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.macbitsgoa.events.home.HomeActivity" />
         </activity>
-        <activity android:name=".SocialActivity"></activity>
+        <activity android:name=".SocialActivity" />
     </application>
 
 </manifest>
