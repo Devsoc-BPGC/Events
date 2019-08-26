@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.macbitsgoa.events.BuildConfig;
+import com.macbitsgoa.events.DosmEvent.ProfileAndLeaderboardActivity;
 import com.macbitsgoa.events.Nights.NightsActivity;
 import com.macbitsgoa.events.Nights.NightsFragment;
 import com.macbitsgoa.events.QrScaner.QrScannerActivity;
@@ -201,8 +202,6 @@ public class HomeActivity extends AppCompatActivity implements
         drawerLayout = findViewById(R.id.drawer_layout);
     }
 
-   
-
     @Override
     public boolean onNavigationItemSelected(@NonNull final MenuItem menuItem) {
 
@@ -267,7 +266,9 @@ public class HomeActivity extends AppCompatActivity implements
                 startActivityForResult(new Intent(HomeActivity.this,QrScannerActivity.class),code);
                 break;
             }
-
+            case R.id.user_details:{
+                startActivity(new Intent(HomeActivity.this, ProfileAndLeaderboardActivity.class));
+            }
 
             default: {
                 break;

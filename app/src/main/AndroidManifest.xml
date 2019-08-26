@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_quark_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".QrScaner.QrScannerActivity"></activity>
+        <activity android:name=".DosmEvent.ProfileAndLeaderboardActivity"></activity>
+        <activity android:name=".QrScaner.QrScannerActivity" />
         <activity
             android:name=".home.HomeActivity"
             android:screenOrientation="portrait"
