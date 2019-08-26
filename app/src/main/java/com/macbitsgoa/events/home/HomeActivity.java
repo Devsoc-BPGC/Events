@@ -202,8 +202,6 @@ public class HomeActivity extends AppCompatActivity implements
         drawerLayout = findViewById(R.id.drawer_layout);
     }
 
-
-
     @Override
     public boolean onNavigationItemSelected(@NonNull final MenuItem menuItem) {
 
@@ -270,10 +268,7 @@ public class HomeActivity extends AppCompatActivity implements
             }
             case R.id.user_details:{
                 startActivity(new Intent(HomeActivity.this, ProfileAndLeaderboardActivity.class));
-
-
             }
-
 
             default: {
                 break;
