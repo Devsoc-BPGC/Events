@@ -103,6 +103,7 @@ dependencies {
     implementation 'com.github.esafirm.android-image-picker:imagepicker:1.13.0'
 
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
 
     // https://github.com/amitshekhariitbhu/Android-Debug-Database
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.4'

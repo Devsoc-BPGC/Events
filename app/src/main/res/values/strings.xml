@@ -30,4 +30,6 @@
     <string name="speakers">Speakers</string>
     <string name="nights">Nights</string>
     <string name="sponsors">Sponsors</string>
+    <string name="profile" />
+    <string name="title_activity_profile" />
 </resources>

@@ -55,7 +55,6 @@ public class SpeakersActivity extends AppCompatActivity {
                 finish();
             }
         });
-
         recyclerView=findViewById(R.id.speakersrecyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
