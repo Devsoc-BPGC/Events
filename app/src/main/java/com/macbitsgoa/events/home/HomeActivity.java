@@ -1,15 +1,24 @@
 package com.macbitsgoa.events.home;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.macbitsgoa.events.BuildConfig;
+import com.macbitsgoa.events.DosmEvent.ProfileAndLeaderboardActivity;
 import com.macbitsgoa.events.Nights.NightsActivity;
 import com.macbitsgoa.events.Nights.NightsFragment;
+import com.macbitsgoa.events.QrScaner.QrScannerActivity;
 import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.SocialActivity;
 import com.macbitsgoa.events.aboutfest.AboutEventActivity;
@@ -18,16 +27,17 @@ import com.macbitsgoa.events.eateries.EateriesCardFragment;
 import com.macbitsgoa.events.speakers.SpeakersActivity;
 import com.macbitsgoa.events.speakers.SpeakersFragment;
 import com.macbitsgoa.events.sponsors.SponsorsFragment;
-import com.macbitsgoa.events.maps.MapCardFragment;
-import com.macbitsgoa.events.maps.MapsActivity;
 import com.macbitsgoa.events.timeline.TimelineCardFragment;
 import com.macbitsgoa.events.timer.TimerCardFragment;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -50,6 +60,8 @@ public class HomeActivity extends AppCompatActivity implements
 
     private DrawerLayout drawerLayout;
 
+    private int code=1001;
+  final   int My_Camera_Request_Code=102;
 
     @Override
     public void onBackPressed() {
@@ -160,6 +172,29 @@ public class HomeActivity extends AppCompatActivity implements
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
+
+        if(ContextCompat.checkSelfPermission(HomeActivity.this, Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
+            Toast.makeText(HomeActivity.this,"permission not granted",Toast.LENGTH_LONG).show();
+            ActivityCompat.requestPermissions(HomeActivity.this,new String[]{Manifest.permission.CAMERA},My_Camera_Request_Code);
+
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case My_Camera_Request_Code:{
+                if(grantResults.length>0 &&grantResults[0] ==PackageManager.PERMISSION_GRANTED){
+
+                } else {
+
+                }
+            }
+        }
+
+
     }
 
     private void initViews() {
@@ -227,7 +262,13 @@ public class HomeActivity extends AppCompatActivity implements
                 startActivity(new Intent(HomeActivity.this, SocialActivity.class));
                 break;
             }
-
+            case R.id.qr_scanner :{
+                startActivityForResult(new Intent(HomeActivity.this,QrScannerActivity.class),code);
+                break;
+            }
+            case R.id.user_details:{
+                startActivity(new Intent(HomeActivity.this, ProfileAndLeaderboardActivity.class));
+            }
 
             default: {
                 break;
@@ -249,10 +290,23 @@ public class HomeActivity extends AppCompatActivity implements
                 return true;
             }
 
+
             default: {
                 return super.onOptionsItemSelected(item);
             }
         }
     }
 
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode== Activity.RESULT_OK&&requestCode==code){
+
+            String code =data.getStringExtra("qr_result");
+            Toast.makeText(HomeActivity.this,"result is "+code,Toast.LENGTH_LONG).show();
+        }
+    }
 }
