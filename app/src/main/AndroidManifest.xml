@@ -17,18 +17,25 @@
         android:roundIcon="@mipmap/ic_quark_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".DosmEvent.ProfileAndLeaderboardActivity"></activity>
+        <activity android:name=".Authentication.SignupActivity">
+
+        </activity>
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity android:name=".DosmEvent.ProfileAndLeaderboardActivity" />
         <activity android:name=".QrScaner.QrScannerActivity" />
         <activity
             android:name=".home.HomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
+
+            <!-- "deep links" https://developer.android.com/studio/write/app-link-indexing.html -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!-- "deep links" https://developer.android.com/studio/write/app-link-indexing.html -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 

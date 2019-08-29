@@ -4,9 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.macbitsgoa.events.Authentication.SignupActivity;
 import com.macbitsgoa.events.R;
 
 
@@ -14,6 +18,8 @@ public class ProfileAndLeaderboardActivity extends AppCompatActivity {
     ViewPager viewPager;
     TabLayout tabLayout;
     FragmentPagerAdapter fragmentPagerAdapter;
+    FirebaseAuth auth;
+    FirebaseUser currentUser;
 
 
     @Override
@@ -25,10 +31,17 @@ public class ProfileAndLeaderboardActivity extends AppCompatActivity {
         fragmentPagerAdapter =new FragmentsPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(fragmentPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-       tabLayout.getTabAt(0).setText("Profile Deatails");
+       tabLayout.getTabAt(0).setText("Profile Details");
         tabLayout.getTabAt(1).setText("LeaderBoard");
+        auth=FirebaseAuth.getInstance();
+        currentUser=auth.getCurrentUser();
+        if(currentUser==null)
+        {
+            startActivity(new Intent(ProfileAndLeaderboardActivity.this, SignupActivity.class));
+        }
 
 
 
     }
+
 }
