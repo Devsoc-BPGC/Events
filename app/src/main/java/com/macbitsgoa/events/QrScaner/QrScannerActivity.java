@@ -48,44 +48,41 @@ public class QrScannerActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr_scanner);
-        CodeScannerView scannerView =findViewById(R.id.scanner_view);
-        Log.e("kartik","inside on create");
-        scanSucessPopup =new Dialog(QrScannerActivity.this);
+        CodeScannerView scannerView = findViewById(R.id.scanner_view);
+        Log.e("kartik", "inside on create");
+        scanSucessPopup = new Dialog(QrScannerActivity.this);
         scanSucessPopup.setContentView(R.layout.qrcode_scanned_dialog);
 
-        auth=FirebaseAuth.getInstance();
-        FirebaseUser currentUser =auth.getCurrentUser();
+        auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
 
-        if(currentUser==null){
+        if (currentUser == null) {
             startActivity(new Intent(QrScannerActivity.this, SignupActivity.class));
+            finish();
 
-        }else {
-            Log.e("uid",currentUser.getUid());
+        } else {
+            Log.e("uid", currentUser.getUid());
 
         }
-         firebaseDatabase =FirebaseDatabase.getInstance();
-        QrCodeListRef =firebaseDatabase.getReference().child("DosmEvent").child("QrCodeList");
-         userDataRef =firebaseDatabase.getReference().child("DosmEvent").child("Users").child(currentUser.getUid());
-                 UserQrCodeListRef = firebaseDatabase.getReference().child("DosmEvent").child("Users").child(currentUser.getUid()).child("qrcodesScanned");
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        if (currentUser != null){
+            QrCodeListRef = firebaseDatabase.getReference().child("DosmEvent").child("QrCodeList");
+
+        userDataRef = firebaseDatabase.getReference().child("DosmEvent").child("Users").child(currentUser.getUid());
+        UserQrCodeListRef = firebaseDatabase.getReference().child("DosmEvent").child("Users").child(currentUser.getUid()).child("qrcodesScanned");
         QrCodeListRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 qrcodelist.clear();
-                for (DataSnapshot child : dataSnapshot.getChildren())
-
-                {
-                    String Qrcode=child.child("code").getValue(String.class);
-                    String Descrip =child.child("descrip").getValue(String.class);
-                   Long Points =child.child("points").getValue(Long.class);
-                    qrcodelist.add(new QrCodeModal(Qrcode,Descrip,Points));
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    String Qrcode = child.child("code").getValue(String.class);
+                    String Descrip = child.child("descrip").getValue(String.class);
+                    Long Points = child.child("points").getValue(Long.class);
+                    qrcodelist.add(new QrCodeModal(Qrcode, Descrip, Points));
                 }
 //                Log.e("qrcode",qrcodelist.get(1).getDescrip());
 //                Log.e("qrcode",qrcodelist.get(1).getQrcode());
 //                Log.e("qrcode",String.valueOf(qrcodelist.get(1).getPoints()));
-
-
-
-
 
 
             }
@@ -99,35 +96,33 @@ public class QrScannerActivity extends AppCompatActivity  {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if(currentUser!=null) {
+                if (currentUser != null) {
 
-                   // userdetails.name = dataSnapshot.child(currentUser.getUid()).child("name").getValue(String.class);
+                    // userdetails.name = dataSnapshot.child(currentUser.getUid()).child("name").getValue(String.class);
                     userdetails.qrcodesScanned.clear();
 
-                    for(DataSnapshot child : dataSnapshot.getChildren()){
-                        String Qrcode=child.child("qrcode").getValue(String.class);
-                        String Descrip =child.child("descrip").getValue(String.class);
-                        Long Points =child.child("points").getValue(Long.class);
-                        totalPoints+=child.child("points").getValue(Double.class);
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+                        String Qrcode = child.child("qrcode").getValue(String.class);
+                        String Descrip = child.child("descrip").getValue(String.class);
+                        Long Points = child.child("points").getValue(Long.class);
+                        totalPoints += child.child("points").getValue(Double.class);
 
-                        userdetails.qrcodesScanned.add(new QrCodeModal(Qrcode,Descrip,Points));
+                        userdetails.qrcodesScanned.add(new QrCodeModal(Qrcode, Descrip, Points));
                         userdetails.setPoints(totalPoints);
 
-                        Log.e("userstatus","user is not null");
-                        Log.e("size of array",String.valueOf(userdetails.qrcodesScanned.size()));
-                        Log.e(" array item",child.child("qrcode").getValue(String.class));
-
+                        Log.e("userstatus", "user is not null");
+                        Log.e("size of array", String.valueOf(userdetails.qrcodesScanned.size()));
+                        Log.e(" array item", child.child("qrcode").getValue(String.class));
 
 
                     }
-                    for(int i=0;i<userdetails.qrcodesScanned.size();i++)
-                    {
-                       // Log.e("codes on firebase",userdetails.qrcodesScanned.get(i).getQrcode());
+                    for (int i = 0; i < userdetails.qrcodesScanned.size(); i++) {
+                        // Log.e("codes on firebase",userdetails.qrcodesScanned.get(i).getQrcode());
                     }
                 } else {
                 }
                 findViewById(R.id.progressbar).setVisibility(View.GONE);
-                findViewById(R.id.scanner_view ).setVisibility(View.VISIBLE);
+                findViewById(R.id.scanner_view).setVisibility(View.VISIBLE);
                 codeScanner.startPreview();
 
 
@@ -136,11 +131,11 @@ public class QrScannerActivity extends AppCompatActivity  {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                Log.e("error",databaseError.toString());
+                Log.e("error", databaseError.toString());
 
             }
         });
-
+    }
 
 
 

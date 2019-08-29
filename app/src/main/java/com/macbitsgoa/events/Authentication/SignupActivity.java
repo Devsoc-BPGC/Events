@@ -3,6 +3,7 @@ package com.macbitsgoa.events.Authentication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.macbitsgoa.events.DosmEvent.UserDetailsModal;
 import com.macbitsgoa.events.R;
+import com.macbitsgoa.events.home.HomeActivity;
 
 
 public class SignupActivity extends AppCompatActivity {
@@ -92,6 +94,7 @@ public class SignupActivity extends AppCompatActivity {
         SignINBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SignINBtn.setEnabled(false);
                 if(SignINBtn.getText().equals("Sign Up")){
 
                    registerUser(userEmail.getText().toString(),userPassword.getText().toString() );
@@ -102,6 +105,7 @@ public class SignupActivity extends AppCompatActivity {
                 } else {
                     //signIN
                     signInUser(userEmail.getText().toString(),userPassword.getText().toString());
+
 
                 }
 
@@ -128,7 +132,11 @@ public class SignupActivity extends AppCompatActivity {
                           //  Log.e("userDisplayName",user.getDisplayName());
                             Log.e("userproviderId",user.getProviderId());
                             userdeatils.name=username.getText().toString();
-                            databaseRef.child(user.getUid()).setValue(userdeatils);
+                            databaseRef.child(user.getUid()).child("name").setValue(username.getText().toString());
+                            databaseRef.child(user.getUid()).child("totalpoints").setValue(0);
+                            Toast.makeText(SignupActivity.this,"SignU n Sucessful",Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(SignupActivity.this, HomeActivity.class));
+                            finish();
 
 
 
@@ -157,6 +165,9 @@ public class SignupActivity extends AppCompatActivity {
                             FirebaseUser user = auth.getCurrentUser();
                             Log.e("SuserEmail",user.getEmail());
                             Log.e("SuserproviderId",user.getProviderId());
+                            Toast.makeText(SignupActivity.this,"SignIn Sucessful",Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(SignupActivity.this, HomeActivity.class));
+                            finish();
 
 
                         } else {

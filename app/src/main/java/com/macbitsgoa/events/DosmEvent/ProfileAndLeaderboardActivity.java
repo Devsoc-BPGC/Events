@@ -38,6 +38,7 @@ public class ProfileAndLeaderboardActivity extends AppCompatActivity {
         if(currentUser==null)
         {
             startActivity(new Intent(ProfileAndLeaderboardActivity.this, SignupActivity.class));
+            finish();
         }
 
 

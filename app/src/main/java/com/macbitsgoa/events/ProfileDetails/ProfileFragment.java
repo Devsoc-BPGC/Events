@@ -63,30 +63,28 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
-        currentuser=auth.getCurrentUser();
+        currentuser = auth.getCurrentUser();
 
         recyclerView = view.findViewById(R.id.qrcoderecyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        profilePic=view.findViewById(R.id.profile_pic);
-        username=view.findViewById(R.id.username);
-        totalPoints=view.findViewById(R.id.points);
+        profilePic = view.findViewById(R.id.profile_pic);
+        username = view.findViewById(R.id.username);
+        totalPoints = view.findViewById(R.id.points);
 
         adapter = new ProfileFragmentAdapter(qrcodeList); //ChangeEnded
         recyclerView.setAdapter(adapter);
 
 
-
-
-
-        database=FirebaseDatabase.getInstance();
-        userQrcodelistRef =database.getReference().child("DosmEvent").child("Users").child(currentuser.getUid()).child("qrcodesScanned");
-        userDataRef =database.getReference().child("DosmEvent").child("Users").child(currentuser.getUid());
+        database = FirebaseDatabase.getInstance();
+        if (currentuser != null){
+            userQrcodelistRef = database.getReference().child("DosmEvent").child("Users").child(currentuser.getUid()).child("qrcodesScanned");
+        userDataRef = database.getReference().child("DosmEvent").child("Users").child(currentuser.getUid());
         userDataRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String name=dataSnapshot.child("name").getValue(String.class);
-                username.setText("Username: "+dataSnapshot.child("name").getValue(String.class));
-                totalPoints.setText("Total points: "+String.valueOf(dataSnapshot.child("totalpoints").getValue(Long.class)));
+                String name = dataSnapshot.child("name").getValue(String.class);
+                username.setText("Username: " + dataSnapshot.child("name").getValue(String.class));
+                totalPoints.setText("Total points: " + String.valueOf(dataSnapshot.child("totalpoints").getValue(Long.class)));
                 ColorGenerator generator = ColorGenerator.MATERIAL;
                 int color = generator.getColor(name);
                 drawable = TextDrawable.builder()
@@ -106,21 +104,18 @@ public class ProfileFragment extends Fragment {
         });
 
 
-
-
         userQrcodelistRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 qrcodeList.clear();
-                for( DataSnapshot child : dataSnapshot.getChildren())
-                {
-                    String qrcode =child.child("qrcode").getValue(String.class);
-                    Long points =child.child("points").getValue(Long.class);
-                    String descrip =child.child("descrip").getValue(String.class);
-                    qrcodeList.add(qrcodeList.size(),new ProfileModal(qrcode,descrip,points,qrcodeList.size()+1));
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    String qrcode = child.child("qrcode").getValue(String.class);
+                    Long points = child.child("points").getValue(Long.class);
+                    String descrip = child.child("descrip").getValue(String.class);
+                    qrcodeList.add(qrcodeList.size(), new ProfileModal(qrcode, descrip, points, qrcodeList.size() + 1));
 
                 }
-                ProfileFragmentAdapter updatedAdapter =new ProfileFragmentAdapter(qrcodeList);
+                ProfileFragmentAdapter updatedAdapter = new ProfileFragmentAdapter(qrcodeList);
                 recyclerView.setAdapter(updatedAdapter);
 
 
@@ -132,7 +127,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
+    }
     }
 
 
