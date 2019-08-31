@@ -1,30 +1,26 @@
 package com.macbitsgoa.events.LeaderBoard;
 
 public class LeaderBoardModel {
-   private String Name;
-   private int points;
+   private String name;
+   private int totalpoints;
    private int Position;
 
+
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String name) {
-        Name = name;
+
+    public void setName(String name){
+        this.name=name;
     }
 
-    public float getPoints() {
-        return points;
-    }
 
-    public LeaderBoardModel(String name, int points, int position) {
-        Name = name;
-        this.points = points;
-        Position = position;
+    public int getTotalpoints() {
+        return totalpoints;
     }
-
-    public void setPoints(int points) {
-        this.points = points;
+    public void setTotalpoints(int totalpoints){
+        this.totalpoints=totalpoints;
     }
 
     public int getPosition() {
@@ -34,4 +30,17 @@ public class LeaderBoardModel {
     public void setPosition(int position) {
         Position = position;
     }
+    public LeaderBoardModel(){
+
+    }
+
+    public LeaderBoardModel(String name, int totalpoints, int position) {
+        this.name = name;
+        this.totalpoints = totalpoints;
+
+        //Position = position;
+
+    }
+
+
 }

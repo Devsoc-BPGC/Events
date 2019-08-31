@@ -12,7 +12,9 @@ import java.util.ArrayList;
 
 
 public class LeaderBoardAdapter extends RecyclerView.Adapter<LeaderboardViewholder> {
-    ArrayList<LeaderBoardModel>data;
+    public ArrayList<LeaderBoardModel> data;
+    public int positionLeaderboard;
+
 
     @NonNull
     @Override
@@ -24,17 +26,23 @@ public class LeaderBoardAdapter extends RecyclerView.Adapter<LeaderboardViewhold
     }
 
     public LeaderBoardAdapter(ArrayList<LeaderBoardModel> data) {
-        this.data = data;
+
+        this.data=data;
     }
 
     @Override
     public void onBindViewHolder(@NonNull LeaderboardViewholder holder, int position) {
         holder.populate(data.get(position));
+        positionLeaderboard=position;
 
     }
 
     @Override
     public int getItemCount() {
         return data.size();
+    }
+    public int getPositionLeaderboard()
+    {
+        return positionLeaderboard;
     }
 }

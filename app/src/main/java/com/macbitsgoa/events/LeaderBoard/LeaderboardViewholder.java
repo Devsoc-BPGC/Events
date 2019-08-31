@@ -6,6 +6,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.macbitsgoa.events.R;
+import java.lang.*;
 
 
 public class LeaderboardViewholder extends RecyclerView.ViewHolder {
@@ -20,9 +21,11 @@ public class LeaderboardViewholder extends RecyclerView.ViewHolder {
         points=itemView.findViewById(R.id.points);
 
     }
-    public  void populate(LeaderBoardModel item){
-        rank.setText("#"+String.valueOf(item.getPosition()));
+    public  void populate(LeaderBoardModel item)
+    {
+        String Rank=String.valueOf(getAdapterPosition()+1);
+        rank.setText(Rank);
         name.setText(item.getName());
-        points.setText(String.valueOf(item.getPoints()));
+        points.setText(String.valueOf(item.getTotalpoints()));
     }
 }
