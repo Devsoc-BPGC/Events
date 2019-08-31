@@ -2,36 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_marginTop="20dp">
+
 
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_weight="1"
-        android:id="@+id/imageView"
-
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/profile_pic
         />
 
     <TextView
         android:id="@+id/username"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="TextView" />
+        android:text="Username"
+        android:layout_margin="10dp"/>
 
     <TextView
-        android:id="@+id/rank"
-        android:layout_width="match_parent"
+        android:id="@+id/points"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="TextView" />
+        android:text="Total Points"
+        android:layout_margin="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rank"
+        android:text="Your Rank :" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/qrcoderecyclerview"
         android:layout_width="match_parent"
-        android:layout_height="266dp"
-        android:layout_weight="1" />
+        android:layout_height="wrap_content"
+        />
 
 </LinearLayout>

@@ -6,6 +6,16 @@
             android:id="@+id/nav_profile"
             android:title="Profile"
             android:icon="@drawable/ic_speaker_black_24dp" />
+        <item android:title="Dosm Event">
+        <menu>
+        <item android:id="@+id/qr_scanner"
+            android:title="QR Scanner"
+            android:icon="@drawable/camera_icon"/>
+        <item android:id="@+id/user_details"
+            android:icon="@drawable/ic_speaker_black_24dp"
+            android:title="User Details"/>
+        </menu>
+        
 
         <item
             android:id="@+id/nav_registration"
@@ -30,7 +40,7 @@
         <item
             android:id="@+id/nav_speakers"
             android:title="Speakers"
-            android:icon="@drawable/ic_speaker_black_24dp" />
+            android:icon="@drawable/people" />
 
         <!--item
             android:id="@+id/nav_maps"

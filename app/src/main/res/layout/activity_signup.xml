@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.macbitsgoa.events.Authentication.SignupActivity"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DOSM EVENT"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:textSize="40dp"/>
+    <EditText
+        android:id="@+id/useername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:hint="enter your name"
+        android:imeOptions="actionNext"
+        android:inputType="textPersonName"/>
+
+    <EditText
+        android:id="@+id/user_mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:hint="Enter Email"
+
+        android:inputType="textEmailAddress"
+        android:imeOptions="actionNext"/>
+    <EditText
+        android:id="@+id/user_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:imeOptions="actionDone"
+
+        />
+
+    <TextView
+        android:id="@+id/signup_txt_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not Registered?.SignUp"
+        android:layout_gravity="center_horizontal"
+        />
+    <TextView
+        android:id="@+id/signin_txt_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registered already.SignIn"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"
+        />
+    <Button
+        android:id="@+id/signin_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SignIn"
+        android:layout_gravity="center_horizontal"/>
+
+
+
+</LinearLayout>

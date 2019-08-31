@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.macbitsgoa.events.LeaderBoard.LeaderBoardFragment"
+    android:orientation="vertical">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Leaderboard"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:textSize="30dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/rank"
+            android:text=" rank"
+            android:layout_weight="3"
+            android:textSize="30dp"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/player_name"
+            android:layout_weight="3"
+            android:textSize="30dp"
+            android:text="Name"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/points"
+            android:text="Points"
+            android:textSize="30dp"
+            android:layout_weight="3"
+            android:gravity="center"/>
+
+
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/leaderboard_rv">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>
