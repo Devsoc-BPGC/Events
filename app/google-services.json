@@ -15,14 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "1007225187624-btpjelgm88l01root40620un6kpnenl9.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.macbitsgoa.events.debug",
-            "certificate_hash": "414d2051184a27c2619f09e4f4100390d86286a3"
-          }
-        },
-        {
           "client_id": "1007225187624-gchdh51n6qb0kikuirgl91bhd7jiidsq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
