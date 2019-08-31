@@ -263,7 +263,7 @@ public class HomeActivity extends AppCompatActivity implements
                 break;
             }
             case R.id.qr_scanner :{
-                startActivityForResult(new Intent(HomeActivity.this,QrScannerActivity.class),code);
+                startActivity(new Intent(HomeActivity.this,QrScannerActivity.class));
                 break;
             }
             case R.id.user_details:{
