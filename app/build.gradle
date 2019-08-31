@@ -85,6 +85,9 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     implementation 'com.google.android.gms:play-services-maps:16.0.0'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    implementation 'androidx.annotation:annotation:1.0.1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'com.google.firebase:firebase-auth:16.0.5'
     annotationProcessor "androidx.room:room-compiler:$room_version"
     def lifecycle_version = "2.1.0-alpha01"
     // ViewModel and LiveData
@@ -104,6 +107,10 @@ dependencies {
 
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
     implementation 'com.budiyev.android:code-scanner:2.1.0'
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+
 
 
     // https://github.com/amitshekhariitbhu/Android-Debug-Database

@@ -6,7 +6,15 @@
     android:layout_height="match_parent"
     tools:context="com.macbitsgoa.events.QrScaner.QrScannerActivity"
     android:orientation="vertical">
+    <ProgressBar
+        android:layout_width="200dp"
+        android:layout_gravity="center"
+        android:layout_height="200dp"
+        android:id="@+id/progressbar"
+        android:visibility="visible"
+        />
     <com.budiyev.android.codescanner.CodeScannerView
+        android:visibility="gone"
         android:id="@+id/scanner_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

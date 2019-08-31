@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.macbitsgoa.events.LeaderBoard.LeaderBoardFragment;
+import com.macbitsgoa.events.ProfileDetails.ProfileFragment;
 
 public class FragmentsPagerAdapter extends FragmentPagerAdapter {
 
