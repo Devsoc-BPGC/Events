@@ -11,6 +11,9 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.macbitsgoa.events.Authentication.SignupActivity;
+import android.os.Bundle;
+
+import com.google.android.material.tabs.TabLayout;
 import com.macbitsgoa.events.R;
 
 
@@ -40,6 +43,7 @@ public class ProfileAndLeaderboardActivity extends AppCompatActivity {
             startActivity(new Intent(ProfileAndLeaderboardActivity.this, SignupActivity.class));
             finish();
         }
+
 
 
 
