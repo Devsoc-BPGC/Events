@@ -47,6 +47,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".profile.ProfileActivity"
+            android:enabled="@bool/profile"
+            android:label="@string/title_activity_profile"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".home.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.macbitsgoa.events.home.HomeActivity" />
+        </activity>
+        <activity
             android:name=".eateries.EateriesActivity"
             android:enabled="@bool/eateries"
             android:label="@string/title_activity_eateries"

@@ -24,6 +24,8 @@ import com.macbitsgoa.events.SocialActivity;
 import com.macbitsgoa.events.aboutfest.AboutEventActivity;
 import com.macbitsgoa.events.aboutmac.AboutMacActivity;
 import com.macbitsgoa.events.eateries.EateriesCardFragment;
+import com.macbitsgoa.events.profile.ProfileActivity;
+import com.macbitsgoa.events.profile.ProfileFragment;
 import com.macbitsgoa.events.speakers.SpeakersActivity;
 import com.macbitsgoa.events.speakers.SpeakersFragment;
 import com.macbitsgoa.events.sponsors.SponsorsFragment;
@@ -94,6 +96,7 @@ public class HomeActivity extends AppCompatActivity implements
                     "timer"
             );
         }
+
 
         if (BuildConfig.speakers) {
             fragmentTransaction.add(R.id.ll_home,
@@ -225,6 +228,11 @@ public class HomeActivity extends AppCompatActivity implements
                 break;
 
             }*/
+            case (R.id.nav_profile): {
+                startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+
+
+                break;}
 
             case (R.id.nav_registration): {
                 final CustomTabsIntent intent=new CustomTabsIntent.Builder().build();
