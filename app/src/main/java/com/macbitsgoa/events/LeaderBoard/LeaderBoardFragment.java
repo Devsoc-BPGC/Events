@@ -73,6 +73,7 @@ public class LeaderBoardFragment extends Fragment {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                leaderBoardData.clear();
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     leaderBoardData.add(child.getValue(LeaderBoardModel.class));
 
