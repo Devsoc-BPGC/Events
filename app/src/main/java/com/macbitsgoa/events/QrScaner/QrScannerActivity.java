@@ -246,6 +246,7 @@ public class QrScannerActivity extends AppCompatActivity  {
 
 
 
+
               }
           });
 
