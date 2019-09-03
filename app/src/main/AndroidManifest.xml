@@ -19,9 +19,9 @@
         <activity android:name=".Authentication.SignupActivity">
 
         </activity>
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
+        <!--<activity-->
+            <!--android:name=".ui.login.LoginActivity"-->
+            <!--android:label="@string/title_activity_login" />-->
         <activity android:name=".DosmEvent.ProfileAndLeaderboardActivity" />
         <activity android:name=".QrScaner.QrScannerActivity" />
         <activity
@@ -48,8 +48,6 @@
         </activity>
         <activity
             android:name=".profile.ProfileActivity"
-            android:enabled="@bool/profile"
-            android:label="@string/title_activity_profile"
             android:screenOrientation="portrait"
             android:parentActivityName=".home.HomeActivity">
             <meta-data

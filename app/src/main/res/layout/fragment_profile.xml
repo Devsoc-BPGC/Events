@@ -12,7 +12,7 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/profile_pic
+        android:id="@+id/profile_pic"
         />
 
     <TextView
@@ -29,13 +29,17 @@
         android:text="Total Points"
         android:layout_margin="10dp"
         />
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/rank"
-        android:text="Your Rank :" />
+        android:text="No qrcodes scanned"
+        android:id="@+id/noqrcodetxtviw"
+        android:visibility="visible"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
         android:id="@+id/qrcoderecyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

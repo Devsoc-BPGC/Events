@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.macbitsgoa.events.LeaderBoard.LeaderBoardFragment;
 import com.macbitsgoa.events.ProfileDetails.ProfileFragment;
+import com.macbitsgoa.events.QrScaner.QrcodeScannerFragment;
 
 public class FragmentsPagerAdapter extends FragmentPagerAdapter {
 
@@ -18,6 +19,8 @@ public class FragmentsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if(position==0) {return new ProfileFragment();}
+//        if (position==1){ return new QrcodeScannerFragment();
+//        }
         if(position==1){return new LeaderBoardFragment();}
         else return null;
     }

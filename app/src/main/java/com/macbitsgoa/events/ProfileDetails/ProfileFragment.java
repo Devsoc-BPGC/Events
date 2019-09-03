@@ -71,7 +71,9 @@ public class ProfileFragment extends Fragment {
         username = view.findViewById(R.id.username);
         totalPoints = view.findViewById(R.id.points);
 
-        adapter = new ProfileFragmentAdapter(qrcodeList); //ChangeEnded
+        adapter = new ProfileFragmentAdapter(qrcodeList);
+        //ChangeEnded
+        checkforQrcodes(qrcodeList,view);
         recyclerView.setAdapter(adapter);
 
 
@@ -116,6 +118,7 @@ public class ProfileFragment extends Fragment {
 
                 }
                 ProfileFragmentAdapter updatedAdapter = new ProfileFragmentAdapter(qrcodeList);
+                checkforQrcodes(qrcodeList,view);
                 recyclerView.setAdapter(updatedAdapter);
 
 
@@ -128,6 +131,21 @@ public class ProfileFragment extends Fragment {
         });
 
     }
+    }
+    public void checkforQrcodes(ArrayList<ProfileModal> list,View view )
+    {
+        if((list.size()>0)){
+           view.findViewById(R.id.noqrcodetxtviw).setVisibility(View.GONE);
+           view.findViewById(R.id.qrcoderecyclerview).setVisibility(View.VISIBLE);
+
+        }
+        else {
+            view.findViewById(R.id.qrcoderecyclerview).setVisibility(View.GONE);
+            view.findViewById(R.id.noqrcodetxtviw).setVisibility(View.VISIBLE);
+
+
+        }
+
     }
 
 

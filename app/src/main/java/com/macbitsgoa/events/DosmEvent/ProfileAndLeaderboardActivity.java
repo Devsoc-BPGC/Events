@@ -36,6 +36,7 @@ public class ProfileAndLeaderboardActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
        tabLayout.getTabAt(0).setText("Profile Details");
         tabLayout.getTabAt(1).setText("LeaderBoard");
+        //tabLayout.getTabAt(2).setText("LeaderBoard");
         auth=FirebaseAuth.getInstance();
         currentUser=auth.getCurrentUser();
         if(currentUser==null)

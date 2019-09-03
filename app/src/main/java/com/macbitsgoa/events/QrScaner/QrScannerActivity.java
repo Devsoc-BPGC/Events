@@ -37,7 +37,6 @@ public class QrScannerActivity extends AppCompatActivity  {
    ArrayList<QrCodeModal> qrcodelist =new ArrayList<>();
    UserDetailsModal userdetails =new UserDetailsModal();
    FirebaseDatabase firebaseDatabase;
-   FirebaseDatabase firebaseDatabase2;
    DatabaseReference QrCodeListRef;
    DatabaseReference UserQrCodeListRef;
     DatabaseReference userDataRef;
@@ -187,7 +186,8 @@ public class QrScannerActivity extends AppCompatActivity  {
                               userdetails.qrcodesScanned.add(item);
                               UserQrCodeListRef.child(String.valueOf(userdetails.getQrcodesScanned().size())).setValue(item);
                               userDataRef.child("totalpoints").setValue(totalPoints+qrcodelist.get(i).getPoints());
-                              showPopup(qrcodelist.get(i).getQrcode(),String.valueOf(qrcodelist.get(i).getPoints()),qrcodelist.get(i).getDescrip());
+
+                            //  showPopup(qrcodelist.get(i).getQrcode(),String.valueOf(qrcodelist.get(i).getPoints()),qrcodelist.get(i).getDescrip());
 
 
 
@@ -219,10 +219,10 @@ public class QrScannerActivity extends AppCompatActivity  {
                           QrCodeModal item = new QrCodeModal(qrcodelist.get(i).getQrcode(),qrcodelist.get(i).getDescrip(),qrcodelist.get(i).getPoints());
                           userdetails.qrcodesScanned.add(item);
                           Newcodeflag=true;
-                          Toast.makeText(QrScannerActivity.this,"new code added",Toast.LENGTH_LONG).show();
+                          Toast.makeText(QrScannerActivity.this,"new qrcode scanned ",Toast.LENGTH_LONG).show();
                           UserQrCodeListRef.child(String.valueOf(userdetails.getQrcodesScanned().size())).setValue(item);
                           userDataRef.child("totalpoints").setValue(totalPoints+qrcodelist.get(i).getPoints());
-                          showPopup(qrcodelist.get(i).getQrcode(),String.valueOf(qrcodelist.get(i).getPoints()),qrcodelist.get(i).getDescrip());
+                         // showPopup(qrcodelist.get(i).getQrcode(),String.valueOf(qrcodelist.get(i).getPoints()),qrcodelist.get(i).getDescrip());
 
                           break;
 
@@ -277,6 +277,16 @@ public class QrScannerActivity extends AppCompatActivity  {
     protected void onPause() {
         codeScanner.releaseResources();
         super.onPause();
+    }
+
+    public void sendDatatoProfileFragment(String qrcode,String points,String descrip)
+    {
+        Bundle data=new Bundle();
+        data.putString("qrcode",qrcode);
+        data.putString("points",points);
+        data.putString("descrip",descrip);
+
+
     }
 
  public  void showPopup(String qrcode1,String points1,String descrip1)

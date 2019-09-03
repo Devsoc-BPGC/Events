@@ -64,6 +64,7 @@ public class SignupActivity extends AppCompatActivity {
         databaseRef=database.getReference().child("DosmEvent").child("Users");
 
         SignupTextView.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 findViewById(R.id.useername).setVisibility(View.VISIBLE);
@@ -94,19 +95,26 @@ public class SignupActivity extends AppCompatActivity {
         SignINBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SignINBtn.setEnabled(false);
-                if(SignINBtn.getText().equals("Sign Up")){
+                if(!(userEmail.getText().toString().isEmpty()&&userPassword.getText().toString().isEmpty())) {
 
-                   registerUser(userEmail.getText().toString(),userPassword.getText().toString() );
-
-                    //signUP
-                    //and SignIN()
-
-                } else {
-                    //signIN
-                    signInUser(userEmail.getText().toString(),userPassword.getText().toString());
+                    SignINBtn.setEnabled(false);
+                    if (SignINBtn.getText().equals("Sign Up")) {
 
 
+                        registerUser(userEmail.getText().toString(), userPassword.getText().toString());
+
+                        //signUP
+                        //and SignIN()
+
+                    } else {
+                        //signIN
+                        signInUser(userEmail.getText().toString(), userPassword.getText().toString());
+
+
+                    }
+
+                } else{
+                    Toast.makeText(SignupActivity.this,"No feild should be empty",Toast.LENGTH_LONG).show();
                 }
 
 
