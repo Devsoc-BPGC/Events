@@ -2,11 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="none">
-        <item
-            android:id="@+id/nav_profile"
-            android:title="Profile"
-            android:icon="@drawable/ic_speaker_black_24dp" />
-        <item android:title="Dosm Event">
+        <item android:title="DosmEvent">
         <menu>
         <item android:id="@+id/qr_scanner"
             android:title="QR Scanner"
@@ -15,7 +11,7 @@
             android:icon="@drawable/ic_speaker_black_24dp"
             android:title="User Details"/>
         </menu>
-        
+        </item>
 
         <item
             android:id="@+id/nav_registration"

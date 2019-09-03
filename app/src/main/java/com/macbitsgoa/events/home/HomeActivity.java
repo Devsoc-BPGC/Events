@@ -228,11 +228,7 @@ public class HomeActivity extends AppCompatActivity implements
                 break;
 
             }*/
-            case (R.id.nav_profile): {
-                startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
-
-
-                break;}
+            
 
             case (R.id.nav_registration): {
                 final CustomTabsIntent intent=new CustomTabsIntent.Builder().build();
