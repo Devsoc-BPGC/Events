@@ -44,6 +44,7 @@ public class ProfileFragment extends Fragment {
     FirebaseUser currentuser;
     DatabaseReference userDataRef;
 
+
     @Override
     public void onStart() {
         super.onStart();

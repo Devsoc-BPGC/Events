@@ -64,88 +64,89 @@ public class QrScannerActivity extends AppCompatActivity  {
 
         }
         firebaseDatabase = FirebaseDatabase.getInstance();
-        if (currentUser != null){
-            QrCodeListRef = firebaseDatabase.getReference().child("DosmEvent").child("QrCodeList");
-
-        userDataRef = firebaseDatabase.getReference().child("DosmEvent").child("Users").child(currentUser.getUid());
-        UserQrCodeListRef = firebaseDatabase.getReference().child("DosmEvent").child("Users").child(currentUser.getUid()).child("qrcodesScanned");
-        QrCodeListRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                qrcodelist.clear();
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    String Qrcode = child.child("code").getValue(String.class);
-                    String Descrip = child.child("descrip").getValue(String.class);
-                    Long Points = child.child("points").getValue(Long.class);
-                    qrcodelist.add(new QrCodeModal(Qrcode, Descrip, Points));
-                }
-//                Log.e("qrcode",qrcodelist.get(1).getDescrip());
-//                Log.e("qrcode",qrcodelist.get(1).getQrcode());
-//                Log.e("qrcode",String.valueOf(qrcodelist.get(1).getPoints()));
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        UserQrCodeListRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                if (currentUser != null) {
-
-                    // userdetails.name = dataSnapshot.child(currentUser.getUid()).child("name").getValue(String.class);
-                    userdetails.qrcodesScanned.clear();
-
-                    for (DataSnapshot child : dataSnapshot.getChildren()) {
-                        String Qrcode = child.child("qrcode").getValue(String.class);
-                        String Descrip = child.child("descrip").getValue(String.class);
-                        Long Points = child.child("points").getValue(Long.class);
-                        totalPoints += child.child("points").getValue(Double.class);
-
-                        userdetails.qrcodesScanned.add(new QrCodeModal(Qrcode, Descrip, Points));
-                        userdetails.setPoints(totalPoints);
-
-                        Log.e("userstatus", "user is not null");
-                        Log.e("size of array", String.valueOf(userdetails.qrcodesScanned.size()));
-                        Log.e(" array item", child.child("qrcode").getValue(String.class));
-
-
-                    }
-                    for (int i = 0; i < userdetails.qrcodesScanned.size(); i++) {
-                        // Log.e("codes on firebase",userdetails.qrcodesScanned.get(i).getQrcode());
-                    }
-                } else {
-                }
-                findViewById(R.id.progressbar).setVisibility(View.GONE);
-                findViewById(R.id.scanner_view).setVisibility(View.VISIBLE);
-                codeScanner.startPreview();
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                Log.e("error", databaseError.toString());
-
-            }
-        });
-    }
+//        if (currentUser != null){
+//            QrCodeListRef = firebaseDatabase.getReference().child("DosmEvent").child("QrCodeList");
+//
+//        userDataRef = firebaseDatabase.getReference().child("DosmEvent").child("Users").child(currentUser.getUid());
+//        UserQrCodeListRef = firebaseDatabase.getReference().child("DosmEvent").child("Users").child(currentUser.getUid()).child("qrcodesScanned");
+//        UserQrCodeListRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                if (currentUser != null) {
+//
+//                    // userdetails.name = dataSnapshot.child(currentUser.getUid()).child("name").getValue(String.class);
+//                    userdetails.qrcodesScanned.clear();
+//
+//                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+//                        String Qrcode = child.child("qrcode").getValue(String.class);
+//                        String Descrip = child.child("descrip").getValue(String.class);
+//                        Long Points = child.child("points").getValue(Long.class);
+//                        totalPoints += child.child("points").getValue(Double.class);
+//
+//                        userdetails.qrcodesScanned.add(new QrCodeModal(Qrcode, Descrip, Points));
+//                        userdetails.setPoints(totalPoints);
+//
+//                        Log.e("userstatus", "user is not null");
+//                        Log.e("size of array", String.valueOf(userdetails.qrcodesScanned.size()));
+//                        Log.e(" array item", child.child("qrcode").getValue(String.class));
+//
+//
+//                    }
+//                    for (int i = 0; i < userdetails.qrcodesScanned.size(); i++) {
+//                        // Log.e("codes on firebase",userdetails.qrcodesScanned.get(i).getQrcode());
+//                    }
+//                } else {
+//                }
+//                findViewById(R.id.progressbar).setVisibility(View.GONE);
+//                findViewById(R.id.scanner_view).setVisibility(View.VISIBLE);
+//                codeScanner.startPreview();
+//
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                Log.e("error", databaseError.toString());
+//
+//            }
+//        });
+//        QrCodeListRef.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    qrcodelist.clear();
+//                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+//                        String Qrcode = child.child("code").getValue(String.class);
+//                        String Descrip = child.child("descrip").getValue(String.class);
+//                        Long Points = child.child("points").getValue(Long.class);
+//                        qrcodelist.add(new QrCodeModal(Qrcode, Descrip, Points));
+//                    }
+////                Log.e("qrcode",qrcodelist.get(1).getDescrip());
+////                Log.e("qrcode",qrcodelist.get(1).getQrcode());
+////                Log.e("qrcode",String.valueOf(qrcodelist.get(1).getPoints()));
+//
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
+//
+//        }
 
 
 
         codeScanner= new CodeScanner(QrScannerActivity.this,scannerView);
         codeScanner.setCamera(CodeScanner.CAMERA_BACK);
+        codeScanner.startPreview();
         codeScanner.setDecodeCallback(new DecodeCallback() {
             @Override
             public void onDecoded(@NonNull Result result) {
           Log.e("kartik","inside on decoded");
-          Intent data = new Intent();
-          data.putExtra("result",result.getText());
+
           QrScannerActivity.this.runOnUiThread(new Runnable() {
               @Override
               public void run() {
@@ -155,87 +156,92 @@ public class QrScannerActivity extends AppCompatActivity  {
                   Log.e("codeScanned",result.getText());
 
                   Log.e("flow","zero");
+                  Intent intent =new Intent();
+                  intent.putExtra("qrcode",result.getText());
+                  setResult(RESULT_OK,intent);
+                  finish();
 
 
-                  if(userdetails.qrcodesScanned.size()>0){
-                      Log.e("flow","one");
+//                  if(userdetails.qrcodesScanned.size()>0){
+//                      Log.e("flow","one");
+//
+//                      for(int j=0;j<userdetails.qrcodesScanned.size();j++)
+//                  {
+//
+//                      if(userdetails.qrcodesScanned.get(j).getQrcode().equals(result.getText()))
+//                      {
+//                          //check if already scanned
+//                          Log.e("flow","two");
+//
+//                          Toast.makeText(QrScannerActivity.this,"this qr code has already been scanned",Toast.LENGTH_LONG).show();
+//                          oldcodeflaf =true;
+//
+//                      } }
+//
+//                      if(!oldcodeflaf)
+//                      {
+//                          //if not scanned already
+//
+//                          for(int i=0;i<qrcodelist.size();i++)
+//                      {
+//
+//                          if(qrcodelist.get(i).getQrcode().equals(result.getText()))
+//                          {
+//                              QrCodeModal item = new QrCodeModal(qrcodelist.get(i).getQrcode(),qrcodelist.get(i).getDescrip(),qrcodelist.get(i).getPoints());
+//                              userdetails.qrcodesScanned.add(item);
+//                              UserQrCodeListRef.child(String.valueOf(userdetails.getQrcodesScanned().size())).setValue(item);
+//                              userDataRef.child("totalpoints").setValue(totalPoints+qrcodelist.get(i).getPoints());
+//
+//                            //  showPopup(qrcodelist.get(i).getQrcode(),String.valueOf(qrcodelist.get(i).getPoints()),qrcodelist.get(i).getDescrip());
+//
+//
+//
+//                              Newcodeflag =true;
+//                              break;
+//
+//                          }}
+//
+//                          if(!Newcodeflag){
+//                               // some other qr code is scanned
+//                              Toast.makeText(QrScannerActivity.this,"Invalid QrCode Scanned0",Toast.LENGTH_LONG).show();
+//                          }
+//
+//
+//                      }
+//
+//                  }
+//                  else
+//                      {
+//
+//
+//                    // inserting first qrcode scanned
+//                      for(int i=0;i<qrcodelist.size();i++)
+//                  {
+//
+//                      if(qrcodelist.get(i).getQrcode().equals(result.getText()))
+//                      {
+//
+//                          QrCodeModal item = new QrCodeModal(qrcodelist.get(i).getQrcode(),qrcodelist.get(i).getDescrip(),qrcodelist.get(i).getPoints());
+//                          userdetails.qrcodesScanned.add(item);
+//                          Newcodeflag=true;
+//                          Toast.makeText(QrScannerActivity.this,"new qrcode scanned ",Toast.LENGTH_LONG).show();
+//                          UserQrCodeListRef.child(String.valueOf(userdetails.getQrcodesScanned().size())).setValue(item);
+//                          userDataRef.child("totalpoints").setValue(totalPoints+qrcodelist.get(i).getPoints());
+//                         // showPopup(qrcodelist.get(i).getQrcode(),String.valueOf(qrcodelist.get(i).getPoints()),qrcodelist.get(i).getDescrip());
+//
+//                          break;
+//
+//                      }} if(!Newcodeflag) {
+//                                                        // some other qr code is scanned
+//
+//                          Toast.makeText(QrScannerActivity.this,"Invalid QrCode Scanned1",Toast.LENGTH_LONG).show();
+//                      }
+//
+//
+//
+//
+//                  }
 
-                      for(int j=0;j<userdetails.qrcodesScanned.size();j++)
-                  {
-
-                      if(userdetails.qrcodesScanned.get(j).getQrcode().equals(result.getText()))
-                      {
-                          //check if already scanned
-                          Log.e("flow","two");
-
-                          Toast.makeText(QrScannerActivity.this,"this qr code has already been scanned",Toast.LENGTH_LONG).show();
-                          oldcodeflaf =true;
-
-                      } }
-
-                      if(!oldcodeflaf)
-                      {
-                          //if not scanned already
-
-                          for(int i=0;i<qrcodelist.size();i++)
-                      {
-
-                          if(qrcodelist.get(i).getQrcode().equals(result.getText()))
-                          {
-                              QrCodeModal item = new QrCodeModal(qrcodelist.get(i).getQrcode(),qrcodelist.get(i).getDescrip(),qrcodelist.get(i).getPoints());
-                              userdetails.qrcodesScanned.add(item);
-                              UserQrCodeListRef.child(String.valueOf(userdetails.getQrcodesScanned().size())).setValue(item);
-                              userDataRef.child("totalpoints").setValue(totalPoints+qrcodelist.get(i).getPoints());
-
-                            //  showPopup(qrcodelist.get(i).getQrcode(),String.valueOf(qrcodelist.get(i).getPoints()),qrcodelist.get(i).getDescrip());
-
-
-
-                              Newcodeflag =true;
-                              break;
-
-                          }}
-
-                          if(!Newcodeflag){
-                               // some other qr code is scanned
-                              Toast.makeText(QrScannerActivity.this,"Invalid QrCode Scanned0",Toast.LENGTH_LONG).show();
-                          }
-
-
-                      }
-
-                  }
-                  else
-                      {
-
-
-                    // inserting first qrcode scanned
-                      for(int i=0;i<qrcodelist.size();i++)
-                  {
-
-                      if(qrcodelist.get(i).getQrcode().equals(result.getText()))
-                      {
-
-                          QrCodeModal item = new QrCodeModal(qrcodelist.get(i).getQrcode(),qrcodelist.get(i).getDescrip(),qrcodelist.get(i).getPoints());
-                          userdetails.qrcodesScanned.add(item);
-                          Newcodeflag=true;
-                          Toast.makeText(QrScannerActivity.this,"new qrcode scanned ",Toast.LENGTH_LONG).show();
-                          UserQrCodeListRef.child(String.valueOf(userdetails.getQrcodesScanned().size())).setValue(item);
-                          userDataRef.child("totalpoints").setValue(totalPoints+qrcodelist.get(i).getPoints());
-                         // showPopup(qrcodelist.get(i).getQrcode(),String.valueOf(qrcodelist.get(i).getPoints()),qrcodelist.get(i).getDescrip());
-
-                          break;
-
-                      }} if(!Newcodeflag) {
-                                                        // some other qr code is scanned
-
-                          Toast.makeText(QrScannerActivity.this,"Invalid QrCode Scanned1",Toast.LENGTH_LONG).show();
-                      }
-
-
-
-
-                  }
 
 
 
