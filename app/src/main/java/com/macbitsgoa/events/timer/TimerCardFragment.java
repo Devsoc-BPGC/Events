@@ -2,6 +2,7 @@ package com.macbitsgoa.events.timer;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,16 @@ import android.widget.TextView;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.macbitsgoa.events.BuildConfig;
 import com.macbitsgoa.events.R;
 import com.macbitsgoa.events.home.HomeCardInterface;
+
+import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,7 +36,11 @@ import androidx.fragment.app.Fragment;
 public class TimerCardFragment extends Fragment
         implements HomeCardInterface {
 
-
+    String endTime = "31.10.2019, 17:30:00";
+    TextView tv1, tv2;
+    SimpleDraweeView q19;
+    private static final String TAG = TimerCardFragment.class.getSimpleName();
+    CountDownTimer backcounter;
 
     @Override
     public View onCreateView(final LayoutInflater inflater,
@@ -37,15 +49,44 @@ public class TimerCardFragment extends Fragment
         final MaterialCardView selfCard =
                 (MaterialCardView) inflater.inflate(R.layout.fragment_timer_card,
                         container, false);
-        final TextView tv1= (TextView) selfCard.findViewById(R.id.timer_text_day);
-        final TextView tv2= (TextView) selfCard.findViewById(R.id.timer_text_time);
-        final SimpleDraweeView q19= selfCard.findViewById(R.id.item_timer_image);
+         tv1= (TextView) selfCard.findViewById(R.id.timer_text_day);
+         tv2= (TextView) selfCard.findViewById(R.id.timer_text_time);
+         q19= selfCard.findViewById(R.id.item_timer_image);
+
+
+        DatabaseReference databaseReference;
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("timer");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                endTime = dataSnapshot.child("endTime").getValue().toString();
+                reconfigureClock(endTime);
+                Log.v(TAG,endTime);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e(TAG, databaseError.getMessage(), databaseError.toException());
+            }
+        });
+        Log.v(TAG,endTime+"chage");
+
+
+
+        return selfCard;
+    }
+
+    public void reconfigureClock(String endTime)
+    {
+        try
+        {backcounter.cancel();}
+        catch(Exception e)
+        {}
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
         formatter.setLenient(false);
 
-
-        String endTime = "31.01.2019, 17:30:00";
         long milliseconds=0;
         Date endDate;
         try {
@@ -61,7 +102,7 @@ public class TimerCardFragment extends Fragment
 
         long diff = milliseconds - startTime;
 
-        new CountDownTimer(diff,1) {
+        backcounter = new CountDownTimer(diff,1) {
 
             @Override
             public void onTick(long millis) {
@@ -82,7 +123,5 @@ public class TimerCardFragment extends Fragment
                 q19.setVisibility(View.VISIBLE);
             }
         }.start();
-
-        return selfCard;
     }
 }
