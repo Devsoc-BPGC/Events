@@ -20,7 +20,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         android:orientation="vertical"
         android:gravity="center"
         android:paddingBottom="20dp"
@@ -31,8 +31,8 @@
             android:id="@+id/timer_text_day"
             android:text="@string/timer"
             android:textAlignment="gravity"
-            android:textColor="#cecece"
-            android:textSize="60sp"
+            android:textColor="#FF301300"
+            android:textSize="55sp"
             android:background="#00000000"
             android:fontFamily="@font/bgothm"
             android:layout_gravity="center"/>
@@ -43,9 +43,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/timer_text_time"
-            android:text="@string/timer"
+            android:text="@string/timersubtext"
             android:textAlignment="gravity"
-            android:textColor="#cecece"
+            android:textColor="#FF301300"
             android:textSize="50sp"
             android:background="#00000000"
             android:fontFamily="@font/bgothm"
@@ -53,12 +53,13 @@
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/item_timer_image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="200dp"
             app:roundedCornerRadius="0dp"
             android:paddingHorizontal="22dp"
             android:paddingBottom="22dp"
             android:visibility="gone"
-            app:actualImageResource="@drawable/q19"
+            app:placeholderImage="@drawable/bg1"
+            app:actualImageResource="@drawable/wc"
             />
     </LinearLayout>
 

@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/eateries_appbar"
-        android:background="#00000000"
+        android:background="#FF230E00"
         android:elevation="0dp"
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="0dp"
-            android:background="#00000000"
+            android:background="#FF230E00"
             app:layout_scrollFlags="enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 

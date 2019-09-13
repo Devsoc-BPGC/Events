@@ -32,8 +32,9 @@ import com.macbitsgoa.events.sponsors.SponsorsFragment;
 import com.macbitsgoa.events.timeline.TimelineCardFragment;
 import com.macbitsgoa.events.timer.TimerCardFragment;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -185,7 +186,7 @@ public class HomeActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @Nonnull String[] permissions, @Nonnull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode){
             case My_Camera_Request_Code:{
@@ -206,7 +207,7 @@ public class HomeActivity extends AppCompatActivity implements
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull final MenuItem menuItem) {
+    public boolean onNavigationItemSelected(@Nonnull final MenuItem menuItem) {
 
         switch (menuItem.getItemId()) {
 

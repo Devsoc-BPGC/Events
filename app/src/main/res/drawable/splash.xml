@@ -2,10 +2,16 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:opacity="opaque"
     >
-    <item android:drawable="@drawable/bg2" />
-    <item>
+    <item android:drawable="@drawable/bg2"
+        android:width="1080px"
+        android:height="1920px"
+        android:gravity="center"/>
+    <item android:drawable="@drawable/bg3"
+        android:width="1080px"
+        android:height="1920px"/>
+    <!--<item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/quark" />
-    </item>
+            android:src="@drawable/wc" />
+    </item>-->
 </layer-list>
