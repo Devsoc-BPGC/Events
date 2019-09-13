@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        android:background="@drawable/bg2"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".home.HomeActivity">
 
@@ -36,7 +37,7 @@
 
                 android:layout_height="@dimen/action_bar_height"
                 android:elevation="0dp"
-                android:background="#00000000"
+                android:background="#FF230E00"
                 app:popupTheme="@style/AppTheme.PopupOverlay">
 
             </androidx.appcompat.widget.Toolbar>
@@ -49,14 +50,24 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <pl.droidsonroids.gif.GifImageView
+            <!--<pl.droidsonroids.gif.GifImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#000000"
                 android:scaleType="fitXY"
                 android:src="@drawable/animz"
-                />
-
+                />-->
+            <!--<ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg2"
+                android:scaleType="fitXY" />-->
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00000000"
+                app:actualImageResource="@drawable/bg2"
+                app:actualImageScaleType="fitXY"/>
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

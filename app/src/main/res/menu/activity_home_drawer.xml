@@ -45,7 +45,7 @@
 
         <item
             android:id="@+id/nav_about_event"
-            android:title="About Quark'19"
+            android:title="About Waves'19"
             android:icon="@drawable/ic_about_event_black_24dp" />
 
         <item

@@ -1,6 +1,6 @@
 <!--suppress LongLine -->
 <resources>
-    <string name="app_name">Quark\'19</string>
+    <string name="app_name">Waves\'19</string>
     <string name="server_client_id">1007225187624-ve88c33iuivn0u1ulp8d3ajm8sbh95ai.apps.googleusercontent.com</string>
     <string name="server_client_secret">T-VyF_aN8UEFx359muCmujqG</string>
     <string name="redirect_url">https://events-f6847.firebaseapp.com/__/auth/handler</string>
@@ -13,7 +13,7 @@
 
     <string name="invalid_url">Invalid URL</string>
 
-    <string name="about_fest">About Quark\'19</string>
+    <string name="about_fest">About Waves\'19</string>
     <string name="about_mac">About MAC</string>
     <string name="timeline">Timeline</string>
     <string name="timer">Coming soon</string>

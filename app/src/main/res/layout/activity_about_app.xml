@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="0dp"
-            android:background="#00000000"
+            android:background="#FF230E00"
             app:layout_scrollFlags="enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
@@ -67,8 +67,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:layout_gravity="center_horizontal"
+                android:foregroundGravity="center"
                 android:background="#00000000"
-                fresco:actualImageResource="@drawable/quarks"
+                fresco:actualImageResource="@drawable/wc"
                 fresco:actualImageScaleType="fitCenter"
                 tools:background="#00000000" />
 
